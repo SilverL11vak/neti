@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import './globals.css'
 
@@ -107,6 +107,32 @@ export default function AutodPage() {
   const [priceRange, setPriceRange] = useState([0, 100000])
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  // Scroll animation observer
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('is-visible')
+          }, 100)
+        }
+      })
+    }, observerOptions)
+
+    const animatedElements = document.querySelectorAll('.animate-on-scroll')
+    animatedElements.forEach(el => {
+      observer.observe(el)
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
   const filteredCars = mockCars.filter(car => {
     if (searchQuery && !car.brand.toLowerCase().includes(searchQuery.toLowerCase()) && 
         !car.model.toLowerCase().includes(searchQuery.toLowerCase())) return false
@@ -137,6 +163,20 @@ export default function AutodPage() {
           </div>
 
           <div className="nav-controls">
+            <div className="lang-toggle">
+              <button 
+                className={`lang-btn ${lang === 'et' ? 'active' : ''}`}
+                onClick={() => setLang('et')}
+              >
+                ET
+              </button>
+              <button 
+                className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
+                onClick={() => setLang('en')}
+              >
+                EN
+              </button>
+            </div>
             <div 
               className={`hamburger ${mobileMenuOpen ? 'active' : ''}`} 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -301,7 +341,70 @@ export default function AutodPage() {
       {/* Footer */}
       <footer className="footer">
         <div className="footer-container">
-          <p>© 2026 NETI.ee - {lang === 'et' ? 'Kõik õigused kaitstud' : 'All rights reserved'}</p>
+          <div className="footer-main">
+            <div className="footer-brand">
+              <div className="footer-logo">
+                <div className="logo-icon">
+                  <i className="fas fa-globe"></i>
+                </div>
+                <span>NETI</span>
+              </div>
+              <p className="footer-desc">
+                {lang === 'et'
+                  ? 'NETI on Eesti juhtiv veebikataloog ja otsingusüsteem alates 1996. aastast.'
+                  : 'NETI is Estonia\'s leading web catalog and search system since 1996.'}
+              </p>
+              <div className="social-links">
+                <a href="#" className="social-link"><i className="fab fa-twitter"></i></a>
+                <a href="#" className="social-link"><i className="fab fa-facebook-f"></i></a>
+                <a href="#" className="social-link"><i className="fab fa-instagram"></i></a>
+              </div>
+            </div>
+
+            <div className="footer-links">
+              <div className="footer-column">
+                <h4>{lang === 'et' ? 'Kategooriad' : 'Categories'}</h4>
+                <Link href="/kategooria">Riik ja Ühiskond</Link>
+                <Link href="/kategooria">Info ja Meedia</Link>
+                <Link href="/kategooria">Äri</Link>
+                <Link href="/kategooria">Haridus</Link>
+              </div>
+              <div className="footer-column">
+                <h4>{lang === 'et' ? 'Teenused' : 'Services'}</h4>
+                <Link href="/otsing">Otsing</Link>
+                <Link href="/kategooria">Kataloog</Link>
+                <Link href="/kuulutus">Reklaam</Link>
+              </div>
+              <div className="footer-column">
+                <h4>{lang === 'et' ? 'Ettevõte' : 'Company'}</h4>
+                <Link href="/meist">Meist</Link>
+                <Link href="/meist">Kontakt</Link>
+                <Link href="/meist">Privaatsus</Link>
+                <Link href="/meist">Kasutustingimused</Link>
+              </div>
+            </div>
+
+            <div className="footer-newsletter">
+              <h4>{lang === 'et' ? 'Uudiskiri' : 'Newsletter'}</h4>
+              <p>
+                {lang === 'et'
+                  ? 'Liitu meie uudiskirjaga ja saa uusimad uudised'
+                  : 'Subscribe to our newsletter for the latest updates'}
+              </p>
+              <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
+                <input type="email" placeholder="Email" />
+                <button type="submit"><i className="fas fa-paper-plane"></i></button>
+              </form>
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <p>© 2026 NETI.ee - {lang === 'et' ? 'Kõik õigused kaitstud' : 'All rights reserved'}</p>
+            <div className="footer-bottom-links">
+              <a href="#">Privaatsus</a>
+              <a href="#">Kasutustingimused</a>
+            </div>
+          </div>
         </div>
       </footer>
     </>
