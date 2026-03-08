@@ -139,7 +139,25 @@
 
 .zodiac-symbol {
   font-size: 1.75rem;
-  color: #a855f7;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--sign-color, #a855f7) 15%, transparent);
+  color: var(--sign-color, #a855f7);
+  transition: all 0.2s;
+}
+
+.zodiac-btn:hover .zodiac-symbol {
+  background: color-mix(in srgb, var(--sign-color, #a855f7) 25%, transparent);
+  transform: scale(1.1);
+}
+
+.zodiac-btn.active .zodiac-symbol {
+  background: white;
+  color: var(--sign-color, #a855f7);
 }
 
 .zodiac-name {
@@ -166,8 +184,15 @@
 }
 
 .reading-symbol {
-  font-size: 4rem;
-  color: #a855f7;
+  font-size: 3rem;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--sign-color, #a855f7) 15%, transparent);
+  color: var(--sign-color, #a855f7);
 }
 
 .reading-title h2 {

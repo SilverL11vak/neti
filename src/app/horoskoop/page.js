@@ -6,18 +6,18 @@ import Navbar from '@/components/Navbar'
 import './globals.css'
 
 const zodiacSigns = [
-  { id: 'aries', name: 'Jäärapäev', symbol: '♈', dates: '21.03 - 19.04', element: 'Tuli', quality: 'Juht' },
-  { id: 'taurus', name: 'Sõnn', symbol: '♉', dates: '20.04 - 20.05', element: 'Maa', quality: 'Stabiilne' },
-  { id: 'gemini', name: 'Kaksikud', symbol: '♊', dates: '21.05 - 20.06', element: 'Õhk', quality: 'Muutlik' },
-  { id: 'cancer', name: 'Vähk', symbol: '♋', dates: '21.06 - 22.07', element: 'Vesi', quality: 'Tundlik' },
-  { id: 'leo', name: 'Lõvi', symbol: '♌', dates: '23.07 - 22.08', element: 'Tuli', quality: 'Loominguline' },
-  { id: 'virgo', name: 'Neitsi', symbol: '♍', dates: '23.08 - 22.09', element: 'Maa', quality: 'Analüütiline' },
-  { id: 'libra', name: 'Kaalud', symbol: '♎', dates: '23.09 - 22.10', element: 'Õhk', quality: 'Harmooniline' },
-  { id: 'scorpio', name: 'Skorpion', symbol: '♏', dates: '23.10 - 21.11', element: 'Vesi', quality: 'Kirglik' },
-  { id: 'sagittarius', name: 'Amburi', symbol: '♐', dates: '22.11 - 21.12', element: 'Tuli', quality: 'Seikluslik' },
-  { id: 'capricorn', name: 'Kaljukits', symbol: '♑', dates: '22.12 - 19.01', element: 'Maa', quality: 'Ambitsioonikas' },
-  { id: 'aquarius', name: 'Veevalaja', symbol: '♒', dates: '20.01 - 18.02', element: 'Õhk', quality: 'Innovatiivne' },
-  { id: 'pisces', name: 'Kalad', symbol: '♓', dates: '19.02 - 20.03', element: 'Vesi', quality: 'Intuitiivne' }
+  { id: 'aries', name: 'Jäärapäev', symbol: '♈', dates: '21.03 - 19.04', element: 'Tuli', color: '#ef4444' },
+  { id: 'taurus', name: 'Sõnn', symbol: '♉', dates: '20.04 - 20.05', element: 'Maa', color: '#22c55e' },
+  { id: 'gemini', name: 'Kaksikud', symbol: '♊', dates: '21.05 - 20.06', element: 'Õhk', color: '#3b82f6' },
+  { id: 'cancer', name: 'Vähk', symbol: '♋', dates: '21.06 - 22.07', element: 'Vesi', color: '#06b6d4' },
+  { id: 'leo', name: 'Lõvi', symbol: '♌', dates: '23.07 - 22.08', element: 'Tuli', color: '#f59e0b' },
+  { id: 'virgo', name: 'Neitsi', symbol: '♍', dates: '23.08 - 22.09', element: 'Maa', color: '#84cc16' },
+  { id: 'libra', name: 'Kaalud', symbol: '♎', dates: '23.09 - 22.10', element: 'Õhk', color: '#8b5cf6' },
+  { id: 'scorpio', name: 'Skorpion', symbol: '♏', dates: '23.10 - 21.11', element: 'Vesi', color: '#6366f1' },
+  { id: 'sagittarius', name: 'Amburi', symbol: '♐', dates: '22.11 - 21.12', element: 'Tuli', color: '#ec4899' },
+  { id: 'capricorn', name: 'Kaljukits', symbol: '♑', dates: '22.12 - 19.01', element: 'Maa', color: '#78716c' },
+  { id: 'aquarius', name: 'Veevalaja', symbol: '♒', dates: '20.01 - 18.02', element: 'Õhk', color: '#14b8a6' },
+  { id: 'pisces', name: 'Kalad', symbol: '♓', dates: '19.02 - 20.03', element: 'Vesi', color: '#0ea5e9' }
 ]
 
 const horoscopeData = {
@@ -218,15 +218,16 @@ export default function HoroskoopPage() {
                 key={sign.id}
                 className={`zodiac-btn ${selectedSign.id === sign.id ? 'active' : ''}`}
                 onClick={() => setSelectedSign(sign)}
+                style={{ '--sign-color': sign.color }}
               >
-                <span className="zodiac-symbol">{sign.symbol}</span>
+                <span className="zodiac-symbol" style={{ color: sign.color }}>{sign.symbol}</span>
                 <span className="zodiac-name">{sign.name}</span>
               </button>
             ))}
           </div>
 
           {/* Selected Sign Reading */}
-          <div className="reading-card">
+          <div className="reading-card" style={{ '--sign-color': selectedSign.color }}>
             <div className="reading-header">
               <span className="reading-symbol">{selectedSign.symbol}</span>
               <div className="reading-title">
@@ -235,7 +236,6 @@ export default function HoroskoopPage() {
               </div>
               <div className="reading-tags">
                 <span className="tag">{selectedSign.element}</span>
-                <span className="tag">{selectedSign.quality}</span>
               </div>
             </div>
 
