@@ -148,32 +148,29 @@ export default function Home() {
     setExpandedCategory(expandedCategory === id ? null : id)
   }
 
-  // Scroll animation observer
+  // Scroll animation using scroll event
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.15
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Add a small delay to ensure smooth animation
-          setTimeout(() => {
-            entry.target.classList.add('is-visible')
-          }, 100)
+    const animatedElements = document.querySelectorAll('.animate-on-scroll')
+    
+    const checkAnimation = () => {
+      const triggerBottom = window.innerHeight * 0.85
+      
+      animatedElements.forEach((el) => {
+        const boxTop = el.getBoundingClientRect().top
+        
+        if (boxTop < triggerBottom) {
+          el.classList.add('is-visible')
         }
       })
-    }, observerOptions)
-
-    // Observe all animated elements
-    const animatedElements = document.querySelectorAll('.animate-on-scroll, .card-entrance')
-    animatedElements.forEach(el => {
-      observer.observe(el)
-    })
-
-    return () => observer.disconnect()
+    }
+    
+    // Initial check
+    checkAnimation()
+    
+    // Add scroll listener
+    window.addEventListener('scroll', checkAnimation)
+    
+    return () => window.removeEventListener('scroll', checkAnimation)
   }, [])
 
   // Mouse spotlight effect
