@@ -62,25 +62,25 @@ export default function IlmPage() {
       <Navbar />
 
       {/* Page Header */}
-      <div className="car-detail-header" style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)', padding: '100px 16px 40px' }}>
+      <div className="car-detail-header" style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)', padding: '100px 16px 40px', borderBottom: '1px solid #e2e8f0' }}>
         <div className="container">
-          <Link href="/" className="back-link" style={{ color: 'rgba(255,255,255,0.8)', marginBottom: '16px' }}>
+          <Link href="/" className="back-link" style={{ color: '#64748b', marginBottom: '16px' }}>
             <i className="fas fa-arrow-left"></i>
             Tagasi
           </Link>
           <div className="car-title-row" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '12px' }}>
-            <h1 style={{ color: 'white', fontSize: '1.75rem' }}>
+            <h1 style={{ color: '#1e293b', fontSize: '1.75rem' }}>
               {lang === 'et' ? 'Ilm Eestis' : 'Weather in Estonia'}
             </h1>
-            <span className="car-year" style={{ background: 'rgba(255,255,255,0.2)', color: 'white', fontSize: '0.9rem' }}>
+            <span className="car-year" style={{ background: '#e2e8f0', color: '#475569', fontSize: '0.9rem' }}>
               <i className="fas fa-map-marker-alt"></i> {selectedCity}
             </span>
           </div>
           <div className="car-price-location" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '8px' }}>
-            <span className="car-price" style={{ color: 'white', fontSize: '2.5rem' }}>
+            <span className="car-price" style={{ color: '#1e293b', fontSize: '2.5rem' }}>
               {weatherData.current.temp}°C
             </span>
-            <span className="car-location" style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem' }}>
+            <span className="car-location" style={{ color: '#64748b', fontSize: '0.9rem' }}>
               <i className="fas fa-calendar-alt"></i>
               8. märts 2026
             </span>
