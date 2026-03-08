@@ -15,6 +15,8 @@ const newsArticles = {
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=600&fit=crop',
     date: '8. marts 2026',
     category: 'Tehnoloogia',
+    author: 'NETI Toimetus',
+    readTime: '5 min',
     content: 'Täna avati Tallinnas pidulikult uus moodsate tehnoloogiate keskus, mis on Eesti suurim sellelaadne rajatis. Keskusesse on investeeritud üle 50 miljoni euro ja see pakub töökohti ligikaudu 2000 inimesele.\n\nUus keskus asub Tallinna kesklinnas ja hõlmab endas mitmeid erinevaid tehnoloogiavaldkondi, sealhulgas kunstliku intellekti, robootika ja fintechi startupe. Keskuse eesmärk on luua ökosüsteem, kus idufirmad saaksid areneda ja kasvada koostöös suurettevotetega.\n\nSee on suur samm Eesti tehnoloogiasektorile, ütles keskuse direktor. Me tahame luua koha, kus innovatsioon saab õitseda ja kus noored ettevõtjad saavad oma ideid ellu viia.\n\nKeskus pakub lisaks tööruumidele ka nõustamisteenuseid, mentorprogramme ja ligipääsu riskikapitalile. Esimeste rentnikena on keskusesse asunud juba 30 ettevõtet, kuid ruume on veel vabadele ideedele.\n\nEesti Vabariigi president avas keskuse pidulikult ja rõhutas, et innovatsioon on Eesti tuleviku võti. Me peame jätkama investeerimist tehnoloogiasse ja haridusse, et säilitada oma konkurentsivõimet maailmas, ütles president.\n\nKeskus on avatud kõigile ettevõtjatele ja startuppidele, kes soovivad arendada uusi tehnoloogilisi lahendusi. Kandideerimine ruumidele on juba alanud ja esimeste ettevõtete sissesekkumine on planeeritud järgmistesse kuudesse.',
     contentEn: 'Today, a grand opening ceremony was held in Tallinn for a new modern technology center, which is the largest such facility in Estonia. Over 50 million euros have been invested in the center, which will provide jobs for approximately 2,000 people.\n\nThe new center is located in central Tallinn and encompasses several different technology sectors, including artificial intelligence, robotics, and fintech startups. The goal is to create an ecosystem where startups can develop and grow in cooperation with major companies.\n\nThis is a big step for Estonia technology sector, said the center director. We want to create a place where innovation can thrive and where young entrepreneurs can bring their ideas to life.\n\nIn addition to office spaces, the center offers consulting services, mentor programs, and access to venture capital. The first tenants have already moved in, but there are still spaces available for new ideas.\n\nThe President of Estonia opened the center ceremonially and emphasized that innovation is the key to Estonia future. We must continue investing in technology and education to maintain our competitiveness in the world, said the president.\n\nThe center is open to all entrepreneurs and startups who want to develop new technological solutions. Applications for spaces have already begun, and the first companies are scheduled to move in next month.'
   },
@@ -26,6 +28,8 @@ const newsArticles = {
     image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&h=600&fit=crop',
     date: '7. marts 2026',
     category: 'Tervis',
+    author: 'NETI Toimetus',
+    readTime: '3 min',
     content: 'Sel nädalavahetusel toimub Tallinnas XXII Eesti ilu- ja tervisemess, mis on aasta suurim sündmus selles valdkonnas. Messi korraldajad ootavad üle 20 000 külastaja.\n\nMessil esitlevad oma tooteid ja teenuseid üle 150 ettevõtte, sh tuntud ilu- ja tervisebrandid. Külastajad saavad osaleda tasuta töötubades ja kuulata ekspertide ettekandeid.\n\nSee on suurepärane võimalus tutvuda uusimate trendidega ilu- ja tervisemaailmas, ütles korraldaja. Oleme seekord keskendunud eriti jätkusuutlikele ja looduslikele toodetele.\n\nMessi programm sisaldab ka mitmeid võistlusi, sh modellivõistlust ja ilukonkurssi. Lisaks toimub galaõhtu, kus autasustatakse aasta parimaid ilutooteid ja teenuseid.\n\nEksperdid rõhutavad, et tervislik eluviis on muutunud üha olulisemaks ja inimesed otsivad pidevalt uusi viise, kuidas oma heaolu parandada. Mess pakub selleks suurepärase võimaluse.',
     contentEn: 'This weekend, the XXII Estonian Beauty and Health Fair takes place in Tallinn, which is the biggest annual event in this field. The organizers expect over 20,000 visitors.\n\nMore than 150 companies will present their products and services at the fair, including well-known beauty and health brands. Visitors can participate in free workshops and listen to expert presentations.\n\nThis is a great opportunity to learn about the latest trends in the beauty and health world, said the organizer. This year, we have focused particularly on sustainable and natural products.\n\nThe fair program also includes several competitions, including a modeling contest and a beauty pageant. Additionally, a gala evening will take place where the best beauty products and services of the year will be awarded.\n\nExperts emphasize that a healthy lifestyle has become increasingly important, and people are constantly looking for new ways to improve their well-being. The fair provides an excellent opportunity for this.'
   },
@@ -37,6 +41,8 @@ const newsArticles = {
     image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=600&fit=crop',
     date: '6. marts 2026',
     category: 'Reisimine',
+    author: 'NETI Toimetus',
+    readTime: '4 min',
     content: 'Hiljuti avaldatud uuring näitab, et Eesti elanikud eelistavad puhkuse veetmist kodumaal. Küsitluse kohaselt on viimase aasta jooksul 78% eestlastest puhkanud Eestis.\n\nKõige populaarsemad sihtkohad on Saaremaa, Parnu ja Lõuna-Eesti. Saaremaad külastatakse eelkõige looduse ja rahu tõttu, Parnut aga SPA ja hea teeninduse eest.\n\nSee on positiivne trend, kommenteeris Eesti Turismi juht. Kodumaine turism on jätkusuutlik ja toetab kohalikku majandust.\n\nUuringust selgus ka, et eestlased otsivad puhkusel eelkõige loodust ja aktiivset tegevust. Matkamine, jalgrattasõit ja veesport on kõige populaarsemad tegevused.\n\nHuvitav on see, et noored eelistavad siiski välismaist puhkust, eelkõige soojade maade reise. Üle 40-aastased aga eelistavad kodumaad.',
     contentEn: 'A recently published study shows that Estonian residents prefer spending their holidays domestically. According to the survey, 78% of Estonians have vacationed in Estonia over the past year.\n\nThe most popular destinations are Saaremaa, Parnu, and Southern Estonia. Saaremaa is visited primarily for its nature and tranquility, while Parnu is known for its SPA and good service.\n\nThis is a positive trend, commented the head of Estonian Tourism. Domestic tourism is sustainable and supports the local economy.\n\nThe study also revealed that Estonians look for nature and active activities on vacation. Hiking, cycling, and water sports are the most popular activities.\n\nInterestingly, young people still prefer foreign travel, especially trips to warm countries. Those over 40 prefer domestic destinations.'
   }
@@ -45,6 +51,7 @@ const newsArticles = {
 export default function NewsDetailPage() {
   const params = useParams()
   const [isSubscribed, setIsSubscribed] = useState(false)
+  const [currentImage, setCurrentImage] = useState(0)
   
   const newsId = parseInt(params.id)
   const article = newsArticles[newsId]
@@ -53,20 +60,17 @@ export default function NewsDetailPage() {
     return (
       <>
         <Navbar />
-        <div className="news-detail-not-found">
-          <h1>Artiklit ei leitud</h1>
-          <Link href="/" className="back-link">Tagasi avalehele</Link>
+        <div className="not-found-section">
+          <div className="not-found-card">
+            <i className="fas fa-newspaper"></i>
+            <h2>Artiklit ei leitud</h2>
+            <p>Kahjuks seda uudist enam ei leidu.</p>
+            <Link href="/" className="btn-primary">
+              <i className="fas fa-arrow-left"></i>
+              Tagasi avalehele
+            </Link>
+          </div>
         </div>
-        <style jsx>{`
-          .news-detail-not-found {
-            padding: 120px 24px;
-            text-align: center;
-          }
-          .back-link {
-            color: #1d4ed8;
-            text-decoration: underline;
-          }
-        `}</style>
       </>
     )
   }
@@ -82,248 +86,430 @@ export default function NewsDetailPage() {
   return (
     <>
       <Navbar />
-      
-      {/* News Hero */}
-      <section className="news-hero">
-        <div className="news-hero-image">
-          <img src={article.image} alt={article.title} />
-          <div className="news-hero-overlay"></div>
-        </div>
-        <div className="news-hero-content">
-          <Link href="/" className="news-back-link">
+
+      {/* Page Header */}
+      <div className="news-detail-header">
+        <div className="container">
+          <Link href="/" className="back-link">
             <i className="fas fa-arrow-left"></i>
             Tagasi
           </Link>
-          <span className="news-category">{article.category}</span>
-          <h1>{article.title}</h1>
-          <p className="news-date">{article.date}</p>
-        </div>
-      </section>
-      
-      {/* Article Content */}
-      <section className="news-article">
-        <div className="article-container">
-          <p className="article-intro">{article.description}</p>
           
-          {/* Visible content */}
-          {visibleContent.map((part, index) => (
-            <p key={index}>{part}</p>
-          ))}
+          <div className="news-meta">
+            <span className="news-category-badge">{article.category}</span>
+            <span className="news-date">
+              <i className="fas fa-calendar-alt"></i>
+              {article.date}
+            </span>
+          </div>
           
-          {/* Blurred content */}
-          {!isSubscribed && (
-            <div className="blurred-content">
-              {blurredContent.map((part, index) => (
-                <p key={index}>{part}</p>
-              ))}
-              
-              {/* Subscribe CTA */}
-              <div className="subscribe-cta">
-                <div className="blur-overlay"></div>
-                <div className="subscribe-box">
-                  <i className="fas fa-lock"></i>
-                  <h3>Loe lugu edasi</h3>
-                  <p>Tellige NETI Premium ja saate juurdepääsu kõikidele uudistele ja artiklitele</p>
-                  <div className="subscribe-price">
-                    <span className="price-amount">€2.99</span>
-                    <span className="price-period">/kuu</span>
-                  </div>
-                  <button className="subscribe-btn" onClick={() => setIsSubscribed(true)}>
-                    Tellima kohe
-                    <i className="fas fa-arrow-right"></i>
-                  </button>
-                  <p className="subscribe-trial">14-päevane tasuta prooviperiood</p>
-                </div>
+          <h1 className="news-title">{article.title}</h1>
+          
+          <div className="news-author-row">
+            <div className="news-author">
+              <div className="author-avatar">
+                <i className="fas fa-user"></i>
+              </div>
+              <div className="author-info">
+                <span className="author-name">{article.author}</span>
+                <span className="read-time">
+                  <i className="fas fa-clock"></i>
+                  {article.readTime} lugemiseks
+                </span>
               </div>
             </div>
-          )}
-          
-          {isSubscribed && (
-            <div className="unlocked-content">
-              {blurredContent.map((part, index) => (
-                <p key={index}>{part}</p>
-              ))}
-            </div>
-          )}
-          
-          {/* Share buttons */}
-          <div className="share-section">
-            <span>Jaga seda artiklit:</span>
-            <div className="share-buttons">
-              <button className="share-btn facebook"><i className="fab fa-facebook-f"></i></button>
-              <button className="share-btn twitter"><i className="fab fa-twitter"></i></button>
-              <button className="share-btn linkedin"><i className="fab fa-linkedin-in"></i></button>
-              <button className="share-btn copy"><i className="fas fa-link"></i></button>
+            <div className="news-share">
+              <button className="share-btn"><i className="fab fa-facebook-f"></i></button>
+              <button className="share-btn"><i className="fab fa-twitter"></i></button>
+              <button className="share-btn"><i className="fab fa-linkedin-in"></i></button>
+              <button className="share-btn"><i className="fas fa-link"></i></button>
             </div>
           </div>
         </div>
-      </section>
-      
-      {/* Related News */}
-      <section className="related-news">
-        <div className="related-container">
-          <h2>Veel uudiseid</h2>
-          <div className="related-grid">
-            {Object.entries(newsArticles)
-              .filter(([id]) => parseInt(id) !== newsId)
-              .slice(0, 2)
-              .map(([id, item]) => (
-                <Link href={`/uudised/${id}`} key={id} className="related-card">
-                  <div className="related-image">
-                    <img src={item.image} alt={item.title} />
-                  </div>
-                  <div className="related-content">
-                    <span className="related-category">{item.category}</span>
-                    <h3>{item.title}</h3>
-                    <p>{item.date}</p>
-                  </div>
-                </Link>
+      </div>
+
+      {/* Main Content */}
+      <main className="section">
+        <div className="container">
+          <div className="news-detail-grid">
+            {/* Main Article Content */}
+            <div className="news-main-content">
+              {/* Featured Image */}
+              <div className="featured-image">
+                <img src={article.image} alt={article.title} />
+              </div>
+              
+              {/* Introduction */}
+              <div className="article-intro">
+                <p>{article.description}</p>
+              </div>
+              
+              {/* Visible Content */}
+              {visibleContent.map((part, index) => (
+                <p key={index} className="article-paragraph">{part}</p>
               ))}
+              
+              {/* Blurred Content */}
+              {!isSubscribed && (
+                <div className="locked-content">
+                  {blurredContent.map((part, index) => (
+                    <p key={index} className="article-paragraph blurred">{part}</p>
+                  ))}
+                  
+                  {/* Subscribe Overlay */}
+                  <div className="subscribe-overlay">
+                    <div className="blur-gradient"></div>
+                    <div className="subscribe-card">
+                      <div className="subscribe-icon">
+                        <i className="fas fa-lock"></i>
+                      </div>
+                      <h3>Loe lugu edasi</h3>
+                      <p>Tellige NETI Premium ja saate juurdepääsu kõikidele uudistele ja artiklitele</p>
+                      
+                      <div className="subscribe-price-tag">
+                        <span className="price">€2.99</span>
+                        <span className="period">/kuu</span>
+                      </div>
+                      
+                      <button className="subscribe-btn" onClick={() => setIsSubscribed(true)}>
+                        Tellima kohe
+                        <i className="fas fa-arrow-right"></i>
+                      </button>
+                      
+                      <span className="trial-text">14-päevane tasuta prooviperiood</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              {isSubscribed && (
+                <div className="unlocked-content">
+                  {blurredContent.map((part, index) => (
+                    <p key={index} className="article-paragraph">{part}</p>
+                  ))}
+                </div>
+              )}
+              
+              {/* Tags */}
+              <div className="article-tags">
+                <span className="tag-label">Sildid:</span>
+                <span className="tag">Tehnoloogia</span>
+                <span className="tag">Eesti</span>
+                <span className="tag">Tallinn</span>
+                <span className="tag">Innovatsioon</span>
+              </div>
+            </div>
+            
+            {/* Sidebar */}
+            <aside className="news-sidebar">
+              {/* Subscribe Widget */}
+              <div className="sidebar-widget subscribe-widget">
+                <div className="widget-icon">
+                  <i className="fas fa-gem"></i>
+                </div>
+                <h4>NETI Premium</h4>
+                <p>Saate juurdepääsu kõikidele eksklusiivsetele artiklitele</p>
+                <div className="widget-price">
+                  <span className="price-amount">€2.99</span>
+                  <span className="price-period">/kuu</span>
+                </div>
+                <button className="widget-btn">Proovi tasuta</button>
+              </div>
+              
+              {/* Related News */}
+              <div className="sidebar-widget">
+                <h4>Veel uudiseid</h4>
+                <div className="related-list">
+                  {Object.entries(newsArticles)
+                    .filter(([id]) => parseInt(id) !== newsId)
+                    .slice(0, 3)
+                    .map(([id, item]) => (
+                      <Link href={`/uudised/${id}`} key={id} className="related-item">
+                        <div className="related-thumb">
+                          <img src={item.image} alt={item.title} />
+                        </div>
+                        <div className="related-info">
+                          <span className="related-cat">{item.category}</span>
+                          <h5>{item.title}</h5>
+                          <span className="related-date">{item.date}</span>
+                        </div>
+                      </Link>
+                    ))}
+                </div>
+              </div>
+              
+              {/* Categories */}
+              <div className="sidebar-widget">
+                <h4>Kategooriad</h4>
+                <div className="category-list">
+                  <a href="#" className="category-item">
+                    <span>Tehnoloogia</span>
+                    <span className="count">24</span>
+                  </a>
+                  <a href="#" className="category-item">
+                    <span>Tervis</span>
+                    <span className="count">18</span>
+                  </a>
+                  <a href="#" className="category-item">
+                    <span>Reisimine</span>
+                    <span className="count">15</span>
+                  </a>
+                  <a href="#" className="category-item">
+                    <span>Äri</span>
+                    <span className="count">12</span>
+                  </a>
+                  <a href="#" className="category-item">
+                    <span>Kultuur</span>
+                    <span className="count">9</span>
+                  </a>
+                </div>
+              </div>
+            </aside>
           </div>
         </div>
-      </section>
-      
-      {/* Footer */}
-      <footer className="footer">
-        <div className="footer-container">
-          <div className="footer-bottom">
-            <p>© 2026 NETI.ee - Kõik õigused kaitstud</p>
-          </div>
-        </div>
-      </footer>
+      </main>
       
       <style jsx>{`
-        .news-hero {
-          position: relative;
-          height: 450px;
+        .not-found-section {
+          padding: 120px 24px;
+          min-height: 60vh;
           display: flex;
-          align-items: flex-end;
-          color: white;
+          align-items: center;
+          justify-content: center;
         }
         
-        .news-hero-image {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          z-index: 0;
+        .not-found-card {
+          text-align: center;
+          max-width: 400px;
         }
         
-        .news-hero-image img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+        .not-found-card i {
+          font-size: 4rem;
+          color: #cbd5e1;
+          margin-bottom: 24px;
         }
         
-        .news-hero-overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 100%);
+        .not-found-card h2 {
+          font-size: 1.75rem;
+          color: #1e293b;
+          margin-bottom: 12px;
         }
         
-        .news-hero-content {
-          position: relative;
-          z-index: 1;
-          padding: 60px 24px;
-          max-width: 800px;
+        .not-found-card p {
+          color: #64748b;
+          margin-bottom: 24px;
         }
         
-        .news-back-link {
+        .btn-primary {
           display: inline-flex;
           align-items: center;
           gap: 8px;
+          padding: 14px 28px;
+          background: #1d4ed8;
           color: white;
           text-decoration: none;
-          margin-bottom: 20px;
-          opacity: 0.9;
-          transition: opacity 0.2s;
-        }
-        
-        .news-back-link:hover {
-          opacity: 1;
-        }
-        
-        .news-category {
-          display: inline-block;
-          padding: 6px 14px;
-          background: #1d4ed8;
-          border-radius: 20px;
-          font-size: 0.75rem;
+          border-radius: 30px;
           font-weight: 600;
-          text-transform: uppercase;
+          transition: background 0.2s;
+        }
+        
+        .btn-primary:hover {
+          background: #1e40af;
+        }
+        
+        .news-detail-header {
+          background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+          padding: 80px 24px 40px;
+          border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+        
+        .back-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          color: #64748b;
+          text-decoration: none;
+          font-weight: 500;
+          margin-bottom: 24px;
+          transition: color 0.2s;
+        }
+        
+        .back-link:hover {
+          color: #1d4ed8;
+        }
+        
+        .news-meta {
+          display: flex;
+          align-items: center;
+          gap: 16px;
           margin-bottom: 16px;
         }
         
-        .news-hero-content h1 {
-          font-size: 2.5rem;
-          font-weight: 700;
-          margin: 0 0 12px 0;
-          line-height: 1.2;
+        .news-category-badge {
+          display: inline-block;
+          padding: 6px 14px;
+          background: #1d4ed8;
+          color: white;
+          font-size: 0.75rem;
+          font-weight: 600;
+          border-radius: 20px;
+          text-transform: uppercase;
         }
         
         .news-date {
-          font-size: 1rem;
-          opacity: 0.8;
-          margin: 0;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          color: #64748b;
+          font-size: 0.9rem;
         }
         
-        .news-article {
+        .news-title {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: #1e293b;
+          line-height: 1.2;
+          margin: 0 0 24px 0;
+        }
+        
+        .news-author-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 20px;
+        }
+        
+        .news-author {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        
+        .author-avatar {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+        }
+        
+        .author-info {
+          display: flex;
+          flex-direction: column;
+        }
+        
+        .author-name {
+          font-weight: 600;
+          color: #1e293b;
+        }
+        
+        .read-time {
+          font-size: 0.85rem;
+          color: #64748b;
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+        
+        .news-share {
+          display: flex;
+          gap: 8px;
+        }
+        
+        .share-btn {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          border: 1px solid #e2e8f0;
+          background: white;
+          color: #64748b;
+          cursor: pointer;
+          transition: all 0.2s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .share-btn:hover {
+          background: #1d4ed8;
+          color: white;
+          border-color: #1d4ed8;
+        }
+        
+        .section {
           padding: 60px 24px;
           background: white;
         }
         
-        .article-container {
-          max-width: 700px;
-          margin: 0 auto;
+        .news-detail-grid {
+          display: grid;
+          grid-template-columns: 1fr 340px;
+          gap: 48px;
+        }
+        
+        .featured-image {
+          border-radius: 20px;
+          overflow: hidden;
+          margin-bottom: 32px;
+        }
+        
+        .featured-image img {
+          width: 100%;
+          height: auto;
+          display: block;
         }
         
         .article-intro {
           font-size: 1.25rem;
-          line-height: 1.7;
-          color: #1e293b;
           font-weight: 500;
-          margin-bottom: 32px;
-          padding-bottom: 32px;
+          color: #1e293b;
+          line-height: 1.7;
+          padding-bottom: 24px;
           border-bottom: 2px solid #e2e8f0;
+          margin-bottom: 24px;
         }
         
-        .news-article p {
+        .article-paragraph {
           font-size: 1.1rem;
           line-height: 1.8;
           color: #475569;
           margin-bottom: 24px;
         }
         
-        .blurred-content {
-          position: relative;
-        }
-        
-        .blurred-content p {
-          filter: blur(8px);
+        .blurred {
+          filter: blur(6px);
           user-select: none;
           pointer-events: none;
         }
         
-        .subscribe-cta {
+        .locked-content {
           position: relative;
-          margin: 40px 0;
         }
         
-        .blur-overlay {
+        .subscribe-overlay {
+          margin-top: 32px;
+        }
+        
+        .blur-gradient {
           position: absolute;
           top: -100px;
           left: 0;
           right: 0;
-          height: 200px;
+          height: 150px;
           background: linear-gradient(to bottom, transparent, white);
           pointer-events: none;
         }
         
-        .subscribe-box {
+        .subscribe-card {
           background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
           border-radius: 24px;
           padding: 40px;
@@ -331,32 +517,41 @@ export default function NewsDetailPage() {
           color: white;
         }
         
-        .subscribe-box i {
-          font-size: 2.5rem;
-          margin-bottom: 16px;
+        .subscribe-icon {
+          width: 64px;
+          height: 64px;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 20px;
         }
         
-        .subscribe-box h3 {
+        .subscribe-icon i {
           font-size: 1.75rem;
+        }
+        
+        .subscribe-card h3 {
+          font-size: 1.5rem;
           margin: 0 0 12px 0;
         }
         
-        .subscribe-box p {
+        .subscribe-card p {
           opacity: 0.9;
           margin-bottom: 24px;
-          color: white;
         }
         
-        .subscribe-price {
+        .subscribe-price-tag {
           margin-bottom: 24px;
         }
         
-        .price-amount {
+        .price {
           font-size: 2.5rem;
           font-weight: 700;
         }
         
-        .price-period {
+        .period {
           font-size: 1rem;
           opacity: 0.8;
         }
@@ -381,168 +576,239 @@ export default function NewsDetailPage() {
           box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         
-        .subscribe-trial {
+        .trial-text {
+          display: block;
+          margin-top: 16px;
           font-size: 0.85rem;
           opacity: 0.7;
-          margin-top: 16px;
         }
         
         .unlocked-content {
-          margin-top: 40px;
+          margin-top: 32px;
         }
         
-        .share-section {
-          margin-top: 60px;
-          padding-top: 40px;
+        .article-tags {
+          margin-top: 40px;
+          padding-top: 24px;
           border-top: 1px solid #e2e8f0;
           display: flex;
           align-items: center;
-          gap: 20px;
+          flex-wrap: wrap;
+          gap: 8px;
         }
         
-        .share-section span {
+        .tag-label {
           font-weight: 600;
           color: #64748b;
+          margin-right: 8px;
         }
         
-        .share-buttons {
-          display: flex;
-          gap: 12px;
-        }
-        
-        .share-btn {
-          width: 44px;
-          height: 44px;
-          border-radius: 50%;
-          border: 1px solid #e2e8f0;
-          background: white;
+        .tag {
+          padding: 6px 12px;
+          background: #f1f5f9;
           color: #64748b;
-          cursor: pointer;
-          transition: all 0.2s;
+          border-radius: 20px;
+          font-size: 0.85rem;
+        }
+        
+        /* Sidebar */
+        .news-sidebar {
           display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        
-        .share-btn:hover {
-          background: #1d4ed8;
-          color: white;
-          border-color: #1d4ed8;
-        }
-        
-        .related-news {
-          padding: 60px 24px;
-          background: #f8fafc;
-        }
-        
-        .related-container {
-          max-width: 1000px;
-          margin: 0 auto;
-        }
-        
-        .related-container h2 {
-          font-size: 1.5rem;
-          color: #1e293b;
-          margin-bottom: 32px;
-        }
-        
-        .related-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          flex-direction: column;
           gap: 24px;
         }
         
-        .related-card {
-          display: block;
-          text-decoration: none;
+        .sidebar-widget {
           background: white;
           border-radius: 16px;
+          padding: 24px;
+          border: 1px solid #e2e8f0;
+        }
+        
+        .sidebar-widget h4 {
+          font-size: 1.1rem;
+          color: #1e293b;
+          margin: 0 0 20px 0;
+          padding-bottom: 12px;
+          border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .subscribe-widget {
+          background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+          border: none;
+          text-align: center;
+        }
+        
+        .widget-icon {
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          background: #1d4ed8;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 16px;
+        }
+        
+        .widget-icon i {
+          font-size: 1.5rem;
+          color: white;
+        }
+        
+        .subscribe-widget h4 {
+          border: none;
+          padding: 0;
+          margin-bottom: 8px;
+        }
+        
+        .subscribe-widget p {
+          color: #64748b;
+          font-size: 0.9rem;
+          margin-bottom: 16px;
+        }
+        
+        .widget-price {
+          margin-bottom: 16px;
+        }
+        
+        .widget-price .price-amount {
+          font-size: 1.75rem;
+          font-weight: 700;
+          color: #1d4ed8;
+        }
+        
+        .widget-price .price-period {
+          color: #64748b;
+        }
+        
+        .widget-btn {
+          width: 100%;
+          padding: 14px;
+          background: #1d4ed8;
+          color: white;
+          border: none;
+          border-radius: 12px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background 0.2s;
+        }
+        
+        .widget-btn:hover {
+          background: #1e40af;
+        }
+        
+        .related-list {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+        
+        .related-item {
+          display: flex;
+          gap: 12px;
+          text-decoration: none;
+          transition: transform 0.2s;
+        }
+        
+        .related-item:hover {
+          transform: translateX(4px);
+        }
+        
+        .related-thumb {
+          width: 80px;
+          height: 60px;
+          border-radius: 8px;
           overflow: hidden;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-          transition: transform 0.2s, box-shadow 0.2s;
+          flex-shrink: 0;
         }
         
-        .related-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-        }
-        
-        .related-image {
-          height: 180px;
-        }
-        
-        .related-image img {
+        .related-thumb img {
           width: 100%;
           height: 100%;
           object-fit: cover;
         }
         
-        .related-content {
-          padding: 20px;
+        .related-info {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
         }
         
-        .related-category {
-          display: inline-block;
-          padding: 4px 10px;
-          background: #eff6ff;
-          color: #1d4ed8;
+        .related-cat {
           font-size: 0.7rem;
+          color: #1d4ed8;
           font-weight: 600;
-          border-radius: 12px;
           text-transform: uppercase;
-          margin-bottom: 8px;
+          margin-bottom: 4px;
         }
         
-        .related-content h3 {
-          font-size: 1.1rem;
+        .related-info h5 {
+          font-size: 0.9rem;
           color: #1e293b;
-          margin: 0 0 8px 0;
+          margin: 0 0 4px 0;
           line-height: 1.3;
         }
         
-        .related-content p {
+        .related-date {
+          font-size: 0.75rem;
+          color: #94a3b8;
+        }
+        
+        .category-list {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        
+        .category-item {
+          display: flex;
+          justify-content: space-between;
+          padding: 12px;
+          background: #f8fafc;
+          border-radius: 8px;
+          text-decoration: none;
+          color: #475569;
+          transition: background 0.2s;
+        }
+        
+        .category-item:hover {
+          background: #f1f5f9;
+        }
+        
+        .category-item .count {
+          color: #94a3b8;
           font-size: 0.85rem;
-          color: #64748b;
-          margin: 0;
         }
         
-        .footer {
-          background: #1e293b;
-          padding: 20px 0;
-          color: white;
-        }
-        
-        .footer-container {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 24px;
-        }
-        
-        .footer-bottom {
-          text-align: center;
-        }
-        
-        .footer-bottom p {
-          color: #64748b;
-          font-size: 0.9rem;
-          margin: 0;
-        }
-        
-        @media (max-width: 768px) {
-          .news-hero {
-            height: 350px;
-          }
-          
-          .news-hero-content h1 {
-            font-size: 1.75rem;
-          }
-          
-          .related-grid {
+        @media (max-width: 1024px) {
+          .news-detail-grid {
             grid-template-columns: 1fr;
           }
           
-          .subscribe-box {
-            padding: 30px 20px;
+          .news-sidebar {
+            order: -1;
+            flex-direction: row;
+            flex-wrap: wrap;
+          }
+          
+          .sidebar-widget {
+            flex: 1 1 calc(50% - 12px);
+            min-width: 250px;
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .news-title {
+            font-size: 1.75rem;
+          }
+          
+          .news-author-row {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          
+          .sidebar-widget {
+            flex: 1 1 100%;
           }
         }
       `}</style>
