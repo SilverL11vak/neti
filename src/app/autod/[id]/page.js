@@ -190,15 +190,17 @@ export default function CarDetailPage() {
     return (
       <>
         <Navbar />
-        <div className="page-not-found">
-          <div className="not-found-content">
-            <i className="fas fa-car"></i>
-            <h1>Auto ei leitud</h1>
-            <p>Kahjuks seda autot enam müügis ei ole.</p>
-            <Link href="/autod" className="btn-primary">
-              <i className="fas fa-arrow-left"></i>
-              Tagasi autodesse
-            </Link>
+        <div className="section">
+          <div className="container">
+            <div className="not-found-card">
+              <i className="fas fa-car"></i>
+              <h2>Auto ei leitud</h2>
+              <p>Kahjuks seda autot enam müügis ei ole.</p>
+              <Link href="/autod" className="btn-primary">
+                <i className="fas fa-arrow-left"></i>
+                Tagasi autodesse
+              </Link>
+            </div>
           </div>
         </div>
       </>
@@ -219,183 +221,166 @@ export default function CarDetailPage() {
     <>
       <Navbar />
 
-      {/* Hero */}
-      <section className="car-hero">
-        <div className="hero-content">
-          <div className="car-hero-badge">
-            <span className="badge-dot"></span>
-            {car.posted}
+      {/* Page Header */}
+      <div className="car-detail-header">
+        <div className="container">
+          <Link href="/autod" className="back-link">
+            <i className="fas fa-arrow-left"></i>
+            Tagasi autodesse
+          </Link>
+          <div className="car-title-row">
+            <h1>{car.brand} {car.model}</h1>
+            <span className="car-year">{car.year}</span>
           </div>
-          <h1 className="hero-title">
-            {car.brand} {car.model}
-          </h1>
-          <div className="hero-price">
-            {car.price.toLocaleString()} €
-          </div>
-          <div className="hero-location">
-            <i className="fas fa-map-marker-alt"></i>
-            {car.location}
+          <div className="car-price-location">
+            <span className="car-price">{car.price.toLocaleString()} €</span>
+            <span className="car-location">
+              <i className="fas fa-map-marker-alt"></i>
+              {car.location}
+            </span>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Main Content */}
       <main className="section">
         <div className="container">
           <div className="car-detail-grid">
-            {/* Left Column - Images & Details */}
-            <div className="car-info">
-              {/* Image Gallery */}
-              <div className="image-gallery">
-                <div className="main-image">
-                  <img src={car.images[selectedImage]} alt={`${car.brand} ${car.model}`} />
-                </div>
-                <div className="image-thumbs">
-                  {car.images.map((img, i) => (
-                    <button 
-                      key={i} 
-                      className={`image-thumb ${selectedImage === i ? 'active' : ''}`}
-                      onClick={() => setSelectedImage(i)}
-                    >
-                      <img src={img} alt={`View ${i + 1}`} />
-                    </button>
-                  ))}
-                </div>
+            {/* Left Column - Images */}
+            <div className="car-images">
+              <div className="main-image">
+                <img src={car.images[selectedImage]} alt={`${car.brand} ${car.model}`} />
               </div>
+              <div className="image-thumbs">
+                {car.images.map((img, i) => (
+                  <button 
+                    key={i} 
+                    className={`image-thumb ${selectedImage === i ? 'active' : ''}`}
+                    onClick={() => setSelectedImage(i)}
+                  >
+                    <img src={img} alt={`View ${i + 1}`} />
+                  </button>
+                ))}
+              </div>
+            </div>
 
+            {/* Right Column - Info */}
+            <div className="car-info-panel">
               {/* Quick Stats */}
-              <div className="quick-stats">
-                <div className="stat-card">
-                  <i className="fas fa-calendar"></i>
-                  <span className="stat-value">{car.year}</span>
-                  <span className="stat-label">Aasta</span>
-                </div>
-                <div className="stat-card">
+              <div className="stats-grid">
+                <div className="stat-item">
                   <i className="fas fa-tachometer-alt"></i>
-                  <span className="stat-value">{car.mileage.toLocaleString()}</span>
-                  <span className="stat-label">km</span>
+                  <span className="stat-value">{car.mileage.toLocaleString()} km</span>
+                  <span className="stat-label">Läbisõit</span>
                 </div>
-                <div className="stat-card">
+                <div className="stat-item">
                   <i className="fas fa-gas-pump"></i>
                   <span className="stat-value">{car.fuel}</span>
                   <span className="stat-label">Kütus</span>
                 </div>
-                <div className="stat-card">
+                <div className="stat-item">
                   <i className="fas fa-cog"></i>
                   <span className="stat-value">{car.transmission}</span>
                   <span className="stat-label">Käigukast</span>
                 </div>
-              </div>
-
-              {/* Description */}
-              <div className="detail-card">
-                <h3><i className="fas fa-align-left"></i> Kirjeldus</h3>
-                <p>{car.description}</p>
-              </div>
-
-              {/* Features */}
-              <div className="detail-card">
-                <h3><i className="fas fa-list-check"></i> Varustus</h3>
-                <div className="features-list">
-                  {car.features.map((feature, i) => (
-                    <span key={i} className="feature-tag">
-                      <i className="fas fa-check"></i>
-                      {feature}
-                    </span>
-                  ))}
+                <div className="stat-item">
+                  <i className="fas fa-palette"></i>
+                  <span className="stat-value">{car.color}</span>
+                  <span className="stat-label">Värv</span>
                 </div>
               </div>
 
-              {/* Specifications */}
-              <div className="detail-card">
-                <h3><i className="fas fa-clipboard-list"></i> Tehnilised andmed</h3>
-                <div className="specs-grid">
-                  <div className="spec-item">
-                    <span className="spec-name">Mark</span>
-                    <span className="spec-val">{car.brand}</span>
-                  </div>
-                  <div className="spec-item">
-                    <span className="spec-name">Mudel</span>
-                    <span className="spec-val">{car.model}</span>
-                  </div>
-                  <div className="spec-item">
-                    <span className="spec-name">Aasta</span>
-                    <span className="spec-val">{car.year}</span>
-                  </div>
-                  <div className="spec-item">
-                    <span className="spec-name">Läbisõit</span>
-                    <span className="spec-val">{car.mileage.toLocaleString()} km</span>
-                  </div>
-                  <div className="spec-item">
-                    <span className="spec-name">Kütus</span>
-                    <span className="spec-val">{car.fuel}</span>
-                  </div>
-                  <div className="spec-item">
-                    <span className="spec-name">Käigukast</span>
-                    <span className="spec-val">{car.transmission}</span>
-                  </div>
-                  <div className="spec-item">
-                    <span className="spec-name">Värv</span>
-                    <span className="spec-val">{car.color}</span>
-                  </div>
-                  <div className="spec-item">
-                    <span className="spec-name">Mootor</span>
-                    <span className="spec-val">{car.engine}</span>
-                  </div>
-                  <div className="spec-item">
-                    <span className="spec-name">Võimsus</span>
-                    <span className="spec-val">{car.power}</span>
-                  </div>
-                  <div className="spec-item">
-                    <span className="spec-name">Uste arv</span>
-                    <span className="spec-val">{car.doors}</span>
-                  </div>
-                  <div className="spec-item">
-                    <span className="spec-name">Istekohti</span>
-                    <span className="spec-val">{car.seats}</span>
-                  </div>
-                  <div className="spec-item">
-                    <span className="spec-name">VIN</span>
-                    <span className="spec-val">{car.vin}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column - Contact */}
-            <div className="car-sidebar">
+              {/* Contact Card */}
               <div className="contact-card">
-                <div className="price-tag">
-                  {car.price.toLocaleString()} €
-                </div>
-                
                 <button className="contact-btn primary" onClick={() => setShowContactModal(true)}>
                   <i className="fas fa-envelope"></i>
                   Võta ühendust
                 </button>
-                
-                <button className="contact-btn">
+                <a href={`tel:${car.phone}`} className="contact-btn">
                   <i className="fas fa-phone"></i>
                   {car.phone}
-                </button>
-
-                <div className="seller-info">
-                  <h4>Müüja</h4>
-                  <p><i className="fas fa-building"></i> {car.seller}</p>
-                  <p><i className="fas fa-map-marker-alt"></i> {car.location}</p>
-                </div>
+                </a>
               </div>
 
-              {/* Actions */}
-              <div className="action-buttons">
-                <button className="action-btn">
-                  <i className="fas fa-heart"></i>
-                  Lisa lemmikutesse
-                </button>
-                <button className="action-btn">
-                  <i className="fas fa-share-alt"></i>
-                  Jaga
-                </button>
+              {/* Seller Info */}
+              <div className="seller-card">
+                <h3>Müüja</h3>
+                <p className="seller-name"><i className="fas fa-building"></i> {car.seller}</p>
+                <p><i className="fas fa-clock"></i> {car.posted}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Description */}
+          <div className="detail-section">
+            <h2><i className="fas fa-align-left"></i> Kirjeldus</h2>
+            <p className="description-text">{car.description}</p>
+          </div>
+
+          {/* Features */}
+          <div className="detail-section">
+            <h2><i className="fas fa-list-check"></i> Varustus</h2>
+            <div className="features-grid">
+              {car.features.map((feature, i) => (
+                <span key={i} className="feature-item">
+                  <i className="fas fa-check"></i>
+                  {feature}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Specifications */}
+          <div className="detail-section">
+            <h2><i className="fas fa-clipboard-list"></i> Tehnilised andmed</h2>
+            <div className="specs-table">
+              <div className="spec-row">
+                <span className="spec-name">Mark</span>
+                <span className="spec-val">{car.brand}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">Mudel</span>
+                <span className="spec-val">{car.model}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">Aasta</span>
+                <span className="spec-val">{car.year}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">Läbisõit</span>
+                <span className="spec-val">{car.mileage.toLocaleString()} km</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">Kütus</span>
+                <span className="spec-val">{car.fuel}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">Käigukast</span>
+                <span className="spec-val">{car.transmission}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">Värv</span>
+                <span className="spec-val">{car.color}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">Mootor</span>
+                <span className="spec-val">{car.engine}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">Võimsus</span>
+                <span className="spec-val">{car.power}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">Uste arv</span>
+                <span className="spec-val">{car.doors}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">Istekohti</span>
+                <span className="spec-val">{car.seats}</span>
+              </div>
+              <div className="spec-row">
+                <span className="spec-name">VIN</span>
+                <span className="spec-val">{car.vin}</span>
               </div>
             </div>
           </div>
