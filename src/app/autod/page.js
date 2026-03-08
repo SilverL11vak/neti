@@ -1,19 +1,18 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
-import './globals.css'
 
 const carBrands = [
-  { id: 'toyota', name: 'Toyota', nameEn: 'Toyota' },
-  { id: 'volkswagen', name: 'Volkswagen', nameEn: 'Volkswagen' },
-  { id: 'bmw', name: 'BMW', nameEn: 'BMW' },
-  { id: 'mercedes', name: 'Mercedes-Benz', nameEn: 'Mercedes-Benz' },
-  { id: 'audi', name: 'Audi', nameEn: 'Audi' },
-  { id: 'volvo', name: 'Volvo', nameEn: 'Volvo' },
-  { id: 'ford', name: 'Ford', nameEn: 'Ford' },
-  { id: 'peugeot', name: 'Peugeot', nameEn: 'Peugeot' },
+  { id: 'toyota', name: 'Toyota', nameEn: 'Toyota', icon: 'fa-landmark' },
+  { id: 'volkswagen', name: 'Volkswagen', nameEn: 'Volkswagen', icon: 'fa-bus' },
+  { id: 'bmw', name: 'BMW', nameEn: 'BMW', icon: 'fa-car' },
+  { id: 'mercedes', name: 'Mercedes-Benz', nameEn: 'Mercedes-Benz', icon: 'fa-star' },
+  { id: 'audi', name: 'Audi', nameEn: 'Audi', icon: 'fa-ring' },
+  { id: 'volvo', name: 'Volvo', nameEn: 'Volvo', icon: 'fa-shield-alt' },
+  { id: 'ford', name: 'Ford', nameEn: 'Ford', icon: 'fa-truck-monster' },
+  { id: 'peugeot', name: 'Peugeot', nameEn: 'Peugeot', icon: 'fa-paw' },
 ]
 
 const carTypes = [
@@ -35,8 +34,9 @@ const mockCars = [
     mileage: 45000,
     fuel: 'Bensin',
     transmission: 'Automaat',
-    image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=400&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=600&h=400&fit=crop',
     location: 'Tallinn',
+    badge: 'Uus'
   },
   {
     id: 2,
@@ -47,8 +47,9 @@ const mockCars = [
     mileage: 52000,
     fuel: 'Bensin',
     transmission: 'Automaat',
-    image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=400&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&h=400&fit=crop',
     location: 'Tartu',
+    badge: null
   },
   {
     id: 3,
@@ -59,8 +60,9 @@ const mockCars = [
     mileage: 68000,
     fuel: 'Diesel',
     transmission: 'Manuaal',
-    image: 'https://images.unsplash.com/photo-1542362567-b07e54358753?w=400&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1542362567-b07e54358753?w=600&h=400&fit=crop',
     location: 'Pärnu',
+    badge: 'allahindlus'
   },
   {
     id: 4,
@@ -71,8 +73,9 @@ const mockCars = [
     mileage: 48000,
     fuel: 'Bensin',
     transmission: 'Automaat',
-    image: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=400&h=300&fit=crop',
-    location: 'Tallinn',
+    image: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&h=400&fit=crop',
+    location: 'Narva',
+    badge: null
   },
   {
     id: 5,
@@ -83,8 +86,9 @@ const mockCars = [
     mileage: 38000,
     fuel: 'Bensin',
     transmission: 'Automaat',
-    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=400&h=300&fit=crop',
-    location: 'Narva',
+    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=600&h=400&fit=crop',
+    location: 'Tallinn',
+    badge: 'Top'
   },
   {
     id: 6,
@@ -95,9 +99,36 @@ const mockCars = [
     mileage: 55000,
     fuel: 'Diesel',
     transmission: 'Automaat',
-    image: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?w=400&h=300&fit=crop',
+    image: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?w=600&h=400&fit=crop',
     location: 'Tallinn',
+    badge: null
   },
+  {
+    id: 7,
+    brand: 'Ford',
+    model: 'Mustang',
+    year: 2021,
+    price: 45900,
+    mileage: 32000,
+    fuel: 'Bensin',
+    transmission: 'Automaat',
+    image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600&h=400&fit=crop',
+    location: 'Tallinn',
+    badge: 'Hot'
+  },
+  {
+    id: 8,
+    brand: 'Peugeot',
+    model: '3008',
+    year: 2020,
+    price: 26900,
+    mileage: 62000,
+    fuel: 'Diesel',
+    transmission: 'Automaat',
+    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&h=400&fit=crop',
+    location: 'Pärnu',
+    badge: null
+  }
 ]
 
 export default function AutodPage() {
@@ -106,41 +137,28 @@ export default function AutodPage() {
   const [selectedBrand, setSelectedBrand] = useState('')
   const [selectedType, setSelectedType] = useState('')
   const [priceRange, setPriceRange] = useState([0, 100000])
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
-  // Scroll animation observer
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.15
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('is-visible')
-          }, 100)
-        }
-      })
-    }, observerOptions)
-
-    const animatedElements = document.querySelectorAll('.animate-on-scroll')
-    animatedElements.forEach(el => {
-      observer.observe(el)
-    })
-
-    return () => observer.disconnect()
-  }, [])
+  const [yearRange, setYearRange] = useState([2015, 2024])
+  const [fuelType, setFuelType] = useState('')
+  const [showFilters, setShowFilters] = useState(false)
 
   const filteredCars = mockCars.filter(car => {
     if (searchQuery && !car.brand.toLowerCase().includes(searchQuery.toLowerCase()) && 
         !car.model.toLowerCase().includes(searchQuery.toLowerCase())) return false
     if (selectedBrand && car.brand !== selectedBrand) return false
     if (car.price < priceRange[0] || car.price > priceRange[1]) return false
+    if (car.year < yearRange[0] || car.year > yearRange[1]) return false
+    if (fuelType && car.fuel !== fuelType) return false
     return true
   })
+
+  const clearFilters = () => {
+    setSelectedBrand('')
+    setSelectedType('')
+    setPriceRange([0, 100000])
+    setYearRange([2015, 2024])
+    setFuelType('')
+    setSearchQuery('')
+  }
 
   return (
     <>
@@ -162,6 +180,7 @@ export default function AutodPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
+            <button className="search-btn">{lang === 'et' ? 'Otsi' : 'Search'}</button>
           </div>
         </div>
       </section>
@@ -169,10 +188,25 @@ export default function AutodPage() {
       {/* Main Content */}
       <main className="auto-main">
         <div className="auto-container">
+          {/* Mobile Filter Toggle */}
+          <button className="filter-toggle" onClick={() => setShowFilters(!showFilters)}>
+            <i className="fas fa-filter"></i>
+            {lang === 'et' ? 'Filtrid' : 'Filters'}
+            {showFilters ? <i className="fas fa-chevron-up"></i> : <i className="fas fa-chevron-down"></i>}
+          </button>
+
           {/* Filters Sidebar */}
-          <aside className="auto-filters">
+          <aside className={`auto-filters ${showFilters ? 'active' : ''}`}>
+            <div className="filter-header">
+              <h3>{lang === 'et' ? 'Filtrid' : 'Filters'}</h3>
+              <button className="clear-filters" onClick={clearFilters}>
+                {lang === 'et' ? 'Tühjenda' : 'Clear'}
+              </button>
+            </div>
+
+            {/* Brand Filter */}
             <div className="filter-section">
-              <h3>{lang === 'et' ? 'Mark' : 'Make'}</h3>
+              <h4>{lang === 'et' ? 'Mark' : 'Make'}</h4>
               <div className="filter-options">
                 <button 
                   className={`filter-chip ${selectedBrand === '' ? 'active' : ''}`}
@@ -186,14 +220,15 @@ export default function AutodPage() {
                     className={`filter-chip ${selectedBrand === brand.name ? 'active' : ''}`}
                     onClick={() => setSelectedBrand(brand.name)}
                   >
-                    {lang === 'et' ? brand.name : brand.nameEn}
+                    <i className={`fas ${brand.icon}`}></i> {brand.name}
                   </button>
                 ))}
               </div>
             </div>
 
+            {/* Body Type */}
             <div className="filter-section">
-              <h3>{lang === 'et' ? 'Kere' : 'Body Type'}</h3>
+              <h4>{lang === 'et' ? 'Kere' : 'Body Type'}</h4>
               <div className="filter-options">
                 <button 
                   className={`filter-chip ${selectedType === '' ? 'active' : ''}`}
@@ -213,8 +248,40 @@ export default function AutodPage() {
               </div>
             </div>
 
+            {/* Fuel Type */}
             <div className="filter-section">
-              <h3>{lang === 'et' ? 'Hind' : 'Price'}</h3>
+              <h4>{lang === 'et' ? 'Kütus' : 'Fuel'}</h4>
+              <div className="filter-options">
+                <button 
+                  className={`filter-chip ${fuelType === '' ? 'active' : ''}`}
+                  onClick={() => setFuelType('')}
+                >
+                  {lang === 'et' ? 'Kõik' : 'All'}
+                </button>
+                <button 
+                  className={`filter-chip ${fuelType === 'Bensin' ? 'active' : ''}`}
+                  onClick={() => setFuelType('Bensin')}
+                >
+                  Bensin
+                </button>
+                <button 
+                  className={`filter-chip ${fuelType === 'Diesel' ? 'active' : ''}`}
+                  onClick={() => setFuelType('Diesel')}
+                >
+                  Diesel
+                </button>
+                <button 
+                  className={`filter-chip ${fuelType === 'Elekter' ? 'active' : ''}`}
+                  onClick={() => setFuelType('Elekter')}
+                >
+                  Elekter
+                </button>
+              </div>
+            </div>
+
+            {/* Price Range */}
+            <div className="filter-section">
+              <h4>{lang === 'et' ? 'Hind' : 'Price'}</h4>
               <div className="price-range">
                 <input 
                   type="range" 
@@ -230,6 +297,30 @@ export default function AutodPage() {
                 </div>
               </div>
             </div>
+
+            {/* Year Range */}
+            <div className="filter-section">
+              <h4>{lang === 'et' ? 'Aasta' : 'Year'}</h4>
+              <div className="year-inputs">
+                <input 
+                  type="number" 
+                  min="1990" 
+                  max="2024"
+                  value={yearRange[0]}
+                  onChange={(e) => setYearRange([parseInt(e.target.value), yearRange[1]])}
+                  placeholder="Alates"
+                />
+                <span>-</span>
+                <input 
+                  type="number" 
+                  min="1990" 
+                  max="2024"
+                  value={yearRange[1]}
+                  onChange={(e) => setYearRange([yearRange[0], parseInt(e.target.value)])}
+                  placeholder="Kuni"
+                />
+              </div>
+            </div>
           </aside>
 
           {/* Car Listings */}
@@ -237,36 +328,51 @@ export default function AutodPage() {
             <div className="listings-header">
               <span>{filteredCars.length} {lang === 'et' ? 'autot' : 'cars'}</span>
               <select className="sort-select">
-                <option>{lang === 'et' ? 'Uusimad' : 'Newest'}</option>
-                <option>{lang === 'et' ? 'Odavamad' : 'Cheapest'}</option>
-                <option>{lang === 'et' ? 'Kallimad' : 'Most expensive'}</option>
+                <option>{lang === 'et' ? 'Odavamad enne' : 'Cheapest first'}</option>
+                <option>{lang === 'et' ? 'Kallimad enne' : 'Most expensive first'}</option>
+                <option>{lang === 'et' ? 'Uusimad enne' : 'Newest first'}</option>
+                <option>{lang === 'et' ? 'Vähim läbisõiduga' : 'Lowest mileage'}</option>
               </select>
             </div>
 
             <div className="car-grid">
               {filteredCars.map(car => (
-                <div key={car.id} className="car-card">
-                  <div className="car-image">
-                    <img src={car.image} alt={`${car.brand} ${car.model}`} />
-                    <span className="car-location">
-                      <i className="fas fa-map-marker-alt"></i> {car.location}
-                    </span>
-                  </div>
-                  <div className="car-details">
-                    <h3>{car.brand} {car.model}</h3>
-                    <div className="car-specs">
-                      <span><i className="fas fa-calendar"></i> {car.year}</span>
-                      <span><i className="fas fa-tachometer-alt"></i> {car.mileage.toLocaleString()} km</span>
-                      <span><i className="fas fa-gas-pump"></i> {car.fuel}</span>
-                      <span><i className="fas fa-cog"></i> {car.transmission}</span>
+                <Link href={`/autod/${car.id}`} key={car.id} className="car-card-link">
+                  <div className="car-card">
+                    <div className="car-image">
+                      <img src={car.image} alt={`${car.brand} ${car.model}`} />
+                      {car.badge && <span className={`car-badge ${car.badge}`}>{car.badge}</span>}
+                      <span className="car-location">
+                        <i className="fas fa-map-marker-alt"></i> {car.location}
+                      </span>
                     </div>
-                    <div className="car-price">
-                      {car.price.toLocaleString()} €
+                    <div className="car-details">
+                      <h3>{car.brand} {car.model}</h3>
+                      <div className="car-specs">
+                        <span><i className="fas fa-calendar"></i> {car.year}</span>
+                        <span><i className="fas fa-tachometer-alt"></i> {car.mileage.toLocaleString()} km</span>
+                        <span><i className="fas fa-gas-pump"></i> {car.fuel}</span>
+                        <span><i className="fas fa-cog"></i> {car.transmission}</span>
+                      </div>
+                      <div className="car-price">
+                        {car.price.toLocaleString()} €
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
+
+            {filteredCars.length === 0 && (
+              <div className="no-results">
+                <i className="fas fa-car"></i>
+                <h3>{lang === 'et' ? 'Autosid ei leitud' : 'No cars found'}</h3>
+                <p>{lang === 'et' ? 'Proovi teisi filtrite seadeid' : 'Try different filter settings'}</p>
+                <button className="clear-filters-btn" onClick={clearFilters}>
+                  {lang === 'et' ? 'Tühjenda filtrid' : 'Clear filters'}
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </main>
@@ -284,7 +390,7 @@ export default function AutodPage() {
               </div>
               <p className="footer-desc">
                 {lang === 'et'
-                  ? 'NETI on Eesti juhtiv veebikataloog ja otsingusüsteem alates 1996. aastast.'
+                  ? 'NETI on Eesti juhtiv veebikataloog ja otsingusüsteem alates 1996. aastal.'
                   : 'NETI is Estonia\'s leading web catalog and search system since 1996.'}
               </p>
               <div className="social-links">
@@ -305,7 +411,7 @@ export default function AutodPage() {
               <div className="footer-column">
                 <h4>{lang === 'et' ? 'Teenused' : 'Services'}</h4>
                 <Link href="/otsing">Otsing</Link>
-                <Link href="/kategooria">Kataloog</Link>
+                <Link href="/autod">Autod</Link>
                 <Link href="/kuulutus">Reklaam</Link>
               </div>
               <div className="footer-column">
@@ -313,7 +419,6 @@ export default function AutodPage() {
                 <Link href="/meist">Meist</Link>
                 <Link href="/meist">Kontakt</Link>
                 <Link href="/meist">Privaatsus</Link>
-                <Link href="/meist">Kasutustingimused</Link>
               </div>
             </div>
 
