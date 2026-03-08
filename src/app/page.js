@@ -272,7 +272,7 @@ export default function Home() {
       {/* Main Content */}
       <main id="main-content">
         {/* Hero Section */}
-        <section className="hero">
+        <section className="hero animate-on-scroll">
           <div className="hero-content">
             <div className="hero-badge">
               <span className="badge-dot"></span>
@@ -290,19 +290,15 @@ export default function Home() {
                 : 'Your smartest gateway to Estonian internet. Find the best websites, services, and businesses quickly and easily.'}
             </p>
 
-            <div className="search-container">
-              <form className="hero-search mobile-split" onSubmit={handleSearch}>
+            <div className="hero-search-wrapper">
+              <form className="hero-search-simple" onSubmit={handleSearch}>
+                <i className="fas fa-search"></i>
                 <input
                   type="text"
-                  className="search-input"
                   placeholder={lang === 'et' ? 'Otsi veebilehti, teenuseid, ettevõtteid...' : 'Search websites, services, businesses...'}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
-                <button type="submit" className="search-button">
-                  <span>{lang === 'et' ? 'Otsi' : 'Search'}</span>
-                  <i className="fas fa-search"></i>
-                </button>
               </form>
             </div>
 
