@@ -188,10 +188,16 @@ export default function CarDetailPage() {
     return (
       <>
         <Navbar />
-        <div className="car-not-found">
-          <h1>Auto ei leitud</h1>
-          <p>Kahjuks seda autot enam müügis ei ole.</p>
-          <Link href="/autod" className="back-link">← Tagasi autodesse</Link>
+        <div className="page-not-found">
+          <div className="not-found-content">
+            <i className="fas fa-car"></i>
+            <h1>Auto ei leitud</h1>
+            <p>Kahjuks seda autot enam müügis ei ole.</p>
+            <Link href="/autod" className="back-home-btn">
+              <i className="fas fa-arrow-left"></i>
+              Tagasi autodesse
+            </Link>
+          </div>
         </div>
       </>
     )
@@ -206,189 +212,252 @@ export default function CarDetailPage() {
     <>
       <Navbar />
 
-      {/* Breadcrumb */}
-      <div className="car-breadcrumb">
-        <div className="container">
-          <Link href="/autod">Autod</Link>
-          <span>/</span>
-          <span>{car.brand} {car.model}</span>
+      {/* Hero */}
+      <section className="car-hero">
+        <div className="car-hero-content">
+          <div className="car-hero-badge">
+            <span className="badge-dot"></span>
+            {car.posted}
+          </div>
+          <h1 className="car-hero-title">
+            {car.brand} {car.model}
+          </h1>
+          <div className="car-hero-price">
+            {car.price.toLocaleString()} €
+          </div>
+          <div className="car-hero-location">
+            <i className="fas fa-map-marker-alt"></i>
+            {car.location}
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Main Content */}
-      <main className="car-detail-main">
+      <main className="car-content">
         <div className="container">
-          <div className="car-detail-grid">
-            {/* Left Column - Images */}
-            <div className="car-images-section">
-              <div className="car-main-image">
-                <img src={car.images[selectedImage]} alt={`${car.brand} ${car.model}`} />
-                <span className="car-badge">{car.posted}</span>
-              </div>
-              <div className="car-thumbnails">
-                {car.images.map((img, i) => (
-                  <button 
-                    key={i} 
-                    className={`thumbnail ${selectedImage === i ? 'active' : ''}`}
-                    onClick={() => setSelectedImage(i)}
-                  >
-                    <img src={img} alt={`View ${i + 1}`} />
-                  </button>
-                ))}
+          {/* Images */}
+          <div className="car-gallery animate-on-scroll">
+            <div className="gallery-main">
+              <img src={car.images[selectedImage]} alt={`${car.brand} ${car.model}`} />
+            </div>
+            <div className="gallery-thumbs">
+              {car.images.map((img, i) => (
+                <button 
+                  key={i} 
+                  className={`gallery-thumb ${selectedImage === i ? 'active' : ''}`}
+                  onClick={() => setSelectedImage(i)}
+                >
+                  <img src={img} alt={`View ${i + 1}`} />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="car-details-grid">
+            {/* Left Column */}
+            <div className="car-info">
+              {/* Quick Stats */}
+              <div className="quick-stats animate-on-scroll">
+                <div className="stat-box">
+                  <i className="fas fa-calendar-alt"></i>
+                  <span className="stat-value">{car.year}</span>
+                  <span className="stat-label">Aasta</span>
+                </div>
+                <div className="stat-box">
+                  <i className="fas fa-tachometer-alt"></i>
+                  <span className="stat-value">{car.mileage.toLocaleString()}</span>
+                  <span className="stat-label">km</span>
+                </div>
+                <div className="stat-box">
+                  <i className="fas fa-gas-pump"></i>
+                  <span className="stat-value">{car.fuel}</span>
+                  <span className="stat-label">Kütus</span>
+                </div>
+                <div className="stat-box">
+                  <i className="fas fa-cog"></i>
+                  <span className="stat-value">{car.transmission}</span>
+                  <span className="stat-label">Käigukast</span>
+                </div>
               </div>
 
               {/* Description */}
-              <div className="car-description-card">
-                <h3>Kirjeldus</h3>
-                <p>{car.description}</p>
-                
-                <h4>Varustus</h4>
-                <div className="car-features-grid">
+              <div className="widget animate-on-scroll">
+                <div className="widget-header">
+                  <div className="widget-icon">
+                    <i className="fas fa-info-circle"></i>
+                  </div>
+                  <h3>Kirjeldus</h3>
+                </div>
+                <p className="description-text">{car.description}</p>
+              </div>
+
+              {/* Features */}
+              <div className="widget animate-on-scroll">
+                <div className="widget-header">
+                  <div className="widget-icon">
+                    <i className="fas fa-list-check"></i>
+                  </div>
+                  <h3>Varustus</h3>
+                </div>
+                <div className="features-grid">
                   {car.features.map((feature, i) => (
-                    <span key={i} className="feature-tag">
-                      <i className="fas fa-check"></i>
+                    <span key={i} className="feature-item">
+                      <i className="fas fa-check-circle"></i>
                       {feature}
                     </span>
                   ))}
                 </div>
               </div>
 
-              {/* Specifications */}
-              <div className="car-specs-card">
-                <h3>Tehnilised andmed</h3>
-                <div className="specs-grid">
-                  <div className="spec-item">
-                    <span className="spec-label">Mark</span>
-                    <span className="spec-value">{car.brand}</span>
+              {/* Specs */}
+              <div className="widget animate-on-scroll">
+                <div className="widget-header">
+                  <div className="widget-icon">
+                    <i className="fas fa-clipboard-list"></i>
                   </div>
-                  <div className="spec-item">
-                    <span className="spec-label">Mudel</span>
-                    <span className="spec-value">{car.model}</span>
+                  <h3>Tehnilised andmed</h3>
+                </div>
+                <div className="specs-table">
+                  <div className="spec-row">
+                    <span className="spec-name">Mark</span>
+                    <span className="spec-val">{car.brand}</span>
                   </div>
-                  <div className="spec-item">
-                    <span className="spec-label">Aasta</span>
-                    <span className="spec-value">{car.year}</span>
+                  <div className="spec-row">
+                    <span className="spec-name">Mudel</span>
+                    <span className="spec-val">{car.model}</span>
                   </div>
-                  <div className="spec-item">
-                    <span className="spec-label">Läbisõit</span>
-                    <span className="spec-value">{car.mileage.toLocaleString()} km</span>
+                  <div className="spec-row">
+                    <span className="spec-name">Aasta</span>
+                    <span className="spec-val">{car.year}</span>
                   </div>
-                  <div className="spec-item">
-                    <span className="spec-label">Kütus</span>
-                    <span className="spec-value">{car.fuel}</span>
+                  <div className="spec-row">
+                    <span className="spec-name">Läbisõit</span>
+                    <span className="spec-val">{car.mileage.toLocaleString()} km</span>
                   </div>
-                  <div className="spec-item">
-                    <span className="spec-label">Käigukast</span>
-                    <span className="spec-value">{car.transmission}</span>
+                  <div className="spec-row">
+                    <span className="spec-name">Kütus</span>
+                    <span className="spec-val">{car.fuel}</span>
                   </div>
-                  <div className="spec-item">
-                    <span className="spec-label">Värv</span>
-                    <span className="spec-value">{car.color}</span>
+                  <div className="spec-row">
+                    <span className="spec-name">Käigukast</span>
+                    <span className="spec-val">{car.transmission}</span>
                   </div>
-                  <div className="spec-item">
-                    <span className="spec-label">Mootor</span>
-                    <span className="spec-value">{car.engine}</span>
+                  <div className="spec-row">
+                    <span className="spec-name">Värv</span>
+                    <span className="spec-val">{car.color}</span>
                   </div>
-                  <div className="spec-item">
-                    <span className="spec-label">Võimsus</span>
-                    <span className="spec-value">{car.power}</span>
+                  <div className="spec-row">
+                    <span className="spec-name">Mootor</span>
+                    <span className="spec-val">{car.engine}</span>
                   </div>
-                  <div className="spec-item">
-                    <span className="spec-label">Uste arv</span>
-                    <span className="spec-value">{car.doors}</span>
+                  <div className="spec-row">
+                    <span className="spec-name">Võimsus</span>
+                    <span className="spec-val">{car.power}</span>
                   </div>
-                  <div className="spec-item">
-                    <span className="spec-label">Istekohti</span>
-                    <span className="spec-value">{car.seats}</span>
+                  <div className="spec-row">
+                    <span className="spec-name">Uste arv</span>
+                    <span className="spec-val">{car.doors}</span>
                   </div>
-                  <div className="spec-item">
-                    <span className="spec-label">VIN</span>
-                    <span className="spec-value">{car.vin}</span>
+                  <div className="spec-row">
+                    <span className="spec-name">Istekohti</span>
+                    <span className="spec-val">{car.seats}</span>
                   </div>
+                  <div className="spec-row">
+                    <span className="spec-name">VIN</span>
+                    <span className="spec-val">{car.vin}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Map */}
+              <div className="widget animate-on-scroll">
+                <div className="widget-header">
+                  <div className="widget-icon">
+                    <i className="fas fa-map-marker-alt"></i>
+                  </div>
+                  <h3>Asukoht</h3>
+                </div>
+                <div className="map-widget">
+                  <i className="fas fa-map"></i>
+                  <p>{car.location}</p>
+                  <span>Kaart kuvatakse siis, kui müüja on selle lisanud</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Column - Info & Contact */}
-            <div className="car-info-section">
-              <div className="car-title-card">
-                <h1>{car.brand} {car.model}</h1>
-                <div className="car-price">{car.price.toLocaleString()} €</div>
-                <div className="car-location">
-                  <i className="fas fa-map-marker-alt"></i>
-                  {car.location}
-                </div>
-              </div>
-
-              {/* Contact Form */}
-              <div className="car-contact-card">
+            {/* Right Column - Contact */}
+            <div className="car-sidebar">
+              <div className="contact-widget animate-on-scroll">
                 <h3><i className="fas fa-envelope"></i> Võta ühendust</h3>
                 
                 {formSubmitted ? (
-                  <div className="form-success">
+                  <div className="success-message">
                     <i className="fas fa-check-circle"></i>
                     <h4>Täname huvi eest!</h4>
                     <p>Võtame teiega peagi ühendust.</p>
                   </div>
                 ) : (
-                  <form onSubmit={handleContactSubmit}>
-                    <div className="form-group">
-                      <input 
-                        type="text" 
-                        placeholder="Sinu nimi *"
-                        value={contactForm.name}
-                        onChange={(e) => setContactForm({...contactForm, name: e.target.value})}
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <input 
-                        type="email" 
-                        placeholder="Sinu email *"
-                        value={contactForm.email}
-                        onChange={(e) => setContactForm({...contactForm, email: e.target.value})}
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <input 
-                        type="tel" 
-                        placeholder="Sinu telefon"
-                        value={contactForm.phone}
-                        onChange={(e) => setContactForm({...contactForm, phone: e.target.value})}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <textarea 
-                        placeholder="Sinu sõnum *"
-                        value={contactForm.message}
-                        onChange={(e) => setContactForm({...contactForm, message: e.target.value})}
-                        required
-                        rows={4}
-                      ></textarea>
-                    </div>
-                    <button type="submit" className="contact-submit-btn">
+                  <form onSubmit={handleContactSubmit} className="contact-form">
+                    <input 
+                      type="text" 
+                      placeholder="Sinu nimi *"
+                      value={contactForm.name}
+                      onChange={(e) => setContactForm({...contactForm, name: e.target.value})}
+                      required
+                    />
+                    <input 
+                      type="email" 
+                      placeholder="Sinu email *"
+                      value={contactForm.email}
+                      onChange={(e) => setContactForm({...contactForm, email: e.target.value})}
+                      required
+                    />
+                    <input 
+                      type="tel" 
+                      placeholder="Sinu telefon"
+                      value={contactForm.phone}
+                      onChange={(e) => setContactForm({...contactForm, phone: e.target.value})}
+                    />
+                    <textarea 
+                      placeholder="Sinu sõnum *"
+                      value={contactForm.message}
+                      onChange={(e) => setContactForm({...contactForm, message: e.target.value})}
+                      required
+                      rows={4}
+                    ></textarea>
+                    <button type="submit" className="submit-btn">
                       <i className="fas fa-paper-plane"></i> Saada sõnum
                     </button>
                   </form>
                 )}
 
-                <div className="seller-info">
+                <div className="seller-card">
                   <h4>Müüja info</h4>
-                  <p><strong>{car.seller}</strong></p>
-                  <p><i className="fas fa-phone"></i> {car.phone}</p>
-                  <p><i className="fas fa-envelope"></i> {car.email}</p>
+                  <div className="seller-info">
+                    <i className="fas fa-building"></i>
+                    <span>{car.seller}</span>
+                  </div>
+                  <div className="seller-info">
+                    <i className="fas fa-phone"></i>
+                    <span>{car.phone}</span>
+                  </div>
+                  <div className="seller-info">
+                    <i className="fas fa-envelope"></i>
+                    <span>{car.email}</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Map */}
-              <div className="car-map-card">
-                <h3><i className="fas fa-map-marker-alt"></i> Asukoht</h3>
-                <div className="map-placeholder">
-                  <i className="fas fa-map"></i>
-                  <p>{car.location}</p>
-                  <span>Kaart laadimisel...</span>
-                </div>
+              {/* Quick Actions */}
+              <div className="action-widget animate-on-scroll">
+                <button className="action-btn primary">
+                  <i className="fas fa-heart"></i>
+                  Lisa lemmikutesse
+                </button>
+                <button className="action-btn">
+                  <i className="fas fa-share-alt"></i>
+                  Jaga
+                </button>
               </div>
             </div>
           </div>
