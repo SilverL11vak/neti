@@ -568,16 +568,16 @@
 
 /* Car Detail Page Styles */
 .car-detail-header {
-  background: #1e293b;
-  padding: 80px 24px 40px;
-  color: white;
+  background: #f8fafc;
+  padding: 90px 24px 30px;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .car-detail-header .back-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #94a3b8;
+  color: #64748b;
   text-decoration: none;
   font-size: 0.9rem;
   margin-bottom: 16px;
@@ -585,7 +585,7 @@
 }
 
 .car-detail-header .back-link:hover {
-  color: white;
+  color: #1d4ed8;
 }
 
 .car-title-row {
@@ -598,11 +598,12 @@
 .car-title-row h1 {
   font-size: 2rem;
   font-weight: 700;
+  color: #1e293b;
   margin: 0;
 }
 
 .car-year {
-  background: #3b82f6;
+  background: #1d4ed8;
   color: white;
   padding: 4px 12px;
   border-radius: 20px;
@@ -620,18 +621,18 @@
 .car-price {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #22c55e;
+  color: #1d4ed8;
 }
 
 .car-location {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #94a3b8;
+  color: #64748b;
 }
 
 .car-location i {
-  color: #3b82f6;
+  color: #1d4ed8;
 }
 
 /* Detail Grid */
@@ -1042,7 +1043,7 @@
 
 @media (max-width: 768px) {
   .car-detail-header {
-    padding: 70px 16px 30px;
+    padding: 70px 16px 24px;
   }
   
   .car-title-row {
@@ -1082,7 +1083,7 @@
 
 @media (max-width: 480px) {
   .car-detail-header {
-    padding: 60px 12px 24px;
+    padding: 60px 12px 20px;
   }
   
   .stats-grid {
