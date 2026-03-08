@@ -9,6 +9,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const navLinks = [
+    { href: '/autod', label: 'Autod' },
     { href: '/kategooria', label: 'Kategooriad' },
     { href: '/otsing', label: 'Otsing' },
     { href: '/ilm', label: 'Ilm' },
@@ -29,6 +30,7 @@ export default function Navbar() {
           </Link>
 
           <div className="nav-links">
+            <Link href="/autod" className="nav-link">Autod</Link>
             <Link href="/kategooria" className="nav-link">Kategooriad</Link>
             <Link href="/otsing" className="nav-link">Otsing</Link>
             <Link href="/ilm" className="nav-link">Ilm</Link>
@@ -76,6 +78,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div className={`mobile-menu ${mobileMenuOpen ? 'active' : ''}`}>
+        <Link href="/autod" onClick={() => setMobileMenuOpen(false)}>Autod</Link>
         <Link href="/kategooria" onClick={() => setMobileMenuOpen(false)}>Kategooriad</Link>
         <Link href="/otsing" onClick={() => setMobileMenuOpen(false)}>Otsing</Link>
         <Link href="/ilm" onClick={() => setMobileMenuOpen(false)}>Ilm</Link>
