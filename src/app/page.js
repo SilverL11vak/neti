@@ -122,6 +122,36 @@ const newsItems = [
     image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=500&fit=crop',
     date: '6. märts 2026',
     category: 'Reisimine'
+  },
+  {
+    id: 4,
+    title: 'Eesti ekonomi kasvas eelmisel aastal 3%',
+    titleEn: 'Estonian economy grew 3% last year',
+    description: 'Statistikaameti andmetel kasvas Eesti SKP eelmisel aastal 3%, mis ületab Euroopa Liidu keskmist.',
+    descriptionEn: 'According to Statistics Estonia, Estonia\'s GDP grew by 3% last year, which exceeds the European Union average.',
+    image: 'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&h=500&fit=crop',
+    date: '5. märts 2026',
+    category: 'Majandus'
+  },
+  {
+    id: 5,
+    title: 'Uus elektriauto laeb 80% 15 minutiga',
+    titleEn: 'New electric car charges 80% in 15 minutes',
+    description: 'Eesti startup arendas välja uue kiirlaadimise tehnoloogia, mis võimaldab elektriautodel laadida kuni 80% vaid 15 minutiga.',
+    descriptionEn: 'An Estonian startup developed new fast charging technology that allows electric cars to charge up to 80% in just 15 minutes.',
+    image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&h=500&fit=crop',
+    date: '4. märts 2026',
+    category: 'Tehnoloogia'
+  },
+  {
+    id: 6,
+    title: 'Tallinna raamatukogu avas uue digitaalse teenuse',
+    titleEn: 'Tallinn Library launches new digital service',
+    description: 'Tallinna Keskraamatukogu pakub nüüd võimalust laenutada e-raamatuid ja audioraamatuid otse nutiseadmesse.',
+    descriptionEn: 'Tallinn Central Library now offers the ability to borrow e-books and audiobooks directly to your smart device.',
+    image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=500&fit=crop',
+    date: '3. märts 2026',
+    category: 'Kultuur'
   }
 ]
 
@@ -150,6 +180,7 @@ export default function Home() {
   const [selectedZodiac, setSelectedZodiac] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
   const [currentNews, setCurrentNews] = useState(0)
+  const [newsToShow, setNewsToShow] = useState(3)
   const router = useRouter()
 
   useEffect(() => {
@@ -731,57 +762,52 @@ export default function Home() {
           </div>
         </section>
 
-        {/* News Carousel Section */}
+        {/* News Section */}
         <section className="news-carousel-section animate-on-scroll">
           <div className="section-header">
             <span className="section-badge">{lang === 'et' ? 'Uudised' : 'News'}</span>
             <h2 className="section-title">{lang === 'et' ? 'Viimased uudised' : 'Latest News'}</h2>
           </div>
 
-          <div className="news-carousel">
-            <div className="carousel-track" style={{ transform: `translateX(-${currentNews * 100}%)` }}>
-              {newsItems.map((news) => (
-                <Link href={`/uudised/${news.id}`} key={news.id} className="news-carousel-slide">
-                  <div className="news-card-image">
-                    <img src={news.image} alt={lang === 'et' ? news.title : news.titleEn} />
-                    <div className="news-card-category">{news.category}</div>
-                  </div>
-                  <div className="news-card-content">
-                    <span className="news-card-date">{news.date}</span>
-                    <h3 className="news-card-title">{lang === 'et' ? news.title : news.titleEn}</h3>
-                    <p className="news-card-desc">{lang === 'et' ? news.description : news.descriptionEn}</p>
-                    <span className="news-card-readmore">
-                      {lang === 'et' ? 'Loe edasi' : 'Read more'} <i className="fas fa-arrow-right"></i>
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
+          <div className="news-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', marginBottom: '24px' }}>
+            {newsItems.slice(0, newsToShow).map((news) => (
+              <Link href={`/uudised/${news.id}`} key={news.id} className="news-carousel-slide" style={{ display: 'block' }}>
+                <div className="news-card-image">
+                  <img src={news.image} alt={lang === 'et' ? news.title : news.titleEn} />
+                  <div className="news-card-category">{news.category}</div>
+                </div>
+                <div className="news-card-content">
+                  <span className="news-card-date">{news.date}</span>
+                  <h3 className="news-card-title">{lang === 'et' ? news.title : news.titleEn}</h3>
+                  <p className="news-card-desc">{lang === 'et' ? news.description : news.descriptionEn}</p>
+                  <span className="news-card-readmore">
+                    {lang === 'et' ? 'Loe edasi' : 'Read more'} <i className="fas fa-arrow-right"></i>
+                  </span>
+                </div>
+              </Link>
+            ))}
           </div>
 
-          <div className="carousel-controls">
-            <button 
-              className="carousel-btn prev" 
-              onClick={(e) => { e.preventDefault(); setCurrentNews((prev) => (prev === 0 ? newsItems.length - 1 : prev - 1)) }}
-            >
-              <i className="fas fa-chevron-left"></i>
-            </button>
-            <div className="carousel-dots">
-              {newsItems.map((_, index) => (
-                <button 
-                  key={index} 
-                  className={`carousel-dot ${currentNews === index ? 'active' : ''}`}
-                  onClick={(e) => { e.preventDefault(); setCurrentNews(index) }}
-                />
-              ))}
+          {newsToShow < newsItems.length && (
+            <div style={{ textAlign: 'center', marginTop: '16px' }}>
+              <button 
+                onClick={() => setNewsToShow(newsItems.length)}
+                style={{
+                  padding: '14px 32px',
+                  background: '#3b82f6',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '30px',
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'background 0.2s'
+                }}
+              >
+                {lang === 'et' ? 'Näita veel' : 'Show more'}
+              </button>
             </div>
-            <button 
-              className="carousel-btn next" 
-              onClick={(e) => { e.preventDefault(); setCurrentNews((prev) => (prev === newsItems.length - 1 ? 0 : prev + 1)) }}
-            >
-              <i className="fas fa-chevron-right"></i>
-            </button>
-          </div>
+          )}
         </section>
 
         {/* Classifieds Section */}
