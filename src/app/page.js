@@ -706,7 +706,7 @@ export default function Home() {
           </div>
           
           <div className="classifieds-clean-grid">
-            <Link href="/otsing?q=autod" className="classified-clean-card">
+            <Link href="/autod" className="classified-clean-card">
               <div className="classified-clean-icon">
                 <i className="fas fa-car"></i>
               </div>
