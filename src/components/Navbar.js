@@ -13,6 +13,7 @@ export default function Navbar() {
     { href: '/kinnisvara', label: 'Kinnisvara' },
     { href: '/too', label: 'Töö' },
     { href: '/turg', label: 'Osta & Müü' },
+    { href: '/horoskoop', label: 'Horoskoop' },
     { href: '/kategooria', label: 'Kategooriad' },
     { href: '/otsing', label: 'Otsing' },
   ]
@@ -33,6 +34,7 @@ export default function Navbar() {
             <Link href="/kinnisvara" className="nav-link">Kinnisvara</Link>
             <Link href="/too" className="nav-link">Töö</Link>
             <Link href="/turg" className="nav-link">Osta & Müü</Link>
+            <Link href="/horoskoop" className="nav-link">Horoskoop</Link>
             <Link href="/kategooria" className="nav-link">Kategooriad</Link>
             <Link href="/otsing" className="nav-link">Otsing</Link>
           </div>
