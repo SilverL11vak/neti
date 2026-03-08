@@ -35,6 +35,7 @@ export default function Navbar() {
             <Link href="/too" className="nav-link">Töö</Link>
             <Link href="/turg" className="nav-link">Osta & Müü</Link>
             <Link href="/horoskoop" className="nav-link">Horoskoop</Link>
+            <Link href="/uudised" className="nav-link">Uudised</Link>
             <Link href="/kategooria" className="nav-link">Kategooriad</Link>
             <Link href="/otsing" className="nav-link">Otsing</Link>
           </div>
@@ -82,6 +83,7 @@ export default function Navbar() {
         <Link href="/kinnisvara" onClick={() => setMobileMenuOpen(false)}>Kinnisvara</Link>
         <Link href="/too" onClick={() => setMobileMenuOpen(false)}>Töö</Link>
         <Link href="/turg" onClick={() => setMobileMenuOpen(false)}>Osta & Müü</Link>
+        <Link href="/uudised" onClick={() => setMobileMenuOpen(false)}>Uudised</Link>
         <Link href="/kategooria" onClick={() => setMobileMenuOpen(false)}>Kategooriad</Link>
         <Link href="/otsing" onClick={() => setMobileMenuOpen(false)}>Otsing</Link>
         <Link href="/ilm" onClick={() => setMobileMenuOpen(false)}>Ilm</Link>

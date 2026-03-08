@@ -91,6 +91,40 @@ const quickLinks = [
   { text: 'Bolt', icon: 'fa-taxi' }
 ]
 
+// News data for the carousel
+const newsItems = [
+  {
+    id: 1,
+    title: 'Tallinnas avati uus moodsate tehnoloogiate keskus',
+    titleEn: 'New modern technology center opened in Tallinn',
+    description: 'Eesti pealinnas avati täna suurim tehnoloogia- ja innovatsioonikeskus, kus startup-id ja tehnoloogiaettevõtted saavad arendada uusi lahendusi.',
+    descriptionEn: 'The capital of Estonia opened the largest technology and innovation center today, where startups and technology companies can develop new solutions.',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=500&fit=crop',
+    date: '8. märts 2026',
+    category: 'Tehnoloogia'
+  },
+  {
+    id: 2,
+    title: 'Eesti ilu- ja tervisemess toimub sel nädalal',
+    titleEn: 'Estonian beauty and health fair this week',
+    description: 'Nädalavahetusel toimub Tallinnas suur ilu- ja tervisemess, kus osalevad tuntud brändid ja eksperdid jagavad nõuandeid tervisliku eluviisi kohta.',
+    descriptionEn: 'This weekend a major beauty and health fair takes place in Tallinn, where well-known brands and experts will share advice on healthy lifestyle.',
+    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&h=500&fit=crop',
+    date: '7. märts 2026',
+    category: 'Tervis'
+  },
+  {
+    id: 3,
+    title: 'Uuring: Eestlased eelistavad puhkuseks kodumaad',
+    titleEn: 'Study: Estonians prefer domestic travel for holidays',
+    description: 'Uuringu kohaselt eelistavad Eesti elanikud puhkuse veetmist kodumaal, eelkõige Saaremaal ja Pärnumaal, kus pakutakse matka- ja SPA-võimalusi.',
+    descriptionEn: 'According to a study, Estonian residents prefer spending their holidays domestically, especially in Saaremaa and Pärnu county, which offer hiking and SPA opportunities.',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=500&fit=crop',
+    date: '6. märts 2026',
+    category: 'Reisimine'
+  }
+]
+
 // Zodiac data with horoscopes
 const zodiacSigns = [
   { id: 'aries', symbol: '♈', name: 'Jäärapäev', nameEn: 'Aries', date: '21.03 - 19.04', horoscope: { et: 'Täna on hea päev uute alguste jaoks. Sinu ambitsioon viib sind edasi!', en: 'Today is a good day for new beginnings. Your ambition will drive you forward!' }},
@@ -115,6 +149,7 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [selectedZodiac, setSelectedZodiac] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
+  const [currentNews, setCurrentNews] = useState(0)
   const router = useRouter()
 
   useEffect(() => {
@@ -691,6 +726,59 @@ export default function Home() {
                 </div>
               </Link>
             </div>
+          </div>
+        </section>
+
+        {/* News Carousel Section */}
+        <section className="news-carousel-section animate-on-scroll">
+          <div className="section-header">
+            <span className="section-badge">{lang === 'et' ? 'Uudised' : 'News'}</span>
+            <h2 className="section-title">{lang === 'et' ? 'Viimased uudised' : 'Latest News'}</h2>
+          </div>
+
+          <div className="news-carousel">
+            <div className="carousel-track" style={{ transform: `translateX(-${currentNews * 100}%)` }}>
+              {newsItems.map((news) => (
+                <Link href={`/uudised/${news.id}`} key={news.id} className="news-carousel-slide">
+                  <div className="news-card-image">
+                    <img src={news.image} alt={lang === 'et' ? news.title : news.titleEn} />
+                    <div className="news-card-category">{news.category}</div>
+                  </div>
+                  <div className="news-card-content">
+                    <span className="news-card-date">{news.date}</span>
+                    <h3 className="news-card-title">{lang === 'et' ? news.title : news.titleEn}</h3>
+                    <p className="news-card-desc">{lang === 'et' ? news.description : news.descriptionEn}</p>
+                    <span className="news-card-readmore">
+                      {lang === 'et' ? 'Loe edasi' : 'Read more'} <i className="fas fa-arrow-right"></i>
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="carousel-controls">
+            <button 
+              className="carousel-btn prev" 
+              onClick={(e) => { e.preventDefault(); setCurrentNews((prev) => (prev === 0 ? newsItems.length - 1 : prev - 1)) }}
+            >
+              <i className="fas fa-chevron-left"></i>
+            </button>
+            <div className="carousel-dots">
+              {newsItems.map((_, index) => (
+                <button 
+                  key={index} 
+                  className={`carousel-dot ${currentNews === index ? 'active' : ''}`}
+                  onClick={(e) => { e.preventDefault(); setCurrentNews(index) }}
+                />
+              ))}
+            </div>
+            <button 
+              className="carousel-btn next" 
+              onClick={(e) => { e.preventDefault(); setCurrentNews((prev) => (prev === newsItems.length - 1 ? 0 : prev + 1)) }}
+            >
+              <i className="fas fa-chevron-right"></i>
+            </button>
           </div>
         </section>
 
