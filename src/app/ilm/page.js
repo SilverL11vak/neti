@@ -279,6 +279,7 @@ export default function IlmPage() {
           width: 100%;
           max-width: 100%;
           overflow-x: hidden;
+          box-sizing: border-box;
         }
         
         .container {
@@ -286,6 +287,7 @@ export default function IlmPage() {
           margin: 0 auto;
           width: 100%;
           overflow-x: hidden;
+          box-sizing: border-box;
         }
         
         .back-link {
@@ -393,6 +395,7 @@ export default function IlmPage() {
           width: 100%;
           max-width: 100%;
           overflow-x: hidden;
+          box-sizing: border-box;
         }
         
         .weather-main-content {
@@ -411,6 +414,7 @@ export default function IlmPage() {
           width: 100%;
           max-width: 100%;
           overflow-x: hidden;
+          box-sizing: border-box;
         }
         
         .card-header {
@@ -489,6 +493,8 @@ export default function IlmPage() {
           width: 100%;
           max-width: 100%;
           overflow-x: hidden;
+          box-sizing: border-box;
+          word-break: break-word;
         }
         
         .forecast-day {
@@ -639,6 +645,10 @@ export default function IlmPage() {
           border-radius: 16px;
           padding: 24px;
           box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
+          box-sizing: border-box;
         }
         
         .sidebar-widget h4 {
@@ -674,6 +684,11 @@ export default function IlmPage() {
           cursor: pointer;
           transition: all 0.2s;
           text-align: left;
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
+          box-sizing: border-box;
+          word-break: break-word;
         }
         
         .city-item:hover {
