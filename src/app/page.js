@@ -153,19 +153,23 @@ export default function Home() {
     const observerOptions = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.1
+      threshold: 0.15
     }
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible')
+          // Add a small delay to ensure smooth animation
+          setTimeout(() => {
+            entry.target.classList.add('is-visible')
+          }, 100)
         }
       })
     }, observerOptions)
 
     // Observe all animated elements
-    document.querySelectorAll('.animate-on-scroll, .card-entrance').forEach(el => {
+    const animatedElements = document.querySelectorAll('.animate-on-scroll, .card-entrance')
+    animatedElements.forEach(el => {
       observer.observe(el)
     })
 
