@@ -739,7 +739,12 @@ export default function IlmPage() {
           color: #64748b;
           font-weight: 400;
         }
+
+        /* ============================================
+           RESPONSIVE STYLES - TABLET AND MOBILE
+           ============================================ */
         
+        /* Tablet (1024px and below) */
         @media (max-width: 1024px) {
           .weather-detail-grid {
             grid-template-columns: 1fr;
@@ -750,9 +755,20 @@ export default function IlmPage() {
           }
         }
         
+        /* Tablet Portrait / Large Mobile (768px and below) */
         @media (max-width: 768px) {
+          .weather-detail-header {
+            padding: 60px 16px 40px;
+          }
+          
           .weather-title {
             font-size: 1.5rem;
+          }
+          
+          .weather-main-temp {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
           }
           
           .temp-value {
@@ -763,12 +779,258 @@ export default function IlmPage() {
             font-size: 2.5rem;
           }
           
+          .temp-details .condition {
+            font-size: 1.25rem;
+          }
+          
+          .weather-meta {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+          }
+          
+          .section {
+            padding: 32px 16px;
+          }
+          
+          .weather-card {
+            padding: 16px;
+          }
+          
           .details-grid {
             grid-template-columns: 1fr;
           }
           
           .sun-times {
             grid-template-columns: 1fr;
+          }
+          
+          .card-header h3 {
+            font-size: 1rem;
+          }
+          
+          /* City list responsive */
+          .city-item {
+            grid-template-columns: 1fr;
+            gap: 4px;
+            padding: 10px 12px;
+          }
+          
+          .city-name {
+            font-size: 0.95rem;
+          }
+          
+          .city-temp {
+            font-size: 1rem;
+          }
+          
+          .city-condition {
+            font-size: 0.75rem;
+          }
+          
+          /* Forecast list responsive */
+          .forecast-item {
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px 12px;
+          }
+          
+          .forecast-day {
+            width: 80px;
+            font-size: 0.9rem;
+          }
+          
+          .forecast-temps {
+            width: auto;
+            min-width: 60px;
+          }
+          
+          .forecast-bar {
+            display: none;
+          }
+          
+          /* Hourly scroll - ensure it scrolls on mobile */
+          .hourly-scroll {
+            gap: 12px;
+            padding: 8px 4px;
+          }
+          
+          .hourly-item {
+            min-width: 60px;
+            padding: 12px 10px;
+          }
+          
+          .hour-time {
+            font-size: 0.75rem;
+          }
+          
+          .hourly-item i {
+            font-size: 1.25rem;
+          }
+          
+          .hour-temp {
+            font-size: 1rem;
+          }
+          
+          /* Quick stats responsive */
+          .quick-stats {
+            gap: 8px;
+          }
+          
+          .quick-stat {
+            flex-wrap: wrap;
+            padding: 10px;
+            gap: 8px;
+          }
+          
+          .quick-stat span:first-of-type {
+            width: 100%;
+          }
+          
+          .quick-stat .stat-label {
+            margin-left: 0;
+          }
+          
+          /* Sun card responsive */
+          .sun-card {
+            padding: 16px;
+          }
+          
+          .sun-icon {
+            width: 48px;
+            height: 48px;
+            font-size: 1.25rem;
+          }
+          
+          .sun-value {
+            font-size: 1.25rem;
+          }
+          
+          /* Sidebar widgets */
+          .sidebar-widget {
+            padding: 16px;
+          }
+          
+          .sidebar-widget h4 {
+            font-size: 0.95rem;
+          }
+        }
+        
+        /* Small Mobile (480px and below) */
+        @media (max-width: 480px) {
+          .weather-detail-header {
+            padding: 50px 12px 30px;
+          }
+          
+          .weather-title {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+          }
+          
+          .temp-value {
+            font-size: 3rem;
+          }
+          
+          .temp-unit {
+            font-size: 1.5rem;
+          }
+          
+          .temp-display i {
+            font-size: 2rem;
+            margin-right: 8px;
+          }
+          
+          .temp-details .condition {
+            font-size: 1.1rem;
+          }
+          
+          .temp-details .feels-like {
+            font-size: 0.9rem;
+          }
+          
+          .weather-location-badge,
+          .weather-date {
+            font-size: 0.8rem;
+          }
+          
+          .section {
+            padding: 24px 12px;
+          }
+          
+          .weather-detail-grid {
+            gap: 20px;
+          }
+          
+          .card-header {
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+          }
+          
+          .card-header h3 {
+            font-size: 0.95rem;
+            gap: 8px;
+          }
+          
+          .card-header h3 i {
+            font-size: 0.9rem;
+          }
+          
+          /* Smaller hourly items */
+          .hourly-item {
+            min-width: 55px;
+            padding: 10px 8px;
+          }
+          
+          .hour-time {
+            font-size: 0.7rem;
+          }
+          
+          .hourly-item i {
+            font-size: 1.1rem;
+          }
+          
+          .hour-temp {
+            font-size: 0.9rem;
+          }
+          
+          /* Detail items */
+          .detail-item {
+            padding: 12px;
+            gap: 10px;
+          }
+          
+          .detail-item i {
+            font-size: 1.25rem;
+            width: 28px;
+          }
+          
+          .detail-value {
+            font-size: 0.9rem;
+          }
+          
+          .detail-label {
+            font-size: 0.75rem;
+          }
+          
+          /* City item more compact */
+          .city-item {
+            padding: 8px 10px;
+          }
+          
+          .city-name {
+            font-size: 0.9rem;
+          }
+        }
+        
+        /* Touch-friendly: hide scrollbar on touch devices */
+        @media (hover: none) and (pointer: coarse) {
+          .hourly-scroll {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
+          
+          .hourly-scroll::-webkit-scrollbar {
+            display: none;
           }
         }
       `}</style>
