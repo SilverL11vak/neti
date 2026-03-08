@@ -233,20 +233,6 @@ export default function Home() {
           </div>
 
           <div className="nav-controls">
-            <div className="lang-toggle">
-              <button 
-                className={`lang-btn ${lang === 'et' ? 'active' : ''}`}
-                onClick={() => setLang('et')}
-              >
-                ET
-              </button>
-              <button 
-                className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
-                onClick={() => setLang('en')}
-              >
-                EN
-              </button>
-            </div>
             <div 
               className={`hamburger ${mobileMenuOpen ? 'active' : ''}`} 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -261,6 +247,20 @@ export default function Home() {
 
       {/* Mobile Menu */}
       <div className={`mobile-menu ${mobileMenuOpen ? 'active' : ''}`}>
+        <div className="mobile-lang-toggle">
+          <button 
+            className={`lang-btn ${lang === 'et' ? 'active' : ''}`}
+            onClick={() => setLang('et')}
+          >
+            ET
+          </button>
+          <button 
+            className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
+            onClick={() => setLang('en')}
+          >
+            EN
+          </button>
+        </div>
         <Link href="/kategooria" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Kategooriad</Link>
         <Link href="/otsing" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Otsing</Link>
         <Link href="/ilm" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Ilm</Link>

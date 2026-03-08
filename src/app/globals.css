@@ -827,12 +827,41 @@ a {
   color: #1d4ed8;
 }
 
+.mobile-lang-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.mobile-lang-toggle .lang-btn {
+  padding: 8px 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobile-lang-toggle .lang-btn.active {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+  color: white;
+}
+
 @media (max-width: 900px) {
   .hamburger {
     display: flex;
   }
   
   .nav-links {
+    display: none;
+  }
+  
+  .lang-toggle {
     display: none;
   }
 }
