@@ -276,11 +276,16 @@ export default function IlmPage() {
           background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
           padding: 80px 24px 60px;
           color: white;
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
         }
         
         .container {
           max-width: 1200px;
           margin: 0 auto;
+          width: 100%;
+          overflow-x: hidden;
         }
         
         .back-link {
@@ -378,18 +383,24 @@ export default function IlmPage() {
         .section {
           padding: 60px 24px;
           background: #f8fafc;
+          overflow-x: hidden;
         }
         
         .weather-detail-grid {
           display: grid;
           grid-template-columns: 1fr 340px;
           gap: 32px;
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
         }
         
         .weather-main-content {
           display: flex;
           flex-direction: column;
           gap: 24px;
+          width: 100%;
+          max-width: 100%;
         }
         
         .weather-card {
@@ -397,6 +408,9 @@ export default function IlmPage() {
           border-radius: 16px;
           padding: 24px;
           box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
         }
         
         .card-header {
@@ -425,6 +439,8 @@ export default function IlmPage() {
           overflow-x: auto;
           padding-bottom: 8px;
           -webkit-overflow-scrolling: touch;
+          width: 100%;
+          max-width: 100%;
         }
         
         .hourly-item {
@@ -459,6 +475,8 @@ export default function IlmPage() {
           display: flex;
           flex-direction: column;
           gap: 12px;
+          width: 100%;
+          max-width: 100%;
         }
         
         .forecast-item {
@@ -468,6 +486,9 @@ export default function IlmPage() {
           padding: 12px 16px;
           background: #f8fafc;
           border-radius: 10px;
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
         }
         
         .forecast-day {
@@ -517,6 +538,8 @@ export default function IlmPage() {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 16px;
+          width: 100%;
+          max-width: 100%;
         }
         
         .detail-item {
@@ -607,6 +630,8 @@ export default function IlmPage() {
           display: flex;
           flex-direction: column;
           gap: 24px;
+          width: 100%;
+          max-width: 100%;
         }
         
         .sidebar-widget {
@@ -633,6 +658,8 @@ export default function IlmPage() {
           display: flex;
           flex-direction: column;
           gap: 8px;
+          width: 100%;
+          max-width: 100%;
         }
         
         .city-item {
