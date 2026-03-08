@@ -2,24 +2,17 @@
 
 /* Hero Section */
 .horo-hero {
-  background: linear-gradient(180deg, #1e293b 0%, #0f172a 50%, #1e293b 100%);
-  padding: 120px 24px 60px;
+  background: #f8fafc;
+  padding: 90px 24px 40px;
   text-align: center;
-  color: white;
+  color: #1e293b;
   position: relative;
   overflow: hidden;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .horo-hero .hero-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(147, 51, 234, 0.2) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.15) 0%, transparent 40%);
-  pointer-events: none;
+  display: none;
 }
 
 .horo-hero .hero-content {
@@ -31,18 +24,18 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: #f1f5f9;
   padding: 8px 16px;
   border-radius: 30px;
   font-size: 0.85rem;
   margin-bottom: 20px;
+  color: #64748b;
 }
 
 .horo-hero .badge-dot {
   width: 8px;
   height: 8px;
-  background: #22c55e;
+  background: #a855f7;
   border-radius: 50%;
 }
 
@@ -53,7 +46,7 @@
 }
 
 .horo-hero .gradient-text {
-  background: linear-gradient(135deg, #a855f7 0%, #3b82f6 100%);
+  background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -61,7 +54,7 @@
 
 .horo-hero .hero-subtitle {
   font-size: 1.1rem;
-  color: #94a3b8;
+  color: #64748b;
 }
 
 /* Period Tabs */
