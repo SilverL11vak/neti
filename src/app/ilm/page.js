@@ -283,7 +283,7 @@ export default function IlmPage() {
           color: white;
           width: 100%;
           max-width: 100%;
-          overflow-x: hidden;
+          overflow: hidden;
           box-sizing: border-box;
         }
         
