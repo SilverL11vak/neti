@@ -7,5 +7,9 @@ export const metadata = {
 }
 
 export default function UudisedLayout({ children }) {
-  return children
+  return (
+    <div>
+      {children}
+    </div>
+  )
 }
