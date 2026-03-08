@@ -165,39 +165,6 @@ export default function AutodPage() {
     <>
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="hero autod-hero animate-on-scroll">
-        <div className="hero-content">
-          <div className="hero-badge">
-            <span className="badge-dot"></span>
-            {lang === 'et' ? 'Eesti suurim autode portaal' : 'Estonia\'s largest car portal'}
-          </div>
-
-          <h1 className="hero-title">
-            <span className="hero-title-main">{lang === 'et' ? 'Leia endale sobiv auto' : 'Find Your Perfect Car'}</span>
-            <span className="gradient-text">{lang === 'et' ? 'Tuhatelt kuulutustest' : 'From Thousands of Listings'}</span>
-          </h1>
-
-          <p className="hero-subtitle">
-            {lang === 'et' 
-              ? 'Otsi ja võrdle autosid parimatelt müüjatelt üle Eesti'
-              : 'Search and compare cars from the best sellers across Estonia'}
-          </p>
-          
-          <div className="hero-search-wrapper">
-            <form className="hero-search-simple">
-              <i className="fas fa-search"></i>
-              <input
-                type="text"
-                placeholder={lang === 'et' ? 'Otsi marki, mudelit, mudelinime...' : 'Search make, model...'}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </form>
-          </div>
-        </div>
-      </section>
-
       {/* Main Content */}
       <main className="section">
         <div className="container">

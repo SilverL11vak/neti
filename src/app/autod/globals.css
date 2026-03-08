@@ -110,7 +110,7 @@
 
 /* Section Styles */
 .section {
-  padding: 60px 16px;
+  padding: 100px 16px 60px;
   background: #f8fafc;
 }
 
@@ -493,7 +493,7 @@
   }
   
   .section {
-    padding: 40px 12px;
+    padding: 80px 12px 40px;
   }
   
   .filter-chips {
