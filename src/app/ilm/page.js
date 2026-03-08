@@ -62,25 +62,25 @@ export default function IlmPage() {
       <Navbar />
 
       {/* Page Header */}
-      <div className="car-detail-header" style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)' }}>
+      <div className="car-detail-header" style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)', padding: '100px 16px 40px' }}>
         <div className="container">
-          <Link href="/" className="back-link" style={{ color: 'rgba(255,255,255,0.8)' }}>
+          <Link href="/" className="back-link" style={{ color: 'rgba(255,255,255,0.8)', marginBottom: '16px' }}>
             <i className="fas fa-arrow-left"></i>
             Tagasi
           </Link>
-          <div className="car-title-row">
-            <h1 style={{ color: 'white' }}>
+          <div className="car-title-row" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '12px' }}>
+            <h1 style={{ color: 'white', fontSize: '1.75rem' }}>
               {lang === 'et' ? 'Ilm Eestis' : 'Weather in Estonia'}
             </h1>
-            <span className="car-year" style={{ background: 'rgba(255,255,255,0.2)', color: 'white' }}>
+            <span className="car-year" style={{ background: 'rgba(255,255,255,0.2)', color: 'white', fontSize: '0.9rem' }}>
               <i className="fas fa-map-marker-alt"></i> {selectedCity}
             </span>
           </div>
-          <div className="car-price-location">
-            <span className="car-price" style={{ color: 'white', fontSize: '3rem' }}>
+          <div className="car-price-location" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '8px' }}>
+            <span className="car-price" style={{ color: 'white', fontSize: '2.5rem' }}>
               {weatherData.current.temp}°C
             </span>
-            <span className="car-location" style={{ color: 'rgba(255,255,255,0.8)' }}>
+            <span className="car-location" style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem' }}>
               <i className="fas fa-calendar-alt"></i>
               8. märts 2026
             </span>
@@ -89,130 +89,150 @@ export default function IlmPage() {
       </div>
 
       {/* Main Content */}
-      <main className="section">
+      <main className="section" style={{ padding: '24px 16px' }}>
         <div className="container">
-          <div className="car-detail-grid">
+          {/* Grid - stacked on mobile */}
+          <div className="car-detail-grid" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             {/* Left Column - Hourly Forecast */}
-            <div className="car-images">
-              <div className="main-image" style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '60px' }}>
+            <div className="car-images" style={{ width: '100%' }}>
+              <div className="main-image" style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 20px', borderRadius: '16px', marginBottom: '16px' }}>
                 <div style={{ textAlign: 'center' }}>
-                  <i className={`fas ${weatherData.current.icon}`} style={{ fontSize: '8rem', color: '#3b82f6', marginBottom: '20px' }}></i>
-                  <p style={{ fontSize: '1.5rem', color: '#1e293b', fontWeight: '600' }}>
+                  <i className={`fas ${weatherData.current.icon}`} style={{ fontSize: '5rem', color: '#3b82f6', marginBottom: '16px' }}></i>
+                  <p style={{ fontSize: '1.25rem', color: '#1e293b', fontWeight: '600', marginBottom: '8px' }}>
                     {lang === 'et' ? weatherData.current.condition : weatherData.current.conditionEn}
                   </p>
-                  <p style={{ color: '#64748b' }}>
+                  <p style={{ color: '#64748b', fontSize: '0.9rem' }}>
                     {lang === 'et' ? 'Tundub nagu' : 'Feels like'} {weatherData.current.tempFeels}°C
                   </p>
                 </div>
               </div>
-              <div className="image-thumbs">
+              {/* Horizontal scroll for hourly on mobile */}
+              <div style={{ display: 'flex', gap: '12px', overflowX: 'auto', paddingBottom: '12px', WebkitOverflowScrolling: 'touch' }}>
                 {weatherData.hourly.map((hour, i) => (
-                  <button 
+                  <div 
                     key={i} 
-                    className="image-thumb"
-                    style={{ padding: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+                    style={{ 
+                      minWidth: '80px', 
+                      padding: '16px 12px', 
+                      background: '#f8fafc', 
+                      borderRadius: '12px',
+                      textAlign: 'center',
+                      border: '1px solid #e2e8f0',
+                      flexShrink: 0
+                    }}
                   >
-                    <span style={{ fontSize: '0.85rem', color: '#64748b' }}>{hour.time}</span>
-                    <i className={`fas ${hour.icon}`} style={{ fontSize: '1.5rem', color: '#3b82f6' }}></i>
+                    <span style={{ fontSize: '0.8rem', color: '#64748b', display: 'block', marginBottom: '8px' }}>{hour.time}</span>
+                    <i className={`fas ${hour.icon}`} style={{ fontSize: '1.25rem', color: '#3b82f6', display: 'block', marginBottom: '8px' }}></i>
                     <span style={{ fontWeight: '600', color: '#1e293b' }}>{hour.temp}°</span>
-                  </button>
+                  </div>
                 ))}
               </div>
             </div>
 
             {/* Right Column - Info Panel */}
-            <div className="car-info-panel">
-              {/* Quick Stats */}
-              <div className="stats-grid">
-                <div className="stat-item">
-                  <i className="fas fa-wind"></i>
-                  <span className="stat-value">{weatherData.current.wind} km/h {weatherData.current.windDir}</span>
-                  <span className="stat-label">{lang === 'et' ? 'Tuul' : 'Wind'}</span>
+            <div className="car-info-panel" style={{ width: '100%' }}>
+              {/* Quick Stats - 2x2 grid on mobile */}
+              <div className="stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', marginBottom: '24px' }}>
+                <div className="stat-item" style={{ padding: '16px', background: '#f8fafc', borderRadius: '12px', textAlign: 'center', border: '1px solid #e2e8f0' }}>
+                  <i className="fas fa-wind" style={{ color: '#3b82f6', marginBottom: '8px' }}></i>
+                  <span className="stat-value" style={{ display: 'block', fontWeight: '600', color: '#1e293b' }}>{weatherData.current.wind} km/h</span>
+                  <span className="stat-label" style={{ fontSize: '0.8rem', color: '#64748b' }}>{lang === 'et' ? 'Tuul' : 'Wind'}</span>
                 </div>
-                <div className="stat-item">
-                  <i className="fas fa-tint"></i>
-                  <span className="stat-value">{weatherData.current.humidity}%</span>
-                  <span className="stat-label">{lang === 'et' ? 'Niiskus' : 'Humidity'}</span>
+                <div className="stat-item" style={{ padding: '16px', background: '#f8fafc', borderRadius: '12px', textAlign: 'center', border: '1px solid #e2e8f0' }}>
+                  <i className="fas fa-tint" style={{ color: '#3b82f6', marginBottom: '8px' }}></i>
+                  <span className="stat-value" style={{ display: 'block', fontWeight: '600', color: '#1e293b' }}>{weatherData.current.humidity}%</span>
+                  <span className="stat-label" style={{ fontSize: '0.8rem', color: '#64748b' }}>{lang === 'et' ? 'Niiskus' : 'Humidity'}</span>
                 </div>
-                <div className="stat-item">
-                  <i className="fas fa-gauge-high"></i>
-                  <span className="stat-value">{weatherData.current.pressure} hPa</span>
-                  <span className="stat-label">{lang === 'et' ? 'Rõhk' : 'Pressure'}</span>
+                <div className="stat-item" style={{ padding: '16px', background: '#f8fafc', borderRadius: '12px', textAlign: 'center', border: '1px solid #e2e8f0' }}>
+                  <i className="fas fa-gauge-high" style={{ color: '#3b82f6', marginBottom: '8px' }}></i>
+                  <span className="stat-value" style={{ display: 'block', fontWeight: '600', color: '#1e293b' }}>{weatherData.current.pressure}</span>
+                  <span className="stat-label" style={{ fontSize: '0.8rem', color: '#64748b' }}>hPa</span>
                 </div>
-                <div className="stat-item">
-                  <i className="fas fa-eye"></i>
-                  <span className="stat-value">{weatherData.current.visibility} km</span>
-                  <span className="stat-label">{lang === 'et' ? 'Nähtavus' : 'Visibility'}</span>
+                <div className="stat-item" style={{ padding: '16px', background: '#f8fafc', borderRadius: '12px', textAlign: 'center', border: '1px solid #e2e8f0' }}>
+                  <i className="fas fa-eye" style={{ color: '#3b82f6', marginBottom: '8px' }}></i>
+                  <span className="stat-value" style={{ display: 'block', fontWeight: '600', color: '#1e293b' }}>{weatherData.current.visibility} km</span>
+                  <span className="stat-label" style={{ fontSize: '0.8rem', color: '#64748b' }}>{lang === 'et' ? 'Nähtavus' : 'Visibility'}</span>
                 </div>
               </div>
 
               {/* City Selector */}
-              <div className="contact-card" style={{ padding: '20px' }}>
-                <h3 style={{ marginBottom: '15px', color: '#1e293b' }}>
-                  <i className="fas fa-city"></i> {lang === 'et' ? 'Vali linn' : 'Select City'}
+              <div style={{ padding: '20px', background: 'white', borderRadius: '16px', marginBottom: '24px', boxShadow: '0 2px 10px rgba(0,0,0,0.06)', border: '1px solid #e2e8f0' }}>
+                <h3 style={{ marginBottom: '16px', color: '#1e293b', fontSize: '1rem' }}>
+                  <i className="fas fa-city" style={{ marginRight: '8px', color: '#3b82f6' }}></i> 
+                  {lang === 'et' ? 'Vali linn' : 'Select City'}
                 </h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px' }}>
                   {weatherData.cities.map((city, i) => (
                     <button 
                       key={i}
                       onClick={() => setSelectedCity(city.name)}
                       style={{ 
-                        padding: '12px 16px', 
+                        padding: '12px', 
                         border: '1px solid #e2e8f0', 
                         borderRadius: '8px',
                         background: selectedCity === city.name ? '#3b82f6' : 'white',
                         color: selectedCity === city.name ? 'white' : '#1e293b',
                         cursor: 'pointer',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        transition: 'all 0.2s'
+                        fontSize: '0.85rem',
+                        transition: 'all 0.2s',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis'
                       }}
                     >
-                      <span>{city.name}</span>
-                      <span>{city.temp}° - {city.condition}</span>
+                      {city.name}
                     </button>
                   ))}
                 </div>
               </div>
 
               {/* Sun Times */}
-              <div className="seller-card">
-                <h3>{lang === 'et' ? 'Päikseaeg' : 'Sun Times'}</h3>
-                <p style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-                  <i className="fas fa-sun" style={{ color: '#f59e0b' }}></i>
-                  <span>{lang === 'et' ? 'Päiksetõus' : 'Sunrise'}:</span>
-                  <strong>{weatherData.current.sunrise}</strong>
-                </p>
-                <p style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <i className="fas fa-moon" style={{ color: '#6366f1' }}></i>
-                  <span>{lang === 'et' ? 'Päikseloojang' : 'Sunset'}:</span>
-                  <strong>{weatherData.current.sunset}</strong>
-                </p>
+              <div style={{ padding: '20px', background: 'white', borderRadius: '16px', boxShadow: '0 2px 10px rgba(0,0,0,0.06)', border: '1px solid #e2e8f0' }}>
+                <h3 style={{ marginBottom: '16px', color: '#1e293b', fontSize: '1rem' }}>
+                  <i className="fas fa-sun" style={{ marginRight: '8px', color: '#f59e0b' }}></i>
+                  {lang === 'et' ? 'Päikseaeg' : 'Sun Times'}
+                </h3>
+                <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                  <div style={{ textAlign: 'center' }}>
+                    <i className="fas fa-sun" style={{ fontSize: '1.5rem', color: '#f59e0b', marginBottom: '8px', display: 'block' }}></i>
+                    <p style={{ fontSize: '0.8rem', color: '#64748b', marginBottom: '4px' }}>{lang === 'et' ? 'Päiksetõus' : 'Sunrise'}</p>
+                    <strong style={{ color: '#1e293b' }}>{weatherData.current.sunrise}</strong>
+                  </div>
+                  <div style={{ textAlign: 'center' }}>
+                    <i className="fas fa-moon" style={{ fontSize: '1.5rem', color: '#6366f1', marginBottom: '8px', display: 'block' }}></i>
+                    <p style={{ fontSize: '0.8rem', color: '#64748b', marginBottom: '4px' }}>{lang === 'et' ? 'Päikseloojang' : 'Sunset'}</p>
+                    <strong style={{ color: '#1e293b' }}>{weatherData.current.sunset}</strong>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* 7-Day Forecast */}
-          <div className="detail-section">
-            <h2><i className="fas fa-calendar-alt"></i> {lang === 'et' ? '7 päeva prognoos' : '7-Day Forecast'}</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '16px', marginTop: '20px' }}>
+          {/* 7-Day Forecast - horizontal scroll on mobile */}
+          <div className="detail-section" style={{ marginTop: '32px' }}>
+            <h2 style={{ fontSize: '1.25rem', marginBottom: '16px', color: '#1e293b' }}>
+              <i className="fas fa-calendar-alt" style={{ marginRight: '8px', color: '#3b82f6' }}></i> 
+              {lang === 'et' ? '7 päeva prognoos' : '7-Day Forecast'}
+            </h2>
+            <div style={{ display: 'flex', gap: '12px', overflowX: 'auto', paddingBottom: '12px', WebkitOverflowScrolling: 'touch' }}>
               {weatherData.forecast.map((day, i) => (
                 <div 
                   key={i}
                   style={{ 
-                    padding: '20px', 
+                    minWidth: '90px', 
+                    padding: '16px 12px', 
                     background: '#f8fafc', 
                     borderRadius: '12px', 
                     textAlign: 'center',
-                    border: '1px solid #e2e8f0'
+                    border: '1px solid #e2e8f0',
+                    flexShrink: 0
                   }}
                 >
-                  <p style={{ fontWeight: '600', color: '#1e293b', marginBottom: '10px' }}>
-                    {lang === 'et' ? day.name : day.nameEn}
+                  <p style={{ fontWeight: '600', color: '#1e293b', fontSize: '0.85rem', marginBottom: '8px' }}>
+                    {day.day}
                   </p>
-                  <i className={`fas ${day.icon}`} style={{ fontSize: '2rem', color: '#3b82f6', marginBottom: '10px' }}></i>
-                  <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
+                  <i className={`fas ${day.icon}`} style={{ fontSize: '1.5rem', color: '#3b82f6', marginBottom: '8px', display: 'block' }}></i>
+                  <div style={{ display: 'flex', justifyContent: 'center', gap: '6px' }}>
                     <span style={{ fontWeight: '600', color: '#1e293b' }}>{day.high}°</span>
                     <span style={{ color: '#64748b' }}>/</span>
                     <span style={{ color: '#64748b' }}>{day.low}°</span>
@@ -223,37 +243,34 @@ export default function IlmPage() {
           </div>
 
           {/* Weather Details */}
-          <div className="detail-section">
-            <h2><i className="fas fa-info-circle"></i> {lang === 'et' ? 'Ilma üksikasjad' : 'Weather Details'}</h2>
-            <div className="specs-table">
-              <div className="spec-row">
-                <span className="spec-name">{lang === 'et' ? 'Tuul' : 'Wind'}</span>
-                <span className="spec-val">{weatherData.current.wind} km/h {weatherData.current.windDir}</span>
-              </div>
-              <div className="spec-row">
-                <span className="spec-name">{lang === 'et' ? 'Niiskus' : 'Humidity'}</span>
-                <span className="spec-val">{weatherData.current.humidity}%</span>
-              </div>
-              <div className="spec-row">
-                <span className="spec-name">{lang === 'et' ? 'Õhurõhk' : 'Pressure'}</span>
-                <span className="spec-val">{weatherData.current.pressure} hPa</span>
-              </div>
-              <div className="spec-row">
-                <span className="spec-name">{lang === 'et' ? 'Nähtavus' : 'Visibility'}</span>
-                <span className="spec-val">{weatherData.current.visibility} km</span>
-              </div>
-              <div className="spec-row">
-                <span className="spec-name">{lang === 'et' ? 'UV-index' : 'UV Index'}</span>
-                <span className="spec-val">{weatherData.current.uv}</span>
-              </div>
-              <div className="spec-row">
-                <span className="spec-name">{lang === 'et' ? 'Päiksetõus' : 'Sunrise'}</span>
-                <span className="spec-val">{weatherData.current.sunrise}</span>
-              </div>
-              <div className="spec-row">
-                <span className="spec-name">{lang === 'et' ? 'Päikseloojang' : 'Sunset'}</span>
-                <span className="spec-val">{weatherData.current.sunset}</span>
-              </div>
+          <div className="detail-section" style={{ marginTop: '32px' }}>
+            <h2 style={{ fontSize: '1.25rem', marginBottom: '16px', color: '#1e293b' }}>
+              <i className="fas fa-info-circle" style={{ marginRight: '8px', color: '#3b82f6' }}></i> 
+              {lang === 'et' ? 'Ilma üksikasjad' : 'Weather Details'}
+            </h2>
+            <div style={{ background: 'white', borderRadius: '16px', overflow: 'hidden', border: '1px solid #e2e8f0' }}>
+              {[
+                { label: lang === 'et' ? 'Tuul' : 'Wind', value: `${weatherData.current.wind} km/h ${weatherData.current.windDir}` },
+                { label: lang === 'et' ? 'Niiskus' : 'Humidity', value: `${weatherData.current.humidity}%` },
+                { label: lang === 'et' ? 'Õhurõhk' : 'Pressure', value: `${weatherData.current.pressure} hPa` },
+                { label: lang === 'et' ? 'Nähtavus' : 'Visibility', value: `${weatherData.current.visibility} km` },
+                { label: lang === 'et' ? 'UV-index' : 'UV Index', value: weatherData.current.uv },
+                { label: lang === 'et' ? 'Päiksetõus' : 'Sunrise', value: weatherData.current.sunrise },
+                { label: lang === 'et' ? 'Päikseloojang' : 'Sunset', value: weatherData.current.sunset }
+              ].map((item, i) => (
+                <div 
+                  key={i}
+                  style={{ 
+                    display: 'flex', 
+                    justifyContent: 'space-between', 
+                    padding: '14px 16px', 
+                    borderBottom: i < 6 ? '1px solid #e2e8f0' : 'none'
+                  }}
+                >
+                  <span style={{ color: '#64748b' }}>{item.label}</span>
+                  <span style={{ fontWeight: '600', color: '#1e293b' }}>{item.value}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -266,18 +283,19 @@ export default function IlmPage() {
         right: '20px', 
         zIndex: 1000,
         display: 'flex',
-        gap: '10px'
+        gap: '8px'
       }}>
         <button 
           onClick={() => setLang('et')}
           style={{
-            padding: '10px 20px',
+            padding: '10px 16px',
             background: lang === 'et' ? '#3b82f6' : 'white',
             color: lang === 'et' ? 'white' : '#1e293b',
             border: '1px solid #e2e8f0',
             borderRadius: '20px',
             cursor: 'pointer',
             fontWeight: '600',
+            fontSize: '0.85rem',
             boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
           }}
         >
@@ -286,13 +304,14 @@ export default function IlmPage() {
         <button 
           onClick={() => setLang('en')}
           style={{
-            padding: '10px 20px',
+            padding: '10px 16px',
             background: lang === 'en' ? '#3b82f6' : 'white',
             color: lang === 'en' ? 'white' : '#1e293b',
             border: '1px solid #e2e8f0',
             borderRadius: '20px',
             cursor: 'pointer',
             fontWeight: '600',
+            fontSize: '0.85rem',
             boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
           }}
         >
