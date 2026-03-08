@@ -3,7 +3,7 @@
 /* Hero Section - Same as home page */
 .autod-hero {
   background: linear-gradient(180deg, #1e293b 0%, #0f172a 50%, #1e293b 100%);
-  padding: 140px 24px 80px;
+  padding: 80px 24px 60px;
   text-align: center;
   color: white;
   position: relative;
@@ -460,7 +460,7 @@
   }
   
   .autod-hero {
-    padding: 120px 16px 60px;
+    padding: 60px 16px 40px;
   }
   
   .autod-hero .hero-title-main,
@@ -537,7 +537,7 @@
 /* Extra small devices */
 @media (max-width: 360px) {
   .autod-hero {
-    padding: 100px 12px 40px;
+    padding: 60px 12px 30px;
   }
   
   .autod-hero .hero-title-main,
