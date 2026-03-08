@@ -344,30 +344,35 @@ export default function IlmPage() {
         .temp-display i {
           font-size: 4rem;
           margin-right: 12px;
+          color: white;
         }
         
         .temp-value {
           font-size: 5rem;
           font-weight: 700;
           line-height: 1;
+          color: white;
         }
         
         .temp-unit {
           font-size: 2rem;
           margin-top: 8px;
           opacity: 0.8;
+          color: white;
         }
         
         .temp-details .condition {
           font-size: 1.5rem;
           font-weight: 600;
           margin: 0 0 4px 0;
+          color: white;
         }
         
         .temp-details .feels-like {
           font-size: 1rem;
           opacity: 0.8;
           margin: 0;
+          color: rgba(255,255,255,0.9);
         }
         
         .section {
