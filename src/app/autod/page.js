@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Navbar from '@/components/Navbar'
 import './globals.css'
 
 const carBrands = [
@@ -143,75 +144,7 @@ export default function AutodPage() {
 
   return (
     <>
-      {/* Navigation */}
-      <nav className="navbar">
-        <div className="navbar-container">
-          <Link href="/" className="logo">
-            <div className="logo-icon">
-              <i className="fas fa-globe"></i>
-            </div>
-            <span className="logo-text">NETI</span>
-          </Link>
-
-          <div className="nav-links">
-            <Link href="/kategooria" className="nav-link">Kategooriad</Link>
-            <Link href="/otsing" className="nav-link">Otsing</Link>
-            <Link href="/ilm" className="nav-link">Ilm</Link>
-            <Link href="/horoskoop" className="nav-link">Horoskoop</Link>
-            <Link href="/games" className="nav-link">Mängud</Link>
-            <Link href="/meist" className="nav-link">Meist</Link>
-          </div>
-
-          <div className="nav-controls">
-            <div className="lang-toggle">
-              <button 
-                className={`lang-btn ${lang === 'et' ? 'active' : ''}`}
-                onClick={() => setLang('et')}
-              >
-                ET
-              </button>
-              <button 
-                className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
-                onClick={() => setLang('en')}
-              >
-                EN
-              </button>
-            </div>
-            <div 
-              className={`hamburger ${mobileMenuOpen ? 'active' : ''}`} 
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile Menu */}
-      <div className={`mobile-menu ${mobileMenuOpen ? 'active' : ''}`}>
-        <div className="mobile-lang-toggle">
-          <button 
-            className={`lang-btn ${lang === 'et' ? 'active' : ''}`}
-            onClick={() => setLang('et')}
-          >
-            ET
-          </button>
-          <button 
-            className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
-            onClick={() => setLang('en')}
-          >
-            EN
-          </button>
-        </div>
-        <Link href="/kategooria" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Kategooriad</Link>
-        <Link href="/otsing" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Otsing</Link>
-        <Link href="/ilm" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Ilm</Link>
-        <Link href="/horoskoop" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Horoskoop</Link>
-        <Link href="/games" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Mängud</Link>
-        <Link href="/meist" className="nav-link" onClick={() => setMobileMenuOpen(false)}>Meist</Link>
-      </div>
+      <Navbar />
 
       {/* Hero */}
       <section className="auto-hero">
