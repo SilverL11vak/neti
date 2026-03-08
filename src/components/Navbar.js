@@ -10,12 +10,11 @@ export default function Navbar() {
 
   const navLinks = [
     { href: '/autod', label: 'Autod' },
+    { href: '/kinnisvara', label: 'Kinnisvara' },
+    { href: '/too', label: 'Töö' },
+    { href: '/turg', label: 'Osta & Müü' },
     { href: '/kategooria', label: 'Kategooriad' },
     { href: '/otsing', label: 'Otsing' },
-    { href: '/ilm', label: 'Ilm' },
-    { href: '/horoskoop', label: 'Horoskoop' },
-    { href: '/games', label: 'Mängud' },
-    { href: '/meist', label: 'Meist' },
   ]
 
   return (
@@ -31,12 +30,11 @@ export default function Navbar() {
 
           <div className="nav-links">
             <Link href="/autod" className="nav-link">Autod</Link>
+            <Link href="/kinnisvara" className="nav-link">Kinnisvara</Link>
+            <Link href="/too" className="nav-link">Töö</Link>
+            <Link href="/turg" className="nav-link">Osta & Müü</Link>
             <Link href="/kategooria" className="nav-link">Kategooriad</Link>
             <Link href="/otsing" className="nav-link">Otsing</Link>
-            <Link href="/ilm" className="nav-link">Ilm</Link>
-            <Link href="/horoskoop" className="nav-link">Horoskoop</Link>
-            <Link href="/games" className="nav-link">Mängud</Link>
-            <Link href="/meist" className="nav-link">Meist</Link>
           </div>
 
           <div className="nav-controls">
@@ -79,6 +77,9 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <div className={`mobile-menu ${mobileMenuOpen ? 'active' : ''}`}>
         <Link href="/autod" onClick={() => setMobileMenuOpen(false)}>Autod</Link>
+        <Link href="/kinnisvara" onClick={() => setMobileMenuOpen(false)}>Kinnisvara</Link>
+        <Link href="/too" onClick={() => setMobileMenuOpen(false)}>Töö</Link>
+        <Link href="/turg" onClick={() => setMobileMenuOpen(false)}>Osta & Müü</Link>
         <Link href="/kategooria" onClick={() => setMobileMenuOpen(false)}>Kategooriad</Link>
         <Link href="/otsing" onClick={() => setMobileMenuOpen(false)}>Otsing</Link>
         <Link href="/ilm" onClick={() => setMobileMenuOpen(false)}>Ilm</Link>
