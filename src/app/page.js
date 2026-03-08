@@ -229,11 +229,6 @@ export default function Home() {
 
   return (
     <>
-      {/* Skip Link for Accessibility */}
-      <a href="#main-content" className="skip-link">
-        {lang === 'et' ? 'Mine sisuni' : 'Skip to content'}
-      </a>
-
       {/* Loading Screen */}
       {isLoading && (
         <div className="loading-screen">
@@ -308,6 +303,13 @@ export default function Home() {
       <main id="main-content">
         {/* Hero Section */}
         <section className="hero animate-on-scroll">
+          <div className="hero-floating-icons">
+            <span className="floating-icon"><i className="fas fa-globe"></i></span>
+            <span className="floating-icon"><i className="fas fa-search"></i></span>
+            <span className="floating-icon"><i className="fas fa-star"></i></span>
+            <span className="floating-icon"><i className="fas fa-bookmark"></i></span>
+            <span className="floating-icon"><i className="fas fa-th"></i></span>
+          </div>
           <div className="hero-content">
             <div className="hero-badge">
               <span className="badge-dot"></span>
