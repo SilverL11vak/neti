@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import Navbar from '@/components/Navbar'
-import './globals.css'
+import '../globals.css'
 
 const carDatabase = {
   1: {
