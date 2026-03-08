@@ -291,7 +291,7 @@ export default function IlmPage() {
           max-width: 1200px;
           margin: 0 auto;
           width: 100%;
-          overflow-x: hidden;
+          overflow: hidden;
           box-sizing: border-box;
         }
         
