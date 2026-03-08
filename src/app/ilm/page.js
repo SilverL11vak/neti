@@ -272,6 +272,11 @@ export default function IlmPage() {
       </main>
       
       <style jsx>{`
+        * {
+          box-sizing: border-box;
+          max-width: 100%;
+        }
+        
         .weather-detail-header {
           background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
           padding: 80px 24px 60px;
