@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
+import '../kinnisvara/globals.css'
 
 const gamesData = [
   {
@@ -17,7 +18,8 @@ const gamesData = [
     cover: 'https://images.unsplash.com/photo-1634152962476-4b8a00e1915c?w=600&h=400&fit=crop',
     rating: 4.5,
     plays: '12.5K',
-    category: 'Puzzle'
+    category: 'Puzzle',
+    stats: { rooms: 3, area: 85, floor: '2/5' }
   },
   {
     id: 'sudoku',
@@ -31,7 +33,8 @@ const gamesData = [
     cover: 'https://images.unsplash.com/photo-1632569851254-eb58f444c0d0?w=600&h=400&fit=crop',
     rating: 4.8,
     plays: '8.2K',
-    category: 'Puzzle'
+    category: 'Puzzle',
+    stats: { rooms: 4, area: 100, floor: '3/5' }
   },
   {
     id: 'quiz',
@@ -45,7 +48,8 @@ const gamesData = [
     cover: 'https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=600&h=400&fit=crop',
     rating: 4.3,
     plays: '25K',
-    category: 'Trivia'
+    category: 'Trivia',
+    stats: { rooms: 2, area: 60, floor: '1/3' }
   },
   {
     id: 'wordsearch',
@@ -59,7 +63,8 @@ const gamesData = [
     cover: 'https://images.unsplash.com/photo-1632152852627-2a44302f8f4b?w=600&h=400&fit=crop',
     rating: 4.2,
     plays: '15K',
-    category: 'Puzzle'
+    category: 'Puzzle',
+    stats: { rooms: 3, area: 75, floor: '4/5' }
   },
   {
     id: 'memory',
@@ -73,7 +78,8 @@ const gamesData = [
     cover: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=400&fit=crop',
     rating: 4.6,
     plays: '9.8K',
-    category: 'Memory'
+    category: 'Memory',
+    stats: { rooms: 2, area: 55, floor: '2/4' }
   },
   {
     id: 'tictactoe',
@@ -87,21 +93,23 @@ const gamesData = [
     cover: 'https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=600&h=400&fit=crop',
     rating: 4.0,
     plays: '30K',
-    category: 'Strategy'
+    category: 'Strategy',
+    stats: { rooms: 1, area: 30, floor: '1/1' }
   }
 ]
 
 const categories = [
-  { id: 'all', name: 'Kõik', nameEn: 'All' },
-  { id: 'puzzle', name: 'Puzzle', nameEn: 'Puzzle' },
-  { id: 'trivia', name: 'Trivia', nameEn: 'Trivia' },
-  { id: 'memory', name: 'Mälu', nameEn: 'Memory' },
-  { id: 'strategy', name: 'Strateegia', nameEn: 'Strategy' }
+  { id: 'all', name: 'Kõik', nameEn: 'All', icon: 'fa-th' },
+  { id: 'puzzle', name: 'Puzzle', nameEn: 'Puzzle', icon: 'fa-puzzle-piece' },
+  { id: 'trivia', name: 'Trivia', nameEn: 'Trivia', icon: 'fa-question' },
+  { id: 'memory', name: 'Mälu', nameEn: 'Memory', icon: 'fa-brain' },
+  { id: 'strategy', name: 'Strateegia', nameEn: 'Strategy', icon: 'fa-chess' }
 ]
 
 export default function GamesPage() {
   const [lang, setLang] = useState('et')
   const [activeCategory, setActiveCategory] = useState('all')
+  const [selectedGame, setSelectedGame] = useState(null)
 
   const getDifficultyColor = (diff) => {
     if (diff === 'Kerge' || diff === 'Easy') return '#10b981'
@@ -113,53 +121,57 @@ export default function GamesPage() {
     ? gamesData 
     : gamesData.filter(game => game.category.toLowerCase() === activeCategory)
 
+  const handleGameClick = (game) => {
+    setSelectedGame(game)
+  }
+
+  const closeModal = () => {
+    setSelectedGame(null)
+  }
+
   return (
     <>
       <Navbar />
 
-      {/* Page Header - Following news detail page style */}
-      <div className="news-detail-header">
+      {/* Detail Header - Real Estate Style */}
+      <div className="detail-header">
         <div className="container">
           <Link href="/" className="back-link">
             <i className="fas fa-arrow-left"></i>
             Tagasi
           </Link>
           
-          <div className="news-meta">
-            <span className="news-category-badge">
-              <i className="fas fa-gamepad"></i>
-              {lang === 'et' ? 'Mängud' : 'Games'}
-            </span>
-            <span className="news-date">
-              <i className="fas fa-calendar-alt"></i>
-              8. märts 2026
-            </span>
-          </div>
-          
-          <h1 className="news-title">
+          <h1>
             <i className="fas fa-dice" style={{ marginRight: '12px', color: '#1d4ed8' }}></i>
             {lang === 'et' ? ' Tasuta Mängud' : 'Free Games'}
           </h1>
           
-          <div className="news-author-row">
-            <div className="news-author">
-              <div className="author-avatar">
-                <i className="fas fa-gamepad"></i>
-              </div>
-              <div className="author-info">
-                <span className="author-name">NETI Mängud</span>
-                <span className="read-time">
-                  <i className="fas fa-clock"></i>
-                  {gamesData.length} {lang === 'et' ? 'mängu' : 'games'}
-                </span>
-              </div>
-            </div>
-            <div className="news-share">
-              <button className="share-btn"><i className="fab fa-facebook-f"></i></button>
-              <button className="share-btn"><i className="fab fa-twitter"></i></button>
-              <button className="share-btn"><i className="fab fa-linkedin-in"></i></button>
-              <button className="share-btn"><i className="fas fa-link"></i></button>
-            </div>
+          <p className="detail-address">
+            <i className="fas fa-gamepad" style={{ marginRight: '8px' }}></i>
+            {gamesData.length} {lang === 'et' ? 'mängu saadaval' : 'games available'}
+          </p>
+          
+          <span className="detail-price" style={{ color: '#1d4ed8' }}>
+            <i className="fas fa-star" style={{ marginRight: '8px' }}></i>
+            {lang === 'et' ? 'Mängi kohe - Tasuta' : 'Play now - Free'}
+          </span>
+        </div>
+      </div>
+
+      {/* Category Filters */}
+      <div className="section" style={{ paddingBottom: '20px', background: '#f8fafc' }}>
+        <div className="container">
+          <div className="category-tabs">
+            {categories.map(cat => (
+              <button
+                key={cat.id}
+                className={`category-tab ${activeCategory === cat.id ? 'active' : ''}`}
+                onClick={() => setActiveCategory(cat.id)}
+              >
+                <i className={`fas ${cat.icon}`}></i>
+                {lang === 'et' ? cat.name : cat.nameEn}
+              </button>
+            ))}
           </div>
         </div>
       </div>
@@ -167,52 +179,49 @@ export default function GamesPage() {
       {/* Main Content */}
       <main className="section">
         <div className="container">
-          <div className="games-layout">
+          <div className="detail-grid">
             {/* Games Grid - Main Content */}
-            <div className="games-main">
-              {/* Category Filters */}
-              <div className="category-filters">
-                {categories.map(cat => (
-                  <button
-                    key={cat.id}
-                    className={`category-filter-btn ${activeCategory === cat.id ? 'active' : ''}`}
-                    onClick={() => setActiveCategory(cat.id)}
-                  >
-                    {lang === 'et' ? cat.name : cat.nameEn}
-                  </button>
-                ))}
-              </div>
-
-              {/* Games Grid */}
-              <div className="games-grid">
+            <div className="detail-content">
+              <div className="games-list">
                 {filteredGames.map((game, index) => (
-                  <article key={game.id} className="game-card" style={{ animationDelay: `${index * 0.1}s` }}>
-                    <div className="game-card-image">
+                  <article 
+                    key={game.id} 
+                    className="game-listing-card"
+                    onClick={() => handleGameClick(game)}
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <div className="game-listing-image">
                       <img src={game.cover} alt={lang === 'et' ? game.name : game.nameEn} />
                       <span 
-                        className="game-difficulty-badge"
+                        className="game-badge"
                         style={{ background: getDifficultyColor(lang === 'et' ? game.difficulty : game.difficultyEn) }}
                       >
                         {lang === 'et' ? game.difficulty : game.difficultyEn}
                       </span>
                     </div>
-                    <div className="game-card-content">
+                    <div className="game-listing-info">
                       <h3>{lang === 'et' ? game.name : game.nameEn}</h3>
-                      <p>{lang === 'et' ? game.description : game.descriptionEn}</p>
-                      <div className="game-card-footer">
-                        <div className="game-rating">
+                      <p className="game-desc">{lang === 'et' ? game.description : game.descriptionEn}</p>
+                      
+                      <div className="game-stats">
+                        <div className="game-stat">
                           <i className="fas fa-star"></i>
                           <span>{game.rating}</span>
                         </div>
-                        <div className="game-plays">
+                        <div className="game-stat">
                           <i className="fas fa-users"></i>
                           <span>{game.plays}</span>
                         </div>
-                        <button className="play-btn">
-                          {lang === 'et' ? 'Mängi' : 'Play'}
-                          <i className="fas fa-play"></i>
-                        </button>
+                        <div className="game-stat">
+                          <i className="fas fa-layer-group"></i>
+                          <span>{game.category}</span>
+                        </div>
                       </div>
+                      
+                      <button className="btn-primary">
+                        <i className="fas fa-play"></i>
+                        {lang === 'et' ? 'Mängi' : 'Play'}
+                      </button>
                     </div>
                   </article>
                 ))}
@@ -220,45 +229,50 @@ export default function GamesPage() {
             </div>
 
             {/* Sidebar */}
-            <aside className="games-sidebar">
+            <div className="detail-panel">
               {/* Featured Game Widget */}
-              <div className="sidebar-widget featured-widget">
-                <div className="widget-icon">
+              <div className="panel-widget featured-panel">
+                <div className="widget-badge">
                   <i className="fas fa-trophy"></i>
                 </div>
-                <h4>{lang === 'et' ? 'Päevane Väljakutse' : 'Daily Challenge'}</h4>
-                <p>{lang === 'et' ? 'Lahenda iga päev uus ristsõna!' : 'Solve a new crossword every day!'}</p>
-                <div className="countdown-box">
+                <h3>{lang === 'et' ? 'Päevane Väljakutse' : 'Daily Challenge'}</h3>
+                <p>{lang === 'et' ? 'Lahenda iga päev uus ristsõna ja võida auhindu!' : 'Solve a new crossword every day and win prizes!'}</p>
+                
+                <div className="countdown-timer">
                   <i className="fas fa-clock"></i>
                   <span>23:59:59</span>
                 </div>
-                <button className="widget-btn primary">
+                
+                <button className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
+                  <i className="fas fa-play"></i>
                   {lang === 'et' ? 'Mängi kohe' : 'Play now'}
                 </button>
               </div>
 
               {/* Top Players Widget */}
-              <div className="sidebar-widget">
-                <h4><i className="fas fa-crown" style={{ color: '#f59e0b', marginRight: '8px' }}></i>
-                  {lang === 'et' ? 'Edetabel' : 'Leaderboard'}</h4>
-                <div className="leaderboard-list">
+              <div className="panel-widget">
+                <h3>
+                  <i className="fas fa-crown" style={{ color: '#f59e0b', marginRight: '8px' }}></i>
+                  {lang === 'et' ? 'Edetabel' : 'Leaderboard'}
+                </h3>
+                <div className="leaderboard">
                   <div className="leaderboard-item">
                     <span className="rank gold">1</span>
-                    <div className="player-info">
+                    <div className="player-details">
                       <span className="player-name">Mängija123</span>
                       <span className="player-score">2,450 punkti</span>
                     </div>
                   </div>
                   <div className="leaderboard-item">
                     <span className="rank silver">2</span>
-                    <div className="player-info">
+                    <div className="player-details">
                       <span className="player-name">KergeMäng</span>
                       <span className="player-score">2,320 punkti</span>
                     </div>
                   </div>
                   <div className="leaderboard-item">
                     <span className="rank bronze">3</span>
-                    <div className="player-info">
+                    <div className="player-details">
                       <span className="player-name">SudokuPro</span>
                       <span className="player-score">2,180 punkti</span>
                     </div>
@@ -267,29 +281,80 @@ export default function GamesPage() {
               </div>
 
               {/* Categories Widget */}
-              <div className="sidebar-widget">
-                <h4><i className="fas fa-folder" style={{ marginRight: '8px' }}></i>
-                  {lang === 'et' ? 'Kategooriad' : 'Categories'}</h4>
-                <div className="category-list">
+              <div className="panel-widget">
+                <h3>
+                  <i className="fas fa-folder" style={{ marginRight: '8px' }}></i>
+                  {lang === 'et' ? 'Kategooriad' : 'Categories'}
+                </h3>
+                <div className="categories-grid">
                   {categories.slice(1).map(cat => (
-                    <a 
-                      key={cat.id} 
-                      href="#" 
-                      className="category-item"
-                      onClick={(e) => { e.preventDefault(); setActiveCategory(cat.id); }}
+                    <button
+                      key={cat.id}
+                      className={`category-chip ${activeCategory === cat.id ? 'active' : ''}`}
+                      onClick={() => setActiveCategory(cat.id)}
                     >
-                      <span>{lang === 'et' ? cat.name : cat.nameEn}</span>
-                      <span className="count">
+                      <i className={`fas ${cat.icon}`}></i>
+                      {lang === 'et' ? cat.name : cat.nameEn}
+                      <span className="chip-count">
                         {gamesData.filter(g => g.category.toLowerCase() === cat.id).length}
                       </span>
-                    </a>
+                    </button>
                   ))}
                 </div>
               </div>
-            </aside>
+            </div>
           </div>
         </div>
       </main>
+
+      {/* Game Modal */}
+      {selectedGame && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content game-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeModal}>
+              <i className="fas fa-times"></i>
+            </button>
+            
+            <div className="modal-game-image">
+              <img src={selectedGame.cover} alt={lang === 'et' ? selectedGame.name : selectedGame.nameEn} />
+              <span 
+                className="modal-badge"
+                style={{ background: getDifficultyColor(lang === 'et' ? selectedGame.difficulty : selectedGame.difficultyEn) }}
+              >
+                {lang === 'et' ? selectedGame.difficulty : selectedGame.difficultyEn}
+              </span>
+            </div>
+            
+            <div className="modal-game-info">
+              <h2>{lang === 'et' ? selectedGame.name : selectedGame.nameEn}</h2>
+              <p>{lang === 'et' ? selectedGame.description : selectedGame.descriptionEn}</p>
+              
+              <div className="detail-stats">
+                <div className="detail-stat">
+                  <i className="fas fa-star"></i>
+                  <span className="stat-value">{selectedGame.rating}</span>
+                  <span className="stat-label">Rating</span>
+                </div>
+                <div className="detail-stat">
+                  <i className="fas fa-users"></i>
+                  <span className="stat-value">{selectedGame.plays}</span>
+                  <span className="stat-label">{lang === 'et' ? 'Mänginud' : 'Played'}</span>
+                </div>
+                <div className="detail-stat">
+                  <i className="fas fa-layer-group"></i>
+                  <span className="stat-value">{selectedGame.category}</span>
+                  <span className="stat-label">{lang === 'et' ? 'Kategooria' : 'Category'}</span>
+                </div>
+              </div>
+              
+              <button className="btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: '20px' }}>
+                <i className="fas fa-play"></i>
+                {lang === 'et' ? 'Alusta mängu' : 'Start game'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <footer className="footer">
         <div className="footer-container">
@@ -361,17 +426,21 @@ export default function GamesPage() {
       </footer>
 
       <style jsx global>{`
-        .category-filters {
+        /* Category Tabs */
+        .category-tabs {
           display: flex;
           gap: 12px;
-          margin-bottom: 32px;
           flex-wrap: wrap;
+          padding: 16px 0;
         }
 
-        .category-filter-btn {
+        .category-tab {
+          display: flex;
+          align-items: center;
+          gap: 8px;
           padding: 10px 20px;
-          border: 1px solid #e2e8f0;
           background: white;
+          border: 1px solid #e2e8f0;
           border-radius: 30px;
           color: #64748b;
           font-size: 0.95rem;
@@ -380,63 +449,63 @@ export default function GamesPage() {
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .category-filter-btn:hover {
+        .category-tab:hover {
           border-color: #3b82f6;
           color: #3b82f6;
         }
 
-        .category-filter-btn.active {
+        .category-tab.active {
           background: #1d4ed8;
           border-color: #1d4ed8;
           color: white;
         }
 
-        .games-layout {
-          display: grid;
-          grid-template-columns: 1fr 340px;
-          gap: 48px;
-        }
-
-        .games-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        /* Games List */
+        .games-list {
+          display: flex;
+          flex-direction: column;
           gap: 24px;
         }
 
-        .game-card {
+        .game-listing-card {
+          display: grid;
+          grid-template-columns: 280px 1fr;
+          gap: 24px;
           background: white;
           border: 1px solid #e2e8f0;
           border-radius: 16px;
-          overflow: hidden;
-          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          padding: 16px;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           animation: fadeInUp 0.5s ease-out forwards;
           opacity: 0;
         }
 
-        .game-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 12px 32px rgba(29, 78, 216, 0.15);
+        .game-listing-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 12px 32px rgba(29, 78, 216, 0.12);
           border-color: #3b82f6;
         }
 
-        .game-card-image {
+        .game-listing-image {
           position: relative;
           height: 180px;
+          border-radius: 12px;
           overflow: hidden;
         }
 
-        .game-card-image img {
+        .game-listing-image img {
           width: 100%;
           height: 100%;
           object-fit: cover;
           transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .game-card:hover .game-card-image img {
+        .game-listing-card:hover .game-listing-image img {
           transform: scale(1.08);
         }
 
-        .game-difficulty-badge {
+        .game-badge {
           position: absolute;
           top: 12px;
           right: 12px;
@@ -448,84 +517,61 @@ export default function GamesPage() {
           text-transform: uppercase;
         }
 
-        .game-card-content {
-          padding: 20px;
+        .game-listing-info {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
         }
 
-        .game-card-content h3 {
-          font-size: 1.2rem;
-          font-weight: 600;
+        .game-listing-info h3 {
+          font-size: 1.4rem;
+          font-weight: 700;
           color: #1e293b;
           margin-bottom: 8px;
         }
 
-        .game-card-content p {
-          font-size: 0.9rem;
+        .game-desc {
           color: #64748b;
           margin-bottom: 16px;
           line-height: 1.5;
         }
 
-        .game-card-footer {
+        .game-stats {
           display: flex;
-          align-items: center;
-          gap: 16px;
-          padding-top: 16px;
-          border-top: 1px solid #e2e8f0;
+          gap: 20px;
+          margin-bottom: 16px;
         }
 
-        .game-rating, .game-plays {
-          display: flex;
-          align-items: center;
-          gap: 4px;
-          color: #64748b;
-          font-size: 0.85rem;
-        }
-
-        .game-rating i {
-          color: #f59e0b;
-        }
-
-        .play-btn {
-          margin-left: auto;
-          padding: 8px 16px;
-          background: #1d4ed8;
-          color: white;
-          border: none;
-          border-radius: 20px;
-          font-size: 0.85rem;
-          font-weight: 600;
-          cursor: pointer;
+        .game-stat {
           display: flex;
           align-items: center;
           gap: 6px;
-          transition: all 0.3s ease;
+          color: #64748b;
+          font-size: 0.9rem;
         }
 
-        .play-btn:hover {
-          background: #1e40af;
-          transform: translateX(4px);
+        .game-stat i {
+          color: #1d4ed8;
         }
 
-        .play-btn i {
-          font-size: 0.7rem;
+        .game-stat:first-child i {
+          color: #f59e0b;
         }
 
-        /* Sidebar Styles - Following news detail page */
-        .games-sidebar {
-          display: flex;
-          flex-direction: column;
-          gap: 24px;
+        .game-listing-info .btn-primary {
+          align-self: flex-start;
         }
 
-        .sidebar-widget {
+        /* Panel Widgets */
+        .panel-widget {
           background: white;
           border: 1px solid #e2e8f0;
           border-radius: 16px;
           padding: 24px;
+          margin-bottom: 20px;
         }
 
-        .sidebar-widget h4 {
+        .panel-widget h3 {
           font-size: 1.1rem;
           font-weight: 600;
           color: #1e293b;
@@ -534,21 +580,21 @@ export default function GamesPage() {
           align-items: center;
         }
 
-        .featured-widget {
+        .featured-panel {
           background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
           border: none;
         }
 
-        .featured-widget h4 {
+        .featured-panel h3 {
           color: white;
         }
 
-        .featured-widget p {
+        .featured-panel p {
           color: rgba(255, 255, 255, 0.9);
           margin-bottom: 16px;
         }
 
-        .featured-widget .widget-icon {
+        .widget-badge {
           width: 56px;
           height: 56px;
           background: rgba(255, 255, 255, 0.2);
@@ -561,40 +607,22 @@ export default function GamesPage() {
           margin-bottom: 16px;
         }
 
-        .countdown-box {
-          display: inline-flex;
+        .countdown-timer {
+          display: flex;
           align-items: center;
-          gap: 8px;
+          justify-content: center;
+          gap: 10px;
           background: rgba(255, 255, 255, 0.2);
-          padding: 10px 16px;
+          padding: 12px;
           border-radius: 10px;
           color: white;
-          font-weight: 600;
+          font-weight: 700;
+          font-size: 1.2rem;
           margin-bottom: 16px;
         }
 
-        .widget-btn {
-          width: 100%;
-          padding: 12px;
-          border-radius: 10px;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-
-        .widget-btn.primary {
-          background: white;
-          color: #1d4ed8;
-          border: none;
-        }
-
-        .widget-btn.primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
-        }
-
         /* Leaderboard */
-        .leaderboard-list {
+        .leaderboard {
           display: flex;
           flex-direction: column;
           gap: 12px;
@@ -618,6 +646,7 @@ export default function GamesPage() {
           justify-content: center;
           font-weight: 700;
           font-size: 0.9rem;
+          flex-shrink: 0;
         }
 
         .rank.gold {
@@ -635,7 +664,7 @@ export default function GamesPage() {
           color: white;
         }
 
-        .player-info {
+        .player-details {
           display: flex;
           flex-direction: column;
         }
@@ -651,55 +680,109 @@ export default function GamesPage() {
           color: #64748b;
         }
 
-        /* Category List */
-        .category-list {
+        /* Categories Grid */
+        .categories-grid {
           display: flex;
           flex-direction: column;
           gap: 8px;
         }
 
-        .category-item {
+        .category-chip {
           display: flex;
-          justify-content: space-between;
           align-items: center;
+          gap: 10px;
           padding: 12px;
           background: #f8fafc;
+          border: 1px solid #e2e8f0;
           border-radius: 10px;
-          text-decoration: none;
           color: #1e293b;
+          font-size: 0.9rem;
+          font-weight: 500;
+          cursor: pointer;
           transition: all 0.3s ease;
         }
 
-        .category-item:hover {
+        .category-chip:hover {
           background: #e2e8f0;
           transform: translateX(4px);
         }
 
-        .category-item .count {
+        .category-chip.active {
           background: #1d4ed8;
+          border-color: #1d4ed8;
           color: white;
+        }
+
+        .chip-count {
+          margin-left: auto;
+          background: rgba(0, 0, 0, 0.1);
           padding: 2px 10px;
           border-radius: 20px;
           font-size: 0.8rem;
-          font-weight: 600;
         }
 
-        @media (max-width: 1024px) {
-          .games-layout {
+        /* Game Modal */
+        .game-modal {
+          max-width: 600px;
+          padding: 0;
+          overflow: hidden;
+        }
+
+        .modal-game-image {
+          position: relative;
+          height: 250px;
+        }
+
+        .modal-game-image img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .modal-badge {
+          position: absolute;
+          top: 16px;
+          right: 16px;
+          padding: 6px 16px;
+          border-radius: 20px;
+          color: white;
+          font-size: 0.8rem;
+          font-weight: 600;
+          text-transform: uppercase;
+        }
+
+        .modal-game-info {
+          padding: 24px;
+        }
+
+        .modal-game-info h2 {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: #1e293b;
+          margin-bottom: 8px;
+        }
+
+        .modal-game-info p {
+          color: #64748b;
+          margin-bottom: 20px;
+        }
+
+        @media (max-width: 900px) {
+          .game-listing-card {
             grid-template-columns: 1fr;
           }
           
-          .games-sidebar {
-            order: -1;
+          .game-listing-image {
+            height: 200px;
           }
         }
 
         @media (max-width: 768px) {
-          .news-title {
-            font-size: 1.75rem !important;
+          .detail-header h1 {
+            font-size: 1.5rem;
           }
           
-          .games-grid {
+          .detail-grid {
             grid-template-columns: 1fr;
           }
         }
