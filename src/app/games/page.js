@@ -16,7 +16,8 @@ const gamesData = [
     difficultyEn: 'Medium',
     cover: 'https://images.unsplash.com/photo-1634152962476-4b8a00e1915c?w=600&h=400&fit=crop',
     rating: 4.5,
-    plays: '12.5K'
+    plays: '12.5K',
+    category: 'Puzzle'
   },
   {
     id: 'sudoku',
@@ -29,7 +30,8 @@ const gamesData = [
     difficultyEn: 'Hard',
     cover: 'https://images.unsplash.com/photo-1632569851254-eb58f444c0d0?w=600&h=400&fit=crop',
     rating: 4.8,
-    plays: '8.2K'
+    plays: '8.2K',
+    category: 'Puzzle'
   },
   {
     id: 'quiz',
@@ -42,7 +44,8 @@ const gamesData = [
     difficultyEn: 'Easy',
     cover: 'https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?w=600&h=400&fit=crop',
     rating: 4.3,
-    plays: '25K'
+    plays: '25K',
+    category: 'Trivia'
   },
   {
     id: 'wordsearch',
@@ -55,7 +58,8 @@ const gamesData = [
     difficultyEn: 'Easy',
     cover: 'https://images.unsplash.com/photo-1632152852627-2a44302f8f4b?w=600&h=400&fit=crop',
     rating: 4.2,
-    plays: '15K'
+    plays: '15K',
+    category: 'Puzzle'
   },
   {
     id: 'memory',
@@ -68,7 +72,8 @@ const gamesData = [
     difficultyEn: 'Medium',
     cover: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=400&fit=crop',
     rating: 4.6,
-    plays: '9.8K'
+    plays: '9.8K',
+    category: 'Memory'
   },
   {
     id: 'tictactoe',
@@ -81,24 +86,22 @@ const gamesData = [
     difficultyEn: 'Easy',
     cover: 'https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?w=600&h=400&fit=crop',
     rating: 4.0,
-    plays: '30K'
+    plays: '30K',
+    category: 'Strategy'
   }
 ]
 
-const featuredGame = {
-  id: 'daily-challenge',
-  name: 'Päevane Väljakutse',
-  nameEn: 'Daily Challenge',
-  description: 'Lahenda iga päev uus ristsõna ja võid auhindu!',
-  descriptionEn: 'Solve a new crossword every day and win prizes!',
-  cover: 'https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=1200&h=500&fit=crop',
-  badge: 'VIP',
-  endsIn: '23:59:59'
-}
+const categories = [
+  { id: 'all', name: 'Kõik', nameEn: 'All' },
+  { id: 'puzzle', name: 'Puzzle', nameEn: 'Puzzle' },
+  { id: 'trivia', name: 'Trivia', nameEn: 'Trivia' },
+  { id: 'memory', name: 'Mälu', nameEn: 'Memory' },
+  { id: 'strategy', name: 'Strateegia', nameEn: 'Strategy' }
+]
 
 export default function GamesPage() {
   const [lang, setLang] = useState('et')
-  const [activeFilter, setActiveFilter] = useState('all')
+  const [activeCategory, setActiveCategory] = useState('all')
 
   const getDifficultyColor = (diff) => {
     if (diff === 'Kerge' || diff === 'Easy') return '#10b981'
@@ -106,153 +109,187 @@ export default function GamesPage() {
     return '#ef4444'
   }
 
-  const filteredGames = activeFilter === 'all' 
+  const filteredGames = activeCategory === 'all' 
     ? gamesData 
-    : gamesData.filter(game => {
-        const diff = lang === 'et' ? game.difficulty : game.difficultyEn
-        if (activeFilter === 'easy') return diff === 'Kerge' || diff === 'Easy'
-        if (activeFilter === 'medium') return diff === 'Keskmine' || diff === 'Medium'
-        if (activeFilter === 'hard') return diff === 'Raske' || diff === 'Hard'
-        return true
-      })
+    : gamesData.filter(game => game.category.toLowerCase() === activeCategory)
 
   return (
     <>
       <Navbar />
 
-      {/* Page Header */}
-      <div className="games-header">
+      {/* Page Header - Following news detail page style */}
+      <div className="news-detail-header">
         <div className="container">
-          <div className="games-header-content">
-            <h1 className="games-title">
+          <Link href="/" className="back-link">
+            <i className="fas fa-arrow-left"></i>
+            Tagasi
+          </Link>
+          
+          <div className="news-meta">
+            <span className="news-category-badge">
               <i className="fas fa-gamepad"></i>
               {lang === 'et' ? 'Mängud' : 'Games'}
-            </h1>
-            <p className="games-subtitle">
-              {lang === 'et' ? 'Mängi ja lõbutse meie tasuta mängudega!' : 'Play and have fun with our free games!'}
-            </p>
-            
-            {/* Filter Tabs */}
-            <div className="games-filters">
-              <button 
-                className={`filter-tab ${activeFilter === 'all' ? 'active' : ''}`}
-                onClick={() => setActiveFilter('all')}
-              >
-                <i className="fas fa-th"></i>
-                {lang === 'et' ? 'Kõik' : 'All'}
-              </button>
-              <button 
-                className={`filter-tab ${activeFilter === 'easy' ? 'active' : ''}`}
-                onClick={() => setActiveFilter('easy')}
-              >
-                <i className="fas fa-smile"></i>
-                {lang === 'et' ? 'Kerge' : 'Easy'}
-              </button>
-              <button 
-                className={`filter-tab ${activeFilter === 'medium' ? 'active' : ''}`}
-                onClick={() => setActiveFilter('medium')}
-              >
-                <i className="fas fa-meh"></i>
-                {lang === 'et' ? 'Keskmine' : 'Medium'}
-              </button>
-              <button 
-                className={`filter-tab ${activeFilter === 'hard' ? 'active' : ''}`}
-                onClick={() => setActiveFilter('hard')}
-              >
-                <i className="fas fa-fire"></i>
-                {lang === 'et' ? 'Raske' : 'Hard'}
-              </button>
+            </span>
+            <span className="news-date">
+              <i className="fas fa-calendar-alt"></i>
+              8. märts 2026
+            </span>
+          </div>
+          
+          <h1 className="news-title">
+            <i className="fas fa-dice" style={{ marginRight: '12px', color: '#1d4ed8' }}></i>
+            {lang === 'et' ? ' Tasuta Mängud' : 'Free Games'}
+          </h1>
+          
+          <div className="news-author-row">
+            <div className="news-author">
+              <div className="author-avatar">
+                <i className="fas fa-gamepad"></i>
+              </div>
+              <div className="author-info">
+                <span className="author-name">NETI Mängud</span>
+                <span className="read-time">
+                  <i className="fas fa-clock"></i>
+                  {gamesData.length} {lang === 'et' ? 'mängu' : 'games'}
+                </span>
+              </div>
+            </div>
+            <div className="news-share">
+              <button className="share-btn"><i className="fab fa-facebook-f"></i></button>
+              <button className="share-btn"><i className="fab fa-twitter"></i></button>
+              <button className="share-btn"><i className="fab fa-linkedin-in"></i></button>
+              <button className="share-btn"><i className="fas fa-link"></i></button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Featured Game Banner */}
-      <section className="games-featured">
+      {/* Main Content */}
+      <main className="section">
         <div className="container">
-          <div className="featured-game-card">
-            <div className="featured-game-image">
-              <img src={featuredGame.cover} alt={featuredGame.name} />
-              <div className="featured-game-overlay">
-                <span className="featured-badge">{featuredGame.badge}</span>
-              </div>
-            </div>
-            <div className="featured-game-content">
-              <h2>{lang === 'et' ? featuredGame.name : featuredGame.nameEn}</h2>
-              <p>{lang === 'et' ? featuredGame.description : featuredGame.descriptionEn}</p>
-              <div className="featured-game-meta">
-                <div className="countdown">
-                  <i className="fas fa-clock"></i>
-                  <span>Lõpuni: {featuredGame.endsIn}</span>
-                </div>
-              </div>
-              <button className="btn-play-now">
-                <i className="fas fa-play"></i>
-                {lang === 'et' ? 'Mängi kohe' : 'Play now'}
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Games Grid */}
-      <section className="games-section">
-        <div className="container">
-          <div className="games-grid">
-            {filteredGames.map((game) => (
-              <div key={game.id} className="game-card">
-                <div className="game-card-image">
-                  <img src={game.cover} alt={lang === 'et' ? game.name : game.nameEn} />
-                  <div className="game-card-overlay">
-                    <button className="play-button">
-                      <i className="fas fa-play"></i>
-                    </button>
-                  </div>
-                  <span 
-                    className="difficulty-badge"
-                    style={{ background: getDifficultyColor(lang === 'et' ? game.difficulty : game.difficultyEn) }}
+          <div className="games-layout">
+            {/* Games Grid - Main Content */}
+            <div className="games-main">
+              {/* Category Filters */}
+              <div className="category-filters">
+                {categories.map(cat => (
+                  <button
+                    key={cat.id}
+                    className={`category-filter-btn ${activeCategory === cat.id ? 'active' : ''}`}
+                    onClick={() => setActiveCategory(cat.id)}
                   >
-                    {lang === 'et' ? game.difficulty : game.difficultyEn}
-                  </span>
-                </div>
-                <div className="game-card-content">
-                  <h3>{lang === 'et' ? game.name : game.nameEn}</h3>
-                  <p>{lang === 'et' ? game.description : game.descriptionEn}</p>
-                  <div className="game-card-meta">
-                    <div className="rating">
-                      <i className="fas fa-star"></i>
-                      <span>{game.rating}</span>
+                    {lang === 'et' ? cat.name : cat.nameEn}
+                  </button>
+                ))}
+              </div>
+
+              {/* Games Grid */}
+              <div className="games-grid">
+                {filteredGames.map((game, index) => (
+                  <article key={game.id} className="game-card" style={{ animationDelay: `${index * 0.1}s` }}>
+                    <div className="game-card-image">
+                      <img src={game.cover} alt={lang === 'et' ? game.name : game.nameEn} />
+                      <span 
+                        className="game-difficulty-badge"
+                        style={{ background: getDifficultyColor(lang === 'et' ? game.difficulty : game.difficultyEn) }}
+                      >
+                        {lang === 'et' ? game.difficulty : game.difficultyEn}
+                      </span>
                     </div>
-                    <div className="plays">
-                      <i className="fas fa-users"></i>
-                      <span>{game.plays}</span>
+                    <div className="game-card-content">
+                      <h3>{lang === 'et' ? game.name : game.nameEn}</h3>
+                      <p>{lang === 'et' ? game.description : game.descriptionEn}</p>
+                      <div className="game-card-footer">
+                        <div className="game-rating">
+                          <i className="fas fa-star"></i>
+                          <span>{game.rating}</span>
+                        </div>
+                        <div className="game-plays">
+                          <i className="fas fa-users"></i>
+                          <span>{game.plays}</span>
+                        </div>
+                        <button className="play-btn">
+                          {lang === 'et' ? 'Mängi' : 'Play'}
+                          <i className="fas fa-play"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            {/* Sidebar */}
+            <aside className="games-sidebar">
+              {/* Featured Game Widget */}
+              <div className="sidebar-widget featured-widget">
+                <div className="widget-icon">
+                  <i className="fas fa-trophy"></i>
+                </div>
+                <h4>{lang === 'et' ? 'Päevane Väljakutse' : 'Daily Challenge'}</h4>
+                <p>{lang === 'et' ? 'Lahenda iga päev uus ristsõna!' : 'Solve a new crossword every day!'}</p>
+                <div className="countdown-box">
+                  <i className="fas fa-clock"></i>
+                  <span>23:59:59</span>
+                </div>
+                <button className="widget-btn primary">
+                  {lang === 'et' ? 'Mängi kohe' : 'Play now'}
+                </button>
+              </div>
+
+              {/* Top Players Widget */}
+              <div className="sidebar-widget">
+                <h4><i className="fas fa-crown" style={{ color: '#f59e0b', marginRight: '8px' }}></i>
+                  {lang === 'et' ? 'Edetabel' : 'Leaderboard'}</h4>
+                <div className="leaderboard-list">
+                  <div className="leaderboard-item">
+                    <span className="rank gold">1</span>
+                    <div className="player-info">
+                      <span className="player-name">Mängija123</span>
+                      <span className="player-score">2,450 punkti</span>
+                    </div>
+                  </div>
+                  <div className="leaderboard-item">
+                    <span className="rank silver">2</span>
+                    <div className="player-info">
+                      <span className="player-name">KergeMäng</span>
+                      <span className="player-score">2,320 punkti</span>
+                    </div>
+                  </div>
+                  <div className="leaderboard-item">
+                    <span className="rank bronze">3</span>
+                    <div className="player-info">
+                      <span className="player-name">SudokuPro</span>
+                      <span className="player-score">2,180 punkti</span>
                     </div>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Games Newsletter CTA */}
-      <section className="games-cta">
-        <div className="container">
-          <div className="cta-card">
-            <div className="cta-icon">
-              <i className="fas fa-bell"></i>
-            </div>
-            <div className="cta-content">
-              <h3>{lang === 'et' ? 'Uued mängud otse postkasti' : 'New games to your inbox'}</h3>
-              <p>{lang === 'et' ? 'Liitu ja saa teada esimesena uutest mängudest' : 'Subscribe to be the first to know about new games'}</p>
-            </div>
-            <div className="cta-form">
-              <input type="email" placeholder="Sinu email" />
-              <button>{lang === 'et' ? 'Liitu' : 'Subscribe'}</button>
-            </div>
+              {/* Categories Widget */}
+              <div className="sidebar-widget">
+                <h4><i className="fas fa-folder" style={{ marginRight: '8px' }}></i>
+                  {lang === 'et' ? 'Kategooriad' : 'Categories'}</h4>
+                <div className="category-list">
+                  {categories.slice(1).map(cat => (
+                    <a 
+                      key={cat.id} 
+                      href="#" 
+                      className="category-item"
+                      onClick={(e) => { e.preventDefault(); setActiveCategory(cat.id); }}
+                    >
+                      <span>{lang === 'et' ? cat.name : cat.nameEn}</span>
+                      <span className="count">
+                        {gamesData.filter(g => g.category.toLowerCase() === cat.id).length}
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </aside>
           </div>
         </div>
-      </section>
+      </main>
 
       <footer className="footer">
         <div className="footer-container">
@@ -324,213 +361,68 @@ export default function GamesPage() {
       </footer>
 
       <style jsx global>{`
-        .games-header {
-          background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-          padding: 120px 0 60px;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .games-header::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: 
-            radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-            radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
-          pointer-events: none;
-        }
-
-        .games-header-content {
-          text-align: center;
-          position: relative;
-          z-index: 1;
-        }
-
-        .games-title {
-          font-size: 3rem;
-          font-weight: 800;
-          color: white;
-          margin-bottom: 12px;
+        .category-filters {
           display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 16px;
-        }
-
-        .games-title i {
-          background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-
-        .games-subtitle {
-          font-size: 1.2rem;
-          color: rgba(255, 255, 255, 0.7);
-          margin-bottom: 32px;
-        }
-
-        .games-filters {
-          display: flex;
-          justify-content: center;
           gap: 12px;
+          margin-bottom: 32px;
           flex-wrap: wrap;
         }
 
-        .filter-tab {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          padding: 12px 24px;
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.2);
+        .category-filter-btn {
+          padding: 10px 20px;
+          border: 1px solid #e2e8f0;
+          background: white;
           border-radius: 30px;
-          color: rgba(255, 255, 255, 0.8);
+          color: #64748b;
           font-size: 0.95rem;
           font-weight: 500;
           cursor: pointer;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .filter-tab:hover {
-          background: rgba(255, 255, 255, 0.15);
-          transform: translateY(-2px);
+        .category-filter-btn:hover {
+          border-color: #3b82f6;
+          color: #3b82f6;
         }
 
-        .filter-tab.active {
-          background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-          border-color: transparent;
+        .category-filter-btn.active {
+          background: #1d4ed8;
+          border-color: #1d4ed8;
           color: white;
-          box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
         }
 
-        .games-featured {
-          padding: 40px 0;
-          background: #0f0f23;
-        }
-
-        .featured-game-card {
+        .games-layout {
           display: grid;
-          grid-template-columns: 1.5fr 1fr;
-          background: linear-gradient(135deg, #1a1a2e, #16213e);
-          border-radius: 20px;
-          overflow: hidden;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-        }
-
-        .featured-game-image {
-          position: relative;
-          height: 350px;
-        }
-
-        .featured-game-image img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .featured-game-overlay {
-          position: absolute;
-          top: 16px;
-          left: 16px;
-        }
-
-        .featured-badge {
-          background: linear-gradient(135deg, #f59e0b, #ef4444);
-          color: white;
-          padding: 8px 16px;
-          border-radius: 20px;
-          font-size: 0.85rem;
-          font-weight: 700;
-          text-transform: uppercase;
-        }
-
-        .featured-game-content {
-          padding: 40px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-        }
-
-        .featured-game-content h2 {
-          font-size: 2rem;
-          color: white;
-          margin-bottom: 12px;
-        }
-
-        .featured-game-content p {
-          color: rgba(255, 255, 255, 0.7);
-          font-size: 1.1rem;
-          margin-bottom: 24px;
-          line-height: 1.6;
-        }
-
-        .featured-game-meta {
-          margin-bottom: 24px;
-        }
-
-        .countdown {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          background: rgba(255, 255, 255, 0.1);
-          padding: 10px 20px;
-          border-radius: 30px;
-          color: #f59e0b;
-          font-weight: 600;
-        }
-
-        .btn-play-now {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          padding: 16px 32px;
-          background: linear-gradient(135deg, #10b981, #059669);
-          color: white;
-          border: none;
-          border-radius: 12px;
-          font-size: 1.1rem;
-          font-weight: 700;
-          cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          align-self: flex-start;
-        }
-
-        .btn-play-now:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
-        }
-
-        .games-section {
-          padding: 60px 0;
-          background: #0f0f23;
+          grid-template-columns: 1fr 340px;
+          gap: 48px;
         }
 
         .games-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
           gap: 24px;
         }
 
         .game-card {
-          background: linear-gradient(135deg, #1a1a2e, #16213e);
+          background: white;
+          border: 1px solid #e2e8f0;
           border-radius: 16px;
           overflow: hidden;
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          animation: fadeInUp 0.5s ease-out forwards;
+          opacity: 0;
         }
 
         .game-card:hover {
           transform: translateY(-8px);
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 12px 32px rgba(29, 78, 216, 0.15);
+          border-color: #3b82f6;
         }
 
         .game-card-image {
           position: relative;
-          height: 200px;
+          height: 180px;
+          overflow: hidden;
         }
 
         .game-card-image img {
@@ -541,55 +433,17 @@ export default function GamesPage() {
         }
 
         .game-card:hover .game-card-image img {
-          transform: scale(1.1);
+          transform: scale(1.08);
         }
 
-        .game-card-overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(0, 0, 0, 0.5);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-
-        .game-card:hover .game-card-overlay {
-          opacity: 1;
-        }
-
-        .play-button {
-          width: 60px;
-          height: 60px;
-          background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-          border: none;
-          border-radius: 50%;
-          color: white;
-          font-size: 1.5rem;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transform: scale(0.8);
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .game-card:hover .play-button {
-          transform: scale(1);
-        }
-
-        .difficulty-badge {
+        .game-difficulty-badge {
           position: absolute;
           top: 12px;
           right: 12px;
-          padding: 6px 12px;
+          padding: 4px 12px;
           border-radius: 20px;
           color: white;
-          font-size: 0.75rem;
+          font-size: 0.7rem;
           font-weight: 600;
           text-transform: uppercase;
         }
@@ -599,137 +453,254 @@ export default function GamesPage() {
         }
 
         .game-card-content h3 {
-          font-size: 1.3rem;
-          color: white;
-          margin-bottom: 8px;
+          font-size: 1.2rem;
           font-weight: 600;
+          color: #1e293b;
+          margin-bottom: 8px;
         }
 
         .game-card-content p {
-          color: rgba(255, 255, 255, 0.6);
           font-size: 0.9rem;
+          color: #64748b;
           margin-bottom: 16px;
           line-height: 1.5;
         }
 
-        .game-card-meta {
-          display: flex;
-          gap: 20px;
-        }
-
-        .rating, .plays {
+        .game-card-footer {
           display: flex;
           align-items: center;
-          gap: 6px;
-          color: rgba(255, 255, 255, 0.7);
+          gap: 16px;
+          padding-top: 16px;
+          border-top: 1px solid #e2e8f0;
+        }
+
+        .game-rating, .game-plays {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          color: #64748b;
           font-size: 0.85rem;
         }
 
-        .rating i {
+        .game-rating i {
           color: #f59e0b;
         }
 
-        .games-cta {
-          padding: 60px 0;
-          background: #0f0f23;
-        }
-
-        .cta-card {
-          background: linear-gradient(135deg, #1e3a8a, #1e40af);
+        .play-btn {
+          margin-left: auto;
+          padding: 8px 16px;
+          background: #1d4ed8;
+          color: white;
+          border: none;
           border-radius: 20px;
-          padding: 40px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          cursor: pointer;
           display: flex;
           align-items: center;
-          gap: 30px;
+          gap: 6px;
+          transition: all 0.3s ease;
         }
 
-        .cta-icon {
-          width: 80px;
-          height: 80px;
+        .play-btn:hover {
+          background: #1e40af;
+          transform: translateX(4px);
+        }
+
+        .play-btn i {
+          font-size: 0.7rem;
+        }
+
+        /* Sidebar Styles - Following news detail page */
+        .games-sidebar {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+        }
+
+        .sidebar-widget {
+          background: white;
+          border: 1px solid #e2e8f0;
+          border-radius: 16px;
+          padding: 24px;
+        }
+
+        .sidebar-widget h4 {
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: #1e293b;
+          margin-bottom: 16px;
+          display: flex;
+          align-items: center;
+        }
+
+        .featured-widget {
+          background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+          border: none;
+        }
+
+        .featured-widget h4 {
+          color: white;
+        }
+
+        .featured-widget p {
+          color: rgba(255, 255, 255, 0.9);
+          margin-bottom: 16px;
+        }
+
+        .featured-widget .widget-icon {
+          width: 56px;
+          height: 56px;
           background: rgba(255, 255, 255, 0.2);
-          border-radius: 50%;
+          border-radius: 12px;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 2rem;
-          color: white;
-          flex-shrink: 0;
-        }
-
-        .cta-content {
-          flex: 1;
-        }
-
-        .cta-content h3 {
           font-size: 1.5rem;
           color: white;
-          margin-bottom: 8px;
+          margin-bottom: 16px;
         }
 
-        .cta-content p {
-          color: rgba(255, 255, 255, 0.8);
-        }
-
-        .cta-form {
-          display: flex;
-          gap: 12px;
-        }
-
-        .cta-form input {
-          padding: 14px 20px;
-          border: none;
+        .countdown-box {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: rgba(255, 255, 255, 0.2);
+          padding: 10px 16px;
           border-radius: 10px;
-          font-size: 1rem;
-          width: 250px;
-          background: rgba(255, 255, 255, 0.9);
+          color: white;
+          font-weight: 600;
+          margin-bottom: 16px;
         }
 
-        .cta-form button {
-          padding: 14px 28px;
-          background: white;
-          color: #1e40af;
-          border: none;
+        .widget-btn {
+          width: 100%;
+          padding: 12px;
           border-radius: 10px;
-          font-size: 1rem;
           font-weight: 600;
           cursor: pointer;
           transition: all 0.3s ease;
         }
 
-        .cta-form button:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+        .widget-btn.primary {
+          background: white;
+          color: #1d4ed8;
+          border: none;
         }
 
-        @media (max-width: 768px) {
-          .games-title {
-            font-size: 2rem;
-          }
-          
-          .featured-game-card {
+        .widget-btn.primary:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Leaderboard */
+        .leaderboard-list {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .leaderboard-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 12px;
+          background: #f8fafc;
+          border-radius: 10px;
+        }
+
+        .rank {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          font-size: 0.9rem;
+        }
+
+        .rank.gold {
+          background: linear-gradient(135deg, #f59e0b, #fbbf24);
+          color: white;
+        }
+
+        .rank.silver {
+          background: linear-gradient(135deg, #94a3b8, #cbd5e1);
+          color: white;
+        }
+
+        .rank.bronze {
+          background: linear-gradient(135deg, #d97706, #f59e0b);
+          color: white;
+        }
+
+        .player-info {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .player-name {
+          font-weight: 600;
+          color: #1e293b;
+          font-size: 0.95rem;
+        }
+
+        .player-score {
+          font-size: 0.8rem;
+          color: #64748b;
+        }
+
+        /* Category List */
+        .category-list {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .category-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 12px;
+          background: #f8fafc;
+          border-radius: 10px;
+          text-decoration: none;
+          color: #1e293b;
+          transition: all 0.3s ease;
+        }
+
+        .category-item:hover {
+          background: #e2e8f0;
+          transform: translateX(4px);
+        }
+
+        .category-item .count {
+          background: #1d4ed8;
+          color: white;
+          padding: 2px 10px;
+          border-radius: 20px;
+          font-size: 0.8rem;
+          font-weight: 600;
+        }
+
+        @media (max-width: 1024px) {
+          .games-layout {
             grid-template-columns: 1fr;
           }
           
-          .featured-game-image {
-            height: 200px;
+          .games-sidebar {
+            order: -1;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .news-title {
+            font-size: 1.75rem !important;
           }
           
-          .featured-game-content {
-            padding: 24px;
-          }
-          
-          .cta-card {
-            flex-direction: column;
-            text-align: center;
-          }
-          
-          .cta-form {
-            flex-direction: column;
-            width: 100%;
-          }
-          
-          .cta-form input {
-            width: 100%;
+          .games-grid {
+            grid-template-columns: 1fr;
           }
         }
       `}</style>
