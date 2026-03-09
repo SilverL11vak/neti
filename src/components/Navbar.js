@@ -160,45 +160,24 @@ export default function Navbar() {
               </div>
             </form>
 
-            {/* E-mail Shortcut */}
-            <a href="mailto:info@neti.ee" className="email-btn" title="Saada meile e-mail">
+            {/* Mailbox Link */}
+            <Link href="/mailbox" className="email-btn" title="Minu postkast">
               <i className="fas fa-envelope"></i>
-            </a>
+            </Link>
 
-            {/* Login / Register */}
-            <div className="auth-buttons">
-              <Link href="/login" className="login-btn">
-                Logi sisse
-              </Link>
-              <Link href="/register" className="register-btn">
-                Registreeri
-              </Link>
-            </div>
+            {/* User Icon */}
+            <Link href="/login" className="user-btn" title="Logi sisse">
+              <i className="fas fa-user"></i>
+            </Link>
 
-            {/* Dark Mode Toggle */}
-            <button 
-              className="theme-toggle"
-              onClick={() => setDarkMode(!darkMode)}
-              title={darkMode ? 'Light mode' : 'Dark mode'}
-            >
-              <i className={`fas ${darkMode ? 'fa-sun' : 'fa-moon'}`}></i>
-            </button>
-            
             {/* Language Toggle */}
-            <div className="lang-toggle">
-              <button 
-                className={`lang-btn ${lang === 'et' ? 'active' : ''}`}
-                onClick={() => setLang('et')}
-              >
-                ET
-              </button>
-              <button 
-                className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
-                onClick={() => setLang('en')}
-              >
-                EN
-              </button>
-            </div>
+            <button 
+              className="lang-btn-icon"
+              onClick={() => setLang(lang === 'et' ? 'en' : 'et')}
+              title={lang === 'et' ? 'Switch to English' : 'Switch to Estonian'}
+            >
+              <i className="fas fa-globe"></i>
+            </button>
 
             {/* Mobile Menu Button */}
             <button 

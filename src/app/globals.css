@@ -341,40 +341,44 @@ a {
   transform: translateY(-2px);
 }
 
-/* Auth Buttons */
-.auth-buttons {
+/* User Button */
+.user-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
-}
-
-.login-btn {
-  padding: 8px 16px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #64748b;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-}
-
-.login-btn:hover {
-  color: #1d4ed8;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   background: #f1f5f9;
-}
-
-.register-btn {
-  padding: 8px 16px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: white;
-  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
-  border-radius: 8px;
+  color: #64748b;
   transition: all 0.2s ease;
 }
 
-.register-btn:hover {
+.user-btn:hover {
+  background: #1d4ed8;
+  color: white;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
+}
+
+/* Language Icon Button */
+.lang-btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-btn-icon:hover {
+  background: #1d4ed8;
+  color: white;
+  transform: translateY(-2px);
 }
 
 .lang-toggle {
@@ -6241,7 +6245,11 @@ input:focus-visible {
     display: none;
   }
   
-  .auth-buttons {
+  .user-btn {
+    display: none;
+  }
+  
+  .lang-btn-icon {
     display: none;
   }
   
