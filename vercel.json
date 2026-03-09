@@ -1,8 +1,4 @@
 {
-  "buildCommand": "cd neti-next && npm install && npm run build",
-  "outputDirectory": "neti-next/.next",
-  "installCommand": "cd neti-next && npm install",
-  "git": {
-    "submodules": true
-  }
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next"
 }
