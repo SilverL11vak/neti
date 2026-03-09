@@ -337,92 +337,95 @@ export default function Home() {
 
           <div className="nav-links">
             {/* Marketplace Dropdown */}
-            <div 
-              className={`nav-dropdown ${activeDropdown === 'marketplace' ? 'active' : ''}`}
-              onMouseEnter={() => setActiveDropdown('marketplace')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className="nav-dropdown-trigger">
-                <i className="fas fa-store"></i>
-                <span>Kaubaturg</span>
+            <div className="nav-dropdown">
+              <button 
+                className={`nav-dropdown-trigger ${activeDropdown === 'marketplace' ? 'active' : ''}`}
+                onClick={() => setActiveDropdown(activeDropdown === 'marketplace' ? null : 'marketplace')}
+                onBlur={() => setTimeout(() => setActiveDropdown(null), 200)}
+              >
+                <span><i className="fas fa-store"></i> Kaubaturg</span>
                 <i className={`fas fa-chevron-${activeDropdown === 'marketplace' ? 'up' : 'down'} dropdown-arrow`}></i>
               </button>
-              <div className="nav-dropdown-menu">
-                <Link href="/autod" className="nav-dropdown-item">
-                  <i className="fas fa-car"></i>
-                  <span>Autod</span>
-                </Link>
-                <Link href="/kinnisvara" className="nav-dropdown-item">
-                  <i className="fas fa-home"></i>
-                  <span>Kinnisvara</span>
-                </Link>
-                <Link href="/turg" className="nav-dropdown-item">
-                  <i className="fas fa-shopping-bag"></i>
-                  <span>Osta & Müü</span>
-                </Link>
-              </div>
+              {activeDropdown === 'marketplace' && (
+                <div className="nav-dropdown-menu">
+                  <Link href="/autod" className="nav-dropdown-item" onClick={() => setMobileMenuOpen(false)}>
+                    <i className="fas fa-car"></i>
+                    <span>Autod</span>
+                  </Link>
+                  <Link href="/kinnisvara" className="nav-dropdown-item" onClick={() => setMobileMenuOpen(false)}>
+                    <i className="fas fa-home"></i>
+                    <span>Kinnisvara</span>
+                  </Link>
+                  <Link href="/turg" className="nav-dropdown-item" onClick={() => setMobileMenuOpen(false)}>
+                    <i className="fas fa-shopping-bag"></i>
+                    <span>Osta & Müü</span>
+                  </Link>
+                </div>
+              )}
             </div>
 
             {/* Services Dropdown */}
-            <div 
-              className={`nav-dropdown ${activeDropdown === 'services' ? 'active' : ''}`}
-              onMouseEnter={() => setActiveDropdown('services')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className="nav-dropdown-trigger">
-                <i className="fas fa-handshake"></i>
-                <span>Teenused</span>
+            <div className="nav-dropdown">
+              <button 
+                className={`nav-dropdown-trigger ${activeDropdown === 'services' ? 'active' : ''}`}
+                onClick={() => setActiveDropdown(activeDropdown === 'services' ? null : 'services')}
+                onBlur={() => setTimeout(() => setActiveDropdown(null), 200)}
+              >
+                <span><i className="fas fa-handshake"></i> Teenused</span>
                 <i className={`fas fa-chevron-${activeDropdown === 'services' ? 'up' : 'down'} dropdown-arrow`}></i>
               </button>
-              <div className="nav-dropdown-menu">
-                <Link href="/too" className="nav-dropdown-item">
-                  <i className="fas fa-briefcase"></i>
-                  <span>Töö</span>
-                </Link>
-                <Link href="/kuulutus" className="nav-dropdown-item">
-                  <i className="fas fa-bullhorn"></i>
-                  <span>Kuulutused</span>
-                </Link>
-                <Link href="/kategooria" className="nav-dropdown-item">
-                  <i className="fas fa-th-large"></i>
-                  <span>Kategooriad</span>
-                </Link>
-                <Link href="/otsing" className="nav-dropdown-item">
-                  <i className="fas fa-search"></i>
-                  <span>Otsing</span>
-                </Link>
-              </div>
+              {activeDropdown === 'services' && (
+                <div className="nav-dropdown-menu">
+                  <Link href="/too" className="nav-dropdown-item" onClick={() => setMobileMenuOpen(false)}>
+                    <i className="fas fa-briefcase"></i>
+                    <span>Töö</span>
+                  </Link>
+                  <Link href="/kuulutus" className="nav-dropdown-item" onClick={() => setMobileMenuOpen(false)}>
+                    <i className="fas fa-bullhorn"></i>
+                    <span>Kuulutused</span>
+                  </Link>
+                  <Link href="/kategooria" className="nav-dropdown-item" onClick={() => setMobileMenuOpen(false)}>
+                    <i className="fas fa-th-large"></i>
+                    <span>Kategooriad</span>
+                  </Link>
+                  <Link href="/otsing" className="nav-dropdown-item" onClick={() => setMobileMenuOpen(false)}>
+                    <i className="fas fa-search"></i>
+                    <span>Otsing</span>
+                  </Link>
+                </div>
+              )}
             </div>
 
             {/* Lifestyle Dropdown */}
-            <div 
-              className={`nav-dropdown ${activeDropdown === 'lifestyle' ? 'active' : ''}`}
-              onMouseEnter={() => setActiveDropdown('lifestyle')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className="nav-dropdown-trigger">
-                <i className="fas fa-heart"></i>
-                <span>Elu</span>
+            <div className="nav-dropdown">
+              <button 
+                className={`nav-dropdown-trigger ${activeDropdown === 'lifestyle' ? 'active' : ''}`}
+                onClick={() => setActiveDropdown(activeDropdown === 'lifestyle' ? null : 'lifestyle')}
+                onBlur={() => setTimeout(() => setActiveDropdown(null), 200)}
+              >
+                <span><i className="fas fa-heart"></i> Elu</span>
                 <i className={`fas fa-chevron-${activeDropdown === 'lifestyle' ? 'up' : 'down'} dropdown-arrow`}></i>
               </button>
-              <div className="nav-dropdown-menu">
-                <Link href="/horoskoop" className="nav-dropdown-item">
-                  <i className="fas fa-star"></i>
-                  <span>Horoskoop</span>
-                </Link>
-                <Link href="/ilm" className="nav-dropdown-item">
-                  <i className="fas fa-cloud-sun"></i>
-                  <span>Ilm</span>
-                </Link>
-                <Link href="/games" className="nav-dropdown-item">
-                  <i className="fas fa-gamepad"></i>
-                  <span>Mängud</span>
-                </Link>
-                <Link href="/uudised" className="nav-dropdown-item">
-                  <i className="fas fa-newspaper"></i>
-                  <span>Uudised</span>
-                </Link>
-              </div>
+              {activeDropdown === 'lifestyle' && (
+                <div className="nav-dropdown-menu">
+                  <Link href="/horoskoop" className="nav-dropdown-item" onClick={() => setMobileMenuOpen(false)}>
+                    <i className="fas fa-star"></i>
+                    <span>Horoskoop</span>
+                  </Link>
+                  <Link href="/ilm" className="nav-dropdown-item" onClick={() => setMobileMenuOpen(false)}>
+                    <i className="fas fa-cloud-sun"></i>
+                    <span>Ilm</span>
+                  </Link>
+                  <Link href="/games" className="nav-dropdown-item" onClick={() => setMobileMenuOpen(false)}>
+                    <i className="fas fa-gamepad"></i>
+                    <span>Mängud</span>
+                  </Link>
+                  <Link href="/uudised" className="nav-dropdown-item" onClick={() => setMobileMenuOpen(false)}>
+                    <i className="fas fa-newspaper"></i>
+                    <span>Uudised</span>
+                  </Link>
+                </div>
+              )}
             </div>
 
             {/* Meist */}

@@ -63,66 +63,69 @@ export default function Navbar() {
 
           <div className="nav-links">
             {/* Marketplace Dropdown */}
-            <div 
-              className={`nav-dropdown ${activeDropdown === 'marketplace' ? 'active' : ''}`}
-              onMouseEnter={() => setActiveDropdown('marketplace')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className="nav-dropdown-trigger">
-                <i className="fas fa-store"></i>
-                <span>{navSections.marketplace.label}</span>
+            <div className="nav-dropdown">
+              <button 
+                className={`nav-dropdown-trigger ${activeDropdown === 'marketplace' ? 'active' : ''}`}
+                onClick={() => toggleDropdown('marketplace')}
+                onBlur={() => setTimeout(() => setActiveDropdown(null), 200)}
+              >
+                <span><i className="fas fa-store"></i> {navSections.marketplace.label}</span>
                 <i className={`fas fa-chevron-${activeDropdown === 'marketplace' ? 'up' : 'down'} dropdown-arrow`}></i>
               </button>
-              <div className="nav-dropdown-menu">
-                {navSections.marketplace.items.map((item) => (
-                  <Link key={item.href} href={item.href} className="nav-dropdown-item">
-                    <i className={`fas ${item.icon}`}></i>
-                    <span>{item.label}</span>
-                  </Link>
-                ))}
-              </div>
+              {activeDropdown === 'marketplace' && (
+                <div className="nav-dropdown-menu">
+                  {navSections.marketplace.items.map((item) => (
+                    <Link key={item.href} href={item.href} className="nav-dropdown-item" onClick={closeDropdowns}>
+                      <i className={`fas ${item.icon}`}></i>
+                      <span>{item.label}</span>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Services Dropdown */}
-            <div 
-              className={`nav-dropdown ${activeDropdown === 'services' ? 'active' : ''}`}
-              onMouseEnter={() => setActiveDropdown('services')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className="nav-dropdown-trigger">
-                <i className="fas fa-handshake"></i>
-                <span>{navSections.services.label}</span>
+            <div className="nav-dropdown">
+              <button 
+                className={`nav-dropdown-trigger ${activeDropdown === 'services' ? 'active' : ''}`}
+                onClick={() => toggleDropdown('services')}
+                onBlur={() => setTimeout(() => setActiveDropdown(null), 200)}
+              >
+                <span><i className="fas fa-handshake"></i> {navSections.services.label}</span>
                 <i className={`fas fa-chevron-${activeDropdown === 'services' ? 'up' : 'down'} dropdown-arrow`}></i>
               </button>
-              <div className="nav-dropdown-menu">
-                {navSections.services.items.map((item) => (
-                  <Link key={item.href} href={item.href} className="nav-dropdown-item">
-                    <i className={`fas ${item.icon}`}></i>
-                    <span>{item.label}</span>
-                  </Link>
-                ))}
-              </div>
+              {activeDropdown === 'services' && (
+                <div className="nav-dropdown-menu">
+                  {navSections.services.items.map((item) => (
+                    <Link key={item.href} href={item.href} className="nav-dropdown-item" onClick={closeDropdowns}>
+                      <i className={`fas ${item.icon}`}></i>
+                      <span>{item.label}</span>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Lifestyle Dropdown */}
-            <div 
-              className={`nav-dropdown ${activeDropdown === 'lifestyle' ? 'active' : ''}`}
-              onMouseEnter={() => setActiveDropdown('lifestyle')}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <button className="nav-dropdown-trigger">
-                <i className="fas fa-heart"></i>
-                <span>{navSections.lifestyle.label}</span>
+            <div className="nav-dropdown">
+              <button 
+                className={`nav-dropdown-trigger ${activeDropdown === 'lifestyle' ? 'active' : ''}`}
+                onClick={() => toggleDropdown('lifestyle')}
+                onBlur={() => setTimeout(() => setActiveDropdown(null), 200)}
+              >
+                <span><i className="fas fa-heart"></i> {navSections.lifestyle.label}</span>
                 <i className={`fas fa-chevron-${activeDropdown === 'lifestyle' ? 'up' : 'down'} dropdown-arrow`}></i>
               </button>
-              <div className="nav-dropdown-menu">
-                {navSections.lifestyle.items.map((item) => (
-                  <Link key={item.href} href={item.href} className="nav-dropdown-item">
-                    <i className={`fas ${item.icon}`}></i>
-                    <span>{item.label}</span>
-                  </Link>
-                ))}
-              </div>
+              {activeDropdown === 'lifestyle' && (
+                <div className="nav-dropdown-menu">
+                  {navSections.lifestyle.items.map((item) => (
+                    <Link key={item.href} href={item.href} className="nav-dropdown-item" onClick={closeDropdowns}>
+                      <i className={`fas ${item.icon}`}></i>
+                      <span>{item.label}</span>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Meist - Direct Link */}
