@@ -2,12 +2,15 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default function Navbar() {
   const [lang, setLang] = useState('et')
   const [darkMode, setDarkMode] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
+  const [searchQuery, setSearchQuery] = useState('')
+  const router = useRouter()
 
   const toggleDropdown = (dropdown) => {
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown)
@@ -15,6 +18,14 @@ export default function Navbar() {
 
   const closeDropdowns = () => {
     setActiveDropdown(null)
+  }
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+    if (searchQuery.trim()) {
+      router.push(`/otsing?q=${encodeURIComponent(searchQuery)}`)
+      setSearchQuery('')
+    }
   }
 
   // Organized navigation structure
@@ -136,6 +147,34 @@ export default function Navbar() {
           </div>
 
           <div className="nav-controls">
+            {/* Search Bar */}
+            <form className="nav-search-form" onSubmit={handleSearch}>
+              <div className="search-input-wrapper">
+                <i className="fas fa-search"></i>
+                <input
+                  type="text"
+                  placeholder="Otsi..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </div>
+            </form>
+
+            {/* E-mail Shortcut */}
+            <a href="mailto:info@neti.ee" className="email-btn" title="Saada meile e-mail">
+              <i className="fas fa-envelope"></i>
+            </a>
+
+            {/* Login / Register */}
+            <div className="auth-buttons">
+              <Link href="/login" className="login-btn">
+                Logi sisse
+              </Link>
+              <Link href="/register" className="register-btn">
+                Registreeri
+              </Link>
+            </div>
+
             {/* Dark Mode Toggle */}
             <button 
               className="theme-toggle"
@@ -174,6 +213,29 @@ export default function Navbar() {
 
       {/* Mobile Menu - Reorganized */}
       <div className={`mobile-menu ${mobileMenuOpen ? 'active' : ''}`}>
+        {/* Mobile Search */}
+        <form className="mobile-search" onSubmit={handleSearch}>
+          <div className="search-input-wrapper">
+            <i className="fas fa-search"></i>
+            <input
+              type="text"
+              placeholder="Otsi..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+        </form>
+
+        {/* Mobile Auth */}
+        <div className="mobile-auth">
+          <Link href="/login" className="mobile-login-btn" onClick={() => setMobileMenuOpen(false)}>
+            <i className="fas fa-sign-in-alt"></i> Logi sisse
+          </Link>
+          <Link href="/register" className="mobile-register-btn" onClick={() => setMobileMenuOpen(false)}>
+            <i className="fas fa-user-plus"></i> Registreeri
+          </Link>
+        </div>
+
         <div className="mobile-section-title">Kaubaturg</div>
         <Link href="/autod" onClick={() => setMobileMenuOpen(false)}><i className="fas fa-car"></i> Autod</Link>
         <Link href="/kinnisvara" onClick={() => setMobileMenuOpen(false)}><i className="fas fa-home"></i> Kinnisvara</Link>
@@ -193,6 +255,11 @@ export default function Navbar() {
         
         <div className="mobile-section-title">Info</div>
         <Link href="/meist" onClick={() => setMobileMenuOpen(false)}><i className="fas fa-info-circle"></i> Meist</Link>
+
+        {/* Mobile Email */}
+        <a href="mailto:info@neti.ee" className="mobile-email-link" onClick={() => setMobileMenuOpen(false)}>
+          <i className="fas fa-envelope"></i> info@neti.ee
+        </a>
       </div>
     </>
   )
