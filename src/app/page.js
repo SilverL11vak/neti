@@ -229,6 +229,15 @@ export default function Home() {
       })
     }
     initAOS()
+    
+    // Refresh AOS on load to ensure animations work
+    window.addEventListener('load', () => {
+      const refreshAOS = async () => {
+        const AOS = (await import('aos')).default
+        AOS.refresh()
+      }
+      refreshAOS()
+    })
   }, [])
 
   // Mouse spotlight effect
