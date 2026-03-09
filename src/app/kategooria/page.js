@@ -201,16 +201,16 @@ export default function KategooriaPage() {
       <Navbar />
 
       {/* Page Header */}
-      <div className="car-detail-header" style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)', padding: '100px 16px 60px' }}>
+      <div className="car-detail-header" style={{ background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)', padding: '100px 16px 60px' }}>
         <div className="container">
-          <Link href="/" className="back-link" style={{ color: 'rgba(255,255,255,0.8)', marginBottom: '16px' }}>
+          <Link href="/" className="back-link" style={{ color: '#3b82f6', marginBottom: '16px' }}>
             <i className="fas fa-arrow-left"></i>
             Tagasi
           </Link>
-          <h1 style={{ color: 'white', fontSize: '2rem', marginBottom: '8px' }}>
+          <h1 style={{ color: '#1e293b', fontSize: '2rem', marginBottom: '8px' }}>
             {lang === 'et' ? 'Kategooriad' : 'Categories'}
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.1rem' }}>
+          <p style={{ color: '#64748b', fontSize: '1.1rem' }}>
             {lang === 'et' 
               ? 'Sirvi kõiki Eesti veebilehekülgi kategooriate kaupa'
               : 'Browse all Estonian websites by category'}
@@ -224,7 +224,8 @@ export default function KategooriaPage() {
               background: 'white', 
               borderRadius: '12px',
               padding: '4px',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.15)'
+              boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+              border: '1px solid #e2e8f0'
             }}>
               <i className="fas fa-search" style={{ padding: '0 16px', color: '#64748b' }}></i>
               <input
