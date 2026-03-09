@@ -3289,6 +3289,28 @@ html {
 .hero-ticker-container .logos-ticker {
   background: transparent;
   padding: 0;
+  overflow: hidden;
+}
+
+.hero-ticker-container .logos-track {
+  display: flex;
+  width: fit-content;
+}
+
+.hero-ticker-container .logos-inner {
+  display: flex;
+  gap: 50px;
+  padding-right: 50px;
+  animation: logoScroll 40s linear infinite;
+}
+
+.hero-ticker-container .logos-inner:hover {
+  animation-play-state: paused;
+}
+
+@keyframes logoScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .quick-links-tags {
