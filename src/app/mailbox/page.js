@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
-import '../autod/globals.css'
+import '../kinnisvara/globals.css'
 
 export default function MailboxPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -63,10 +63,14 @@ export default function MailboxPage() {
         <Navbar />
         
         {/* Page Header */}
-        <div className="market-header">
+        <div className="detail-header">
           <div className="container">
+            <Link href="/" className="back-link">
+              <i className="fas fa-arrow-left"></i>
+              Tagasi
+            </Link>
             <h1>Minu Postkast</h1>
-            <p>Logi sisse, et vaadata oma sõnumeid</p>
+            <p className="detail-address">Logi sisse, et vaadata oma sõnumeid</p>
           </div>
         </div>
 
@@ -221,10 +225,14 @@ export default function MailboxPage() {
       <Navbar />
       
       {/* Page Header */}
-      <div className="market-header">
+      <div className="detail-header">
         <div className="container">
+          <Link href="/" className="back-link">
+            <i className="fas fa-arrow-left"></i>
+            Tagasi
+          </Link>
           <h1>Minu Postkast</h1>
-          <p>Sinu NETI isiklik postkast</p>
+          <p className="detail-address">Sinu NETI isiklik postkast</p>
         </div>
       </div>
 
