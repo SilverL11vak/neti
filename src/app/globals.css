@@ -2862,7 +2862,7 @@ html {
 
 .hero-light-gradient {
   display: block;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 50%, #60a5fa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -2921,7 +2921,7 @@ html {
 
 .search-light-btn {
   padding: 18px 32px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
   border: none;
   color: white;
   font-weight: 600;
@@ -2936,17 +2936,33 @@ html {
 
 .hero-light-quicklinks {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 36px;
+  gap: 16px;
+  margin-bottom: 32px;
+  width: 100%;
 }
 
 .quick-links-label {
   color: #64748b;
   font-size: 0.9rem;
   font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Hero Ticker Container */
+.hero-ticker-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 8px 0;
+}
+
+.hero-ticker-container .logos-ticker {
+  background: transparent;
+  padding: 0;
 }
 
 .quick-links-tags {
@@ -3167,6 +3183,7 @@ html {
   align-items: center;
   padding: 16px 20px;
   border-bottom: 1px solid #e2e8f0;
+  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
 }
 
 .weather-widget-title {
@@ -3178,7 +3195,7 @@ html {
 }
 
 .weather-widget-title i {
-  color: #f59e0b;
+  color: #3b82f6;
   font-size: 1.1rem;
 }
 
@@ -3208,7 +3225,10 @@ html {
 .weather-widget-temp .temp-number {
   font-size: 3.5rem;
   font-weight: 800;
-  color: #1e293b;
+  background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1;
 }
 
@@ -3228,7 +3248,10 @@ html {
 .weather-widget-details .weather-condition {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #1e293b;
+  background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .weather-widget-details .weather-feels {
@@ -3296,7 +3319,7 @@ html {
   justify-content: center;
   width: 36px;
   height: 36px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
   border: none;
   border-radius: 8px;
   color: white;

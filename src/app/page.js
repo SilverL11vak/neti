@@ -424,13 +424,65 @@ export default function Home() {
                 <span className="quick-links-label">
                   {lang === 'et' ? 'Populaarsed:' : 'Popular:'}
                 </span>
-                <div className="quick-links-tags">
-                  {quickLinks.map((link, i) => (
-                    <Link key={i} href={`/otsing?q=${link.text}`} className="quick-link-tag">
-                      <i className={`fas ${link.icon}`}></i>
-                      <span>{link.text}</span>
-                    </Link>
-                  ))}
+              </div>
+
+              {/* Animated Logos Ticker - Moved under Populaarsed */}
+              <div className="hero-ticker-container">
+                <div className="logos-ticker">
+                  <div className="logos-track">
+                    {[...Array(2)].map((_, loopIndex) => (
+                      <div key={loopIndex} className="logos-inner">
+                        <Link href="/otsing?q=Swedbank" className="logo-text-item">
+                          <span>Swedbank</span>
+                        </Link>
+                        <Link href="/otsing?q=SEB" className="logo-text-item">
+                          <span>SEB</span>
+                        </Link>
+                        <Link href="/otsing?q=Telia" className="logo-text-item">
+                          <span>Telia</span>
+                        </Link>
+                        <Link href="/otsing?q=Postimees" className="logo-text-item">
+                          <span>Postimees</span>
+                        </Link>
+                        <Link href="/otsing?q=Bolt" className="logo-text-item">
+                          <span>Bolt</span>
+                        </Link>
+                        <Link href="/otsing?q=Apollo" className="logo-text-item">
+                          <span>Apollo</span>
+                        </Link>
+                        <Link href="/otsing?q=K+K" className="logo-text-item">
+                          <span>K+Kaubad</span>
+                        </Link>
+                        <Link href="/otsing?q=COOP" className="logo-text-item">
+                          <span>COOP</span>
+                        </Link>
+                        <Link href="/otsing?q=Swedbank" className="logo-text-item">
+                          <span>Swedbank</span>
+                        </Link>
+                        <Link href="/otsing?q=SEB" className="logo-text-item">
+                          <span>SEB</span>
+                        </Link>
+                        <Link href="/otsing?q=Telia" className="logo-text-item">
+                          <span>Telia</span>
+                        </Link>
+                        <Link href="/otsing?q=Postimees" className="logo-text-item">
+                          <span>Postimees</span>
+                        </Link>
+                        <Link href="/otsing?q=Bolt" className="logo-text-item">
+                          <span>Bolt</span>
+                        </Link>
+                        <Link href="/otsing?q=Apollo" className="logo-text-item">
+                          <span>Apollo</span>
+                        </Link>
+                        <Link href="/otsing?q=K+K" className="logo-text-item">
+                          <span>K+Kaubad</span>
+                        </Link>
+                        <Link href="/otsing?q=COOP" className="logo-text-item">
+                          <span>COOP</span>
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -454,65 +506,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Animated Logos Section - Floating Style */}
-        <section className="logos-ticker-floating" data-aos="fade-up">
-          <div className="logos-ticker">
-            <div className="logos-track">
-              {[...Array(2)].map((_, loopIndex) => (
-                <div key={loopIndex} className="logos-inner">
-                  <Link href="/otsing?q=Swedbank" className="logo-text-item">
-                    <span>Swedbank</span>
-                  </Link>
-                  <Link href="/otsing?q=SEB" className="logo-text-item">
-                    <span>SEB</span>
-                  </Link>
-                  <Link href="/otsing?q=Telia" className="logo-text-item">
-                    <span>Telia</span>
-                  </Link>
-                  <Link href="/otsing?q=Postimees" className="logo-text-item">
-                    <span>Postimees</span>
-                  </Link>
-                  <Link href="/otsing?q=Bolt" className="logo-text-item">
-                    <span>Bolt</span>
-                  </Link>
-                  <Link href="/otsing?q=Apollo" className="logo-text-item">
-                    <span>Apollo</span>
-                  </Link>
-                  <Link href="/otsing?q=K+K" className="logo-text-item">
-                    <span>K+Kaubad</span>
-                  </Link>
-                  <Link href="/otsing?q=COOP" className="logo-text-item">
-                    <span>COOP</span>
-                  </Link>
-                  <Link href="/otsing?q=Swedbank" className="logo-text-item">
-                    <span>Swedbank</span>
-                  </Link>
-                  <Link href="/otsing?q=SEB" className="logo-text-item">
-                    <span>SEB</span>
-                  </Link>
-                  <Link href="/otsing?q=Telia" className="logo-text-item">
-                    <span>Telia</span>
-                  </Link>
-                  <Link href="/otsing?q=Postimees" className="logo-text-item">
-                    <span>Postimees</span>
-                  </Link>
-                  <Link href="/otsing?q=Bolt" className="logo-text-item">
-                    <span>Bolt</span>
-                  </Link>
-                  <Link href="/otsing?q=Apollo" className="logo-text-item">
-                    <span>Apollo</span>
-                  </Link>
-                  <Link href="/otsing?q=K+K" className="logo-text-item">
-                    <span>K+Kaubad</span>
-                  </Link>
-                  <Link href="/otsing?q=COOP" className="logo-text-item">
-                    <span>COOP</span>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+
 
         {/* Weather Section - Widget Style with Location & Unit Toggle */}
         <section className="section" style={{ padding: '20px 0', background: '#f8fafc' }} data-aos="fade-up" data-aos-delay="100">
