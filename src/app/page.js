@@ -181,6 +181,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
   const [currentNews, setCurrentNews] = useState(0)
   const [newsToShow, setNewsToShow] = useState(3)
+  const [weatherExpanded, setWeatherExpanded] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
@@ -450,53 +451,96 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Weather Section */}
+        {/* Weather Section - Compact Modern */}
         <section className="section" style={{ padding: '20px 0', background: '#f8fafc' }} data-aos="fade-up" data-aos-delay="100">
           <div className="container">
-            <div className="section-header" style={{ marginBottom: '16px' }}>
-              <span className="section-badge">{lang === 'et' ? 'Ilm' : 'Weather'}</span>
-              <h2 className="section-title" style={{ fontSize: '1.25rem' }}>{lang === 'et' ? 'Eesti ilm täna' : 'Weather today'}</h2>
+            <div className="weather-compact-card" onClick={() => setWeatherExpanded(!weatherExpanded)}>
+              <div className="weather-compact-left">
+                <div className="weather-compact-icon">
+                  <i className="fas fa-cloud-sun"></i>
+                </div>
+                <div className="weather-compact-info">
+                  <div className="weather-compact-temp">
+                    <span className="temp-value">+8°</span>
+                    <span className="temp-condition">{lang === 'et' ? 'Poolpilves' : 'Partly Cloudy'}</span>
+                  </div>
+                  <div className="weather-compact-location">
+                    <i className="fas fa-map-marker-alt"></i>
+                    <span>Tallinn</span>
+                  </div>
+                </div>
+              </div>
+              <div className="weather-compact-right">
+                <button className="weather-expand-btn">
+                  <span>{weatherExpanded ? (lang === 'et' ? 'Vähem' : 'Less') : (lang === 'et' ? 'Rohkem' : 'More')}</span>
+                  <i className={`fas fa-chevron-${weatherExpanded ? 'up' : 'down'}`}></i>
+                </button>
+              </div>
             </div>
             
-            <Link href="/ilm" className="weather-card-enhanced" style={{ padding: '16px' }}>
-              <div className="weather-main" style={{ gap: '16px' }}>
-                <div className="weather-main-left" style={{ minWidth: '80px' }}>
-                  <div className="weather-icon-large" style={{ fontSize: '2.5rem' }}>
-                    <i className="fas fa-cloud-sun"></i>
+            {/* Expandable Weather Details */}
+            <div className={`weather-details-expandable ${weatherExpanded ? 'expanded' : ''}`}>
+              <div className="weather-details-grid">
+                <div className="weather-detail-item">
+                  <div className="detail-icon">
+                    <i className="fas fa-wind"></i>
                   </div>
-                  <div className="weather-temp-display">
-                    <span className="temp-number" style={{ fontSize: '2rem' }}>+8</span>
-                    <span className="temp-symbol">°C</span>
+                  <div className="detail-info">
+                    <span className="detail-label">{lang === 'et' ? 'Tuul' : 'Wind'}</span>
+                    <span className="detail-value">12 km/h NW</span>
                   </div>
                 </div>
-                <div className="weather-main-right">
-                  <div className="weather-location-row">
-                    <i className="fas fa-map-marker-alt"></i>
-                    <span>Tallinn, Eesti</span>
+                <div className="weather-detail-item">
+                  <div className="detail-icon">
+                    <i className="fas fa-tint"></i>
                   </div>
-                  <p className="weather-condition-text">{lang === 'et' ? 'Poolpilves' : 'Partly Cloudy'}</p>
-                  <p className="weather-feels-like">{lang === 'et' ? 'Tunnetav: +6°' : 'Feels like: +6°'}</p>
+                  <div className="detail-info">
+                    <span className="detail-label">{lang === 'et' ? 'Niiskus' : 'Humidity'}</span>
+                    <span className="detail-value">78%</span>
+                  </div>
+                </div>
+                <div className="weather-detail-item">
+                  <div className="detail-icon">
+                    <i className="fas fa-sun"></i>
+                  </div>
+                  <div className="detail-info">
+                    <span className="detail-label">{lang === 'et' ? 'UV-index' : 'UV Index'}</span>
+                    <span className="detail-value">2</span>
+                  </div>
+                </div>
+                <div className="weather-detail-item">
+                  <div className="detail-icon">
+                    <i className="fas fa-temperature-low"></i>
+                  </div>
+                  <div className="detail-info">
+                    <span className="detail-label">{lang === 'et' ? 'Tunnetav' : 'Feels like'}</span>
+                    <span className="detail-value">+6°</span>
+                  </div>
+                </div>
+                <div className="weather-detail-item">
+                  <div className="detail-icon">
+                    <i className="fas fa-cloud-rain"></i>
+                  </div>
+                  <div className="detail-info">
+                    <span className="detail-label">{lang === 'et' ? 'Sademed' : 'Precipitation'}</span>
+                    <span className="detail-value">0%</span>
+                  </div>
+                </div>
+                <div className="weather-detail-item">
+                  <div className="detail-icon">
+                    <i className="fas fa-eye"></i>
+                  </div>
+                  <div className="detail-info">
+                    <span className="detail-label">{lang === 'et' ? 'Nähtavus' : 'Visibility'}</span>
+                    <span className="detail-value">10 km</span>
+                  </div>
                 </div>
               </div>
-              
-              <div className="weather-details-grid" style={{ marginTop: '12px' }}>
-                <div className="weather-detail-box">
-                  <i className="fas fa-wind"></i>
-                  <span className="detail-label">{lang === 'et' ? 'Tuul' : 'Wind'}</span>
-                  <span className="detail-value">12 km/h</span>
-                </div>
-                <div className="weather-detail-box">
-                  <i className="fas fa-tint"></i>
-                  <span className="detail-label">{lang === 'et' ? 'Niiskus' : 'Humidity'}</span>
-                  <span className="detail-value">78%</span>
-                </div>
-                <div className="weather-detail-box">
-                  <i className="fas fa-sun"></i>
-                  <span className="detail-label">{lang === 'et' ? 'UV' : 'UV'}</span>
-                  <span className="detail-value">2</span>
-                </div>
-              </div>
-            </Link>
+              <Link href="/ilm" className="weather-full-forecast-link">
+                <span>{lang === 'et' ? 'Vaata täpsemat ilma' : 'View full forecast'}</span>
+                <i className="fas fa-arrow-right"></i>
+              </Link>
+            </div>
           </div>
         </section>
 
