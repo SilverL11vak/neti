@@ -335,7 +335,7 @@ export default function Home() {
       {/* Main Content */}
       <main id="main-content">
         {/* Hero Section - Light Theme (News/Games Style) */}
-        <section className="hero-light" data-aos="fade-in">
+        <section className="hero-light" style={{ paddingTop: '100px' }} data-aos="fade-in">
           <div className="container">
             <div className="hero-light-content">
               <div className="hero-light-header">
@@ -828,28 +828,64 @@ export default function Home() {
           )}
         </section>
 
-        {/* Categories - Moved to bottom */}
-        <section className="section" style={{ background: '#f8fafc' }} data-aos="fade-up" data-aos-delay="100">
-          <div className="container">
-            <div className="section-header" style={{ marginBottom: '32px' }}>
-              <span className="section-badge">{lang === 'et' ? 'Kategooriad' : 'Categories'}</span>
-              <h2 className="section-title">{lang === 'et' ? 'Browse by Category' : 'Browse by Category'}</h2>
-            </div>
-            
-            <div className="categories-compact-grid">
-              {categories.map((cat) => (
-                <Link key={cat.id} href={`/kategooria`} className="category-compact-card">
-                  <div className="category-compact-icon">
-                    <i className={`fas ${cat.icon}`}></i>
+        {/* Categories - Moved to bottom (original design with subcategories) */}
+        <section className="section" data-aos="fade-up" data-aos-delay="100">
+          <div className="section-header">
+            <span className="section-badge">
+              {lang === 'et' ? 'Kategooriad' : 'Categories'}
+            </span>
+            <h2 className="section-title">
+              {lang === 'et' ? 'Browse by Category' : 'Sirvi kategooria järgi'}
+            </h2>
+          </div>
+
+          <div className="categories-grid">
+            {categories.map((cat) => (
+              <div key={cat.id} className="category-card" style={{ opacity: 1 }}>
+                <div className="category-icon">
+                  <i className={`fas ${cat.icon}`}></i>
+                </div>
+                <h3 className="category-title">{cat.title}</h3>
+                <p className="category-title-en">{cat.titleEn}</p>
+                <p className="category-desc">{cat.desc}</p>
+                <span className="category-count">
+                  <i className="fas fa-link"></i>
+                  {cat.count} lehte
+                </span>
+                
+                {/* Subcategories Panel - Always Visible */}
+                <div 
+                  className="subcategories-panel"
+                  style={{
+                    marginTop: '12px',
+                    background: '#f8fafc',
+                    borderRadius: '10px',
+                    padding: '12px'
+                  }}
+                >
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                    {cat.subcategories.map((sub, i) => (
+                      <Link 
+                        key={i} 
+                        href={`/otsing?q=${sub}`}
+                        style={{
+                          padding: '5px 10px',
+                          background: 'white',
+                          borderRadius: '12px',
+                          fontSize: '0.75rem',
+                          fontWeight: '500',
+                          color: '#1e293b',
+                          border: '1px solid #e2e8f0',
+                          transition: 'all 0.2s'
+                        }}
+                      >
+                        {sub}
+                      </Link>
+                    ))}
                   </div>
-                  <div className="category-compact-info">
-                    <h4>{cat.title}</h4>
-                    <p>{cat.count} {lang === 'et' ? 'lehte' : 'sites'}</p>
-                  </div>
-                  <i className="fas fa-chevron-right category-compact-arrow"></i>
-                </Link>
-              ))}
-            </div>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
       </main>
