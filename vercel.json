@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd neti-next && npm run build",
+  "outputDirectory": "neti-next/.next",
+  "installCommand": "cd neti-next && npm install"
+}
