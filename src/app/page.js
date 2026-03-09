@@ -405,73 +405,110 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Animated Logos Section */}
-        <section className="logos-ticker-section" style={{ background: 'white', padding: '20px 0', borderBottom: '1px solid #e2e8f0' }} data-aos="fade-up">
-          <div className="container">
-            <div className="logos-ticker">
-              <div className="logos-track">
-                {[...Array(2)].map((_, loopIndex) => (
-                  <div key={loopIndex} className="logos-inner">
-                    <Link href="/otsing?q=Swedbank" className="logo-item">
-                      <i className="fas fa-university"></i>
-                      <span>Swedbank</span>
-                    </Link>
-                    <Link href="/otsing?q=SEB" className="logo-item">
-                      <i className="fas fa-building-columns"></i>
-                      <span>SEB</span>
-                    </Link>
-                    <Link href="/otsing?q=Telia" className="logo-item">
-                      <i className="fas fa-mobile-alt"></i>
-                      <span>Telia</span>
-                    </Link>
-                    <Link href="/otsing?q=Postimees" className="logo-item">
-                      <i className="fas fa-newspaper"></i>
-                      <span>Postimees</span>
-                    </Link>
-                    <Link href="/otsing?q=Bolt" className="logo-item">
-                      <i className="fas fa-taxi"></i>
-                      <span>Bolt</span>
-                    </Link>
-                    <Link href="/otsing?q=Apollo" className="logo-item">
-                      <i className="fas fa-book"></i>
-                      <span>Apollo</span>
-                    </Link>
-                    <Link href="/otsing?q=K+K" className="logo-item">
-                      <i className="fas fa-shopping-cart"></i>
-                      <span>K+Kaubad</span>
-                    </Link>
-                    <Link href="/otsing?q=COOP" className="logo-item">
-                      <i className="fas fa-store"></i>
-                      <span>COOP</span>
-                    </Link>
-                  </div>
-                ))}
-              </div>
+        {/* Animated Logos Section - Floating Style */}
+        <section className="logos-ticker-floating" data-aos="fade-up">
+          <div className="logos-ticker">
+            <div className="logos-track">
+              {[...Array(2)].map((_, loopIndex) => (
+                <div key={loopIndex} className="logos-inner">
+                  <Link href="/otsing?q=Swedbank" className="logo-text-item">
+                    <span>Swedbank</span>
+                  </Link>
+                  <Link href="/otsing?q=SEB" className="logo-text-item">
+                    <span>SEB</span>
+                  </Link>
+                  <Link href="/otsing?q=Telia" className="logo-text-item">
+                    <span>Telia</span>
+                  </Link>
+                  <Link href="/otsing?q=Postimees" className="logo-text-item">
+                    <span>Postimees</span>
+                  </Link>
+                  <Link href="/otsing?q=Bolt" className="logo-text-item">
+                    <span>Bolt</span>
+                  </Link>
+                  <Link href="/otsing?q=Apollo" className="logo-text-item">
+                    <span>Apollo</span>
+                  </Link>
+                  <Link href="/otsing?q=K+K" className="logo-text-item">
+                    <span>K+Kaubad</span>
+                  </Link>
+                  <Link href="/otsing?q=COOP" className="logo-text-item">
+                    <span>COOP</span>
+                  </Link>
+                  <Link href="/otsing?q=Swedbank" className="logo-text-item">
+                    <span>Swedbank</span>
+                  </Link>
+                  <Link href="/otsing?q=SEB" className="logo-text-item">
+                    <span>SEB</span>
+                  </Link>
+                  <Link href="/otsing?q=Telia" className="logo-text-item">
+                    <span>Telia</span>
+                  </Link>
+                  <Link href="/otsing?q=Postimees" className="logo-text-item">
+                    <span>Postimees</span>
+                  </Link>
+                  <Link href="/otsing?q=Bolt" className="logo-text-item">
+                    <span>Bolt</span>
+                  </Link>
+                  <Link href="/otsing?q=Apollo" className="logo-text-item">
+                    <span>Apollo</span>
+                  </Link>
+                  <Link href="/otsing?q=K+K" className="logo-text-item">
+                    <span>K+Kaubad</span>
+                  </Link>
+                  <Link href="/otsing?q=COOP" className="logo-text-item">
+                    <span>COOP</span>
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Weather Section - Compact Modern */}
+        {/* Weather Section - Widget Style */}
         <section className="section" style={{ padding: '20px 0', background: '#f8fafc' }} data-aos="fade-up" data-aos-delay="100">
           <div className="container">
-            <div className="weather-compact-card" onClick={() => setWeatherExpanded(!weatherExpanded)}>
-              <div className="weather-compact-left">
-                <div className="weather-compact-icon">
+            <div className="weather-widget-card" onClick={() => setWeatherExpanded(!weatherExpanded)}>
+              <div className="weather-widget-header">
+                <div className="weather-widget-title">
                   <i className="fas fa-cloud-sun"></i>
+                  <span>{lang === 'et' ? 'Ilm' : 'Weather'}</span>
                 </div>
-                <div className="weather-compact-info">
-                  <div className="weather-compact-temp">
-                    <span className="temp-value">+8°</span>
-                    <span className="temp-condition">{lang === 'et' ? 'Poolpilves' : 'Partly Cloudy'}</span>
+                <div className="weather-widget-location">
+                  <i className="fas fa-map-marker-alt"></i>
+                  <span>Tallinn, {lang === 'et' ? 'Eesti' : 'Estonia'}</span>
+                </div>
+              </div>
+              
+              <div className="weather-widget-body">
+                <div className="weather-widget-main">
+                  <div className="weather-widget-temp">
+                    <span className="temp-number">+8</span>
+                    <span className="temp-unit">°C</span>
                   </div>
-                  <div className="weather-compact-location">
-                    <i className="fas fa-map-marker-alt"></i>
-                    <span>Tallinn</span>
+                  <div className="weather-widget-details">
+                    <span className="weather-condition">{lang === 'et' ? 'Poolpilves' : 'Partly Cloudy'}</span>
+                    <span className="weather-feels">{lang === 'et' ? 'Tunnetav: +6°' : 'Feels like: +6°'}</span>
                   </div>
                 </div>
               </div>
-              <div className="weather-compact-right">
-                <button className="weather-expand-btn">
+              
+              <div className="weather-widget-footer">
+                <div className="weather-quick-stats">
+                  <div className="quick-stat">
+                    <i className="fas fa-wind"></i>
+                    <span>12 km/h</span>
+                  </div>
+                  <div className="quick-stat">
+                    <i className="fas fa-tint"></i>
+                    <span>78%</span>
+                  </div>
+                  <div className="quick-stat">
+                    <i className="fas fa-sun"></i>
+                    <span>UV 2</span>
+                  </div>
+                </div>
+                <button className="weather-expand-toggle">
                   <span>{weatherExpanded ? (lang === 'et' ? 'Vähem' : 'Less') : (lang === 'et' ? 'Rohkem' : 'More')}</span>
                   <i className={`fas fa-chevron-${weatherExpanded ? 'up' : 'down'}`}></i>
                 </button>
