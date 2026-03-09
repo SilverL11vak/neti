@@ -182,7 +182,55 @@ export default function Home() {
   const [currentNews, setCurrentNews] = useState(0)
   const [newsToShow, setNewsToShow] = useState(3)
   const [weatherExpanded, setWeatherExpanded] = useState(false)
+  const [tempUnit, setTempUnit] = useState('C') // C or F
+  const [weatherLocation, setWeatherLocation] = useState({ city: 'Tallinn', country: 'Eesti' })
+  const [weatherData, setWeatherData] = useState({ temp: 8, feelsLike: 6, condition: 'Poolpilves', conditionEn: 'Partly Cloudy', wind: 12, humidity: 78, uv: 2, precipitation: 0, visibility: 10 })
   const router = useRouter()
+
+  // Get user location on mount
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          // In production, you'd use a reverse geocoding API
+          // For demo, we'll detect approximate location based on coordinates
+          const lat = position.coords.latitude
+          const lon = position.coords.longitude
+          
+          // Estonian coordinates range roughly
+          if (lat >= 57.5 && lat <= 59.5 && lon >= 21.5 && lon <= 28.5) {
+            setWeatherLocation({ city: 'Tallinn', country: 'Eesti' })
+          } else if (lat >= 58.3 && lat <= 58.6 && lon >= 26.5 && lon <= 27.5) {
+            setWeatherLocation({ city: 'Tartu', country: 'Eesti' })
+          } else if (lat >= 58.4 && lat <= 58.5 && lon >= 24.5 && lon <= 24.7) {
+            setWeatherLocation({ city: 'Pärnu', country: 'Eesti' })
+          } else if (lat >= 59.3 && lat <= 59.5 && lon >= 24.5 && lon <= 24.8) {
+            setWeatherLocation({ city: 'Helsinki', country: 'Finland' })
+          } else {
+            setWeatherLocation({ city: 'Tallinn', country: 'Eesti' })
+          }
+        },
+        (error) => {
+          console.log('Location access denied, using default')
+        }
+      )
+    }
+  }, [])
+
+  // Convert temperature based on unit
+  const getDisplayTemp = (temp) => {
+    if (tempUnit === 'F') {
+      return Math.round(temp * 9/5 + 32)
+    }
+    return temp
+  }
+
+  const getDisplayFeelsLike = (temp) => {
+    if (tempUnit === 'F') {
+      return Math.round(temp * 9/5 + 32)
+    }
+    return temp
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -466,7 +514,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Weather Section - Widget Style */}
+        {/* Weather Section - Widget Style with Location & Unit Toggle */}
         <section className="section" style={{ padding: '20px 0', background: '#f8fafc' }} data-aos="fade-up" data-aos-delay="100">
           <div className="container">
             <div className="weather-widget-card" onClick={() => setWeatherExpanded(!weatherExpanded)}>
@@ -475,21 +523,29 @@ export default function Home() {
                   <i className="fas fa-cloud-sun"></i>
                   <span>{lang === 'et' ? 'Ilm' : 'Weather'}</span>
                 </div>
-                <div className="weather-widget-location">
-                  <i className="fas fa-map-marker-alt"></i>
-                  <span>Tallinn, {lang === 'et' ? 'Eesti' : 'Estonia'}</span>
+                <div className="weather-widget-actions">
+                  <button 
+                    className="weather-unit-toggle"
+                    onClick={(e) => { e.stopPropagation(); setTempUnit(tempUnit === 'C' ? 'F' : 'C') }}
+                  >
+                    °{tempUnit}
+                  </button>
+                  <div className="weather-widget-location">
+                    <i className="fas fa-map-marker-alt"></i>
+                    <span>{weatherLocation.city}, {lang === 'et' ? weatherLocation.country : (weatherLocation.country === 'Eesti' ? 'Estonia' : weatherLocation.country)}</span>
+                  </div>
                 </div>
               </div>
               
               <div className="weather-widget-body">
                 <div className="weather-widget-main">
                   <div className="weather-widget-temp">
-                    <span className="temp-number">+8</span>
-                    <span className="temp-unit">°C</span>
+                    <span className="temp-number">{getDisplayTemp(weatherData.temp)}</span>
+                    <span className="temp-unit">°{tempUnit}</span>
                   </div>
                   <div className="weather-widget-details">
-                    <span className="weather-condition">{lang === 'et' ? 'Poolpilves' : 'Partly Cloudy'}</span>
-                    <span className="weather-feels">{lang === 'et' ? 'Tunnetav: +6°' : 'Feels like: +6°'}</span>
+                    <span className="weather-condition">{lang === 'et' ? weatherData.condition : weatherData.conditionEn}</span>
+                    <span className="weather-feels">{lang === 'et' ? 'Tunnetav: ' : 'Feels like: '}{getDisplayFeelsLike(weatherData.feelsLike)}°{tempUnit}</span>
                   </div>
                 </div>
               </div>
@@ -498,15 +554,15 @@ export default function Home() {
                 <div className="weather-quick-stats">
                   <div className="quick-stat">
                     <i className="fas fa-wind"></i>
-                    <span>12 km/h</span>
+                    <span>{weatherData.wind} km/h</span>
                   </div>
                   <div className="quick-stat">
                     <i className="fas fa-tint"></i>
-                    <span>78%</span>
+                    <span>{weatherData.humidity}%</span>
                   </div>
                   <div className="quick-stat">
                     <i className="fas fa-sun"></i>
-                    <span>UV 2</span>
+                    <span>UV {weatherData.uv}</span>
                   </div>
                 </div>
                 <button className="weather-expand-toggle">
@@ -525,7 +581,7 @@ export default function Home() {
                   </div>
                   <div className="detail-info">
                     <span className="detail-label">{lang === 'et' ? 'Tuul' : 'Wind'}</span>
-                    <span className="detail-value">12 km/h NW</span>
+                    <span className="detail-value">{weatherData.wind} km/h NW</span>
                   </div>
                 </div>
                 <div className="weather-detail-item">
@@ -534,7 +590,7 @@ export default function Home() {
                   </div>
                   <div className="detail-info">
                     <span className="detail-label">{lang === 'et' ? 'Niiskus' : 'Humidity'}</span>
-                    <span className="detail-value">78%</span>
+                    <span className="detail-value">{weatherData.humidity}%</span>
                   </div>
                 </div>
                 <div className="weather-detail-item">
@@ -543,7 +599,7 @@ export default function Home() {
                   </div>
                   <div className="detail-info">
                     <span className="detail-label">{lang === 'et' ? 'UV-index' : 'UV Index'}</span>
-                    <span className="detail-value">2</span>
+                    <span className="detail-value">{weatherData.uv}</span>
                   </div>
                 </div>
                 <div className="weather-detail-item">
@@ -552,7 +608,7 @@ export default function Home() {
                   </div>
                   <div className="detail-info">
                     <span className="detail-label">{lang === 'et' ? 'Tunnetav' : 'Feels like'}</span>
-                    <span className="detail-value">+6°</span>
+                    <span className="detail-value">{getDisplayFeelsLike(weatherData.feelsLike)}°{tempUnit}</span>
                   </div>
                 </div>
                 <div className="weather-detail-item">
@@ -561,7 +617,7 @@ export default function Home() {
                   </div>
                   <div className="detail-info">
                     <span className="detail-label">{lang === 'et' ? 'Sademed' : 'Precipitation'}</span>
-                    <span className="detail-value">0%</span>
+                    <span className="detail-value">{weatherData.precipitation}%</span>
                   </div>
                 </div>
                 <div className="weather-detail-item">
@@ -570,7 +626,7 @@ export default function Home() {
                   </div>
                   <div className="detail-info">
                     <span className="detail-label">{lang === 'et' ? 'Nähtavus' : 'Visibility'}</span>
-                    <span className="detail-value">10 km</span>
+                    <span className="detail-value">{weatherData.visibility} km</span>
                   </div>
                 </div>
               </div>

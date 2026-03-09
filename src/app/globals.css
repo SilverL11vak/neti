@@ -3284,6 +3284,33 @@ html {
   color: #3b82f6;
 }
 
+.weather-widget-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.weather-unit-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.weather-unit-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
 /* Expandable Weather Details */
 .weather-details-expandable {
   max-height: 0;
