@@ -5,7 +5,7 @@
 
 'use client'
 
-import { useState } from ' the horoscope pagereact'
+import { useState } from 'react'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import { useLanguage, useLoading } from '@/hooks'
