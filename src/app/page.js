@@ -395,8 +395,92 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Classifieds - moved before Categories */}
+        <section className="classifieds-section-clean" data-aos="fade-up" data-aos-delay="100">
+          <div className="section-header">
+            <span className="section-badge">
+              {lang === 'et' ? 'Reklaam' : 'Sponsored'}
+            </span>
+            <h2 className="section-title">
+              {lang === 'et' ? 'Kuulutused' : 'Classifieds'}
+            </h2>
+          </div>
+          
+          <div className="classifieds-clean-grid">
+            <Link href="/autod" className="classified-clean-card">
+              <div className="classified-clean-icon">
+                <i className="fas fa-car"></i>
+              </div>
+              <div className="classified-clean-content">
+                <h4>{lang === 'et' ? 'Autod' : 'Cars'}</h4>
+                <p>{lang === 'et' ? 'Leia oma järgmine sõiduk' : 'Find your next vehicle'}</p>
+                <span className="classified-clean-count">2,450 {lang === 'et' ? 'kuulutust' : 'listings'}</span>
+              </div>
+              <div className="classified-clean-arrow">
+                <i className="fas fa-chevron-right"></i>
+              </div>
+            </Link>
+            
+            <Link href="/otsing?q=kinnisvara" className="classified-clean-card">
+              <div className="classified-clean-icon">
+                <i className="fas fa-home"></i>
+              </div>
+              <div className="classified-clean-content">
+                <h4>{lang === 'et' ? 'Kinnisvara' : 'Real Estate'}</h4>
+                <p>{lang === 'et' ? 'Majad ja korterid' : 'Homes and apartments'}</p>
+                <span className="classified-clean-count">1,820 {lang === 'et' ? 'kuulutust' : 'listings'}</span>
+              </div>
+              <div className="classified-clean-arrow">
+                <i className="fas fa-chevron-right"></i>
+              </div>
+            </Link>
+            
+            <Link href="/otsing?q=töö" className="classified-clean-card">
+              <div className="classified-clean-icon">
+                <i className="fas fa-briefcase"></i>
+              </div>
+              <div className="classified-clean-content">
+                <h4>{lang === 'et' ? 'Töö' : 'Jobs'}</h4>
+                <p>{lang === 'et' ? 'Karjäärivõimalused' : 'Career opportunities'}</p>
+                <span className="classified-clean-count">890 {lang === 'et' ? 'kuulutust' : 'listings'}</span>
+              </div>
+              <div className="classified-clean-arrow">
+                <i className="fas fa-chevron-right"></i>
+              </div>
+            </Link>
+            
+            <Link href="/otsing?q=ost-müük" className="classified-clean-card">
+              <div className="classified-clean-icon">
+                <i className="fas fa-shopping-bag"></i>
+              </div>
+              <div className="classified-clean-content">
+                <h4>{lang === 'et' ? 'Ost & Müük' : 'Buy & Sell'}</h4>
+                <p>{lang === 'et' ? 'Ostu ja müügi kuulutused' : 'Buy and sell items'}</p>
+                <span className="classified-clean-count">5,200 {lang === 'et' ? 'kuulutust' : 'listings'}</span>
+              </div>
+              <div className="classified-clean-arrow">
+                <i className="fas fa-chevron-right"></i>
+              </div>
+            </Link>
+          </div>
+          
+          <div className="classifieds-clean-cta">
+            <div className="cta-clean-info">
+              <i className="fas fa-bullhorn"></i>
+              <div>
+                <h4>{lang === 'et' ? 'Soovid siin reklaamida?' : 'Want to advertise here?'}</h4>
+                <p>{lang === 'et' ? 'Lisa oma kuulutus tasuta ja jõua tuhatesse kasutajatesse' : 'Post your ad for free and reach thousands of users'}</p>
+              </div>
+            </div>
+            <Link href="/kuulutus" className="cta-clean-button">
+              <span>{lang === 'et' ? 'Lisa kuulutus tasuta' : 'Add free ad'}</span>
+              <i className="fas fa-plus"></i>
+            </Link>
+          </div>
+        </section>
+
         {/* Categories */}
-        <section className="section" data-aos="fade-up" data-aos-delay="100">
+        <section className="section" data-aos="fade-up" data-aos-delay="200">
           <div className="section-header">
             <span className="section-badge">
               {lang === 'et' ? 'Kategooriad' : 'Categories'}
