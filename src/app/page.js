@@ -214,29 +214,20 @@ export default function Home() {
     setExpandedCategory(expandedCategory === id ? null : id)
   }
 
-  // Scroll animation using scroll event
+  // Initialize AOS animations
   useEffect(() => {
-    const animatedElements = document.querySelectorAll('.animate-on-scroll')
-    
-    const checkAnimation = () => {
-      const triggerBottom = window.innerHeight * 0.85
-      
-      animatedElements.forEach((el) => {
-        const boxTop = el.getBoundingClientRect().top
-        
-        if (boxTop < triggerBottom) {
-          el.classList.add('is-visible')
-        }
+    // Dynamically import AOS to avoid SSR issues
+    const initAOS = async () => {
+      const AOS = (await import('aos')).default
+      await import('aos/dist/aos.css')
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 100,
       })
     }
-    
-    // Initial check
-    checkAnimation()
-    
-    // Add scroll listener
-    window.addEventListener('scroll', checkAnimation)
-    
-    return () => window.removeEventListener('scroll', checkAnimation)
+    initAOS()
   }, [])
 
   // Mouse spotlight effect
@@ -333,7 +324,7 @@ export default function Home() {
       {/* Main Content */}
       <main id="main-content">
         {/* Hero Section */}
-        <section className="hero animate-on-scroll">
+        <section className="hero" data-aos="fade-in">
           <div className="hero-floating-icons">
             <span className="floating-icon"><i className="fas fa-globe"></i></span>
             <span className="floating-icon"><i className="fas fa-search"></i></span>
@@ -358,7 +349,7 @@ export default function Home() {
                 : 'Your smartest gateway to Estonian internet. Find the best websites, services, and businesses quickly and easily.'}
             </p>
 
-            <div className="hero-search-wrapper">
+            <div className="hero-search-wrapper" data-aos="fade-down" data-aos-delay="300" data-aos-duration="800">
               <form className="hero-search-simple" onSubmit={handleSearch}>
                 <i className="fas fa-search"></i>
                 <input
@@ -404,7 +395,7 @@ export default function Home() {
         </section>
 
         {/* Categories */}
-        <section className="section animate-on-scroll">
+        <section className="section" data-aos="fade-up" data-aos-delay="100">
           <div className="section-header">
             <span className="section-badge">
               {lang === 'et' ? 'Kategooriad' : 'Categories'}
@@ -491,7 +482,7 @@ export default function Home() {
         </section>
 
         {/* Weather Section */}
-        <section className="section animate-on-scroll">
+        <section className="section" data-aos="fade-up" data-aos-delay="200">
           <div className="section-header">
             <span className="section-badge">{lang === 'et' ? 'Ilm' : 'Weather'}</span>
             <h2 className="section-title">{lang === 'et' ? 'Eesti ilm' : 'Weather in Estonia'}</h2>
@@ -651,7 +642,7 @@ export default function Home() {
         </section>
 
         {/* Horoscope Section */}
-        <section className="section animate-on-scroll">
+        <section className="section" data-aos="fade-up" data-aos-delay="300">
           <div className="section-header">
             <span className="section-badge">{lang === 'et' ? 'Horoskoop' : 'Horoscope'}</span>
             <h2 className="section-title">{lang === 'et' ? 'Päeva horoskoop' : 'Daily Horoscope'}</h2>
@@ -710,7 +701,7 @@ export default function Home() {
         </section>
 
         {/* Games Section */}
-        <section className="games-section-enhanced animate-on-scroll">
+        <section className="games-section-enhanced" data-aos="fade-up" data-aos-delay="400">
           <div className="section-header">
             <span className="section-badge">{lang === 'et' ? 'Mängud' : 'Games'}</span>
             <h2 className="section-title">{lang === 'et' ? 'Meelelahutus' : 'Entertainment'}</h2>
@@ -763,7 +754,7 @@ export default function Home() {
         </section>
 
         {/* News Section */}
-        <section className="news-carousel-section animate-on-scroll">
+        <section className="news-carousel-section" data-aos="fade-up" data-aos-delay="500">
           <div className="section-header">
             <span className="section-badge">{lang === 'et' ? 'Uudised' : 'News'}</span>
             <h2 className="section-title">{lang === 'et' ? 'Viimased uudised' : 'Latest News'}</h2>
@@ -811,7 +802,7 @@ export default function Home() {
         </section>
 
         {/* Classifieds Section */}
-        <section className="classifieds-section-clean animate-on-scroll">
+        <section className="classifieds-section-clean" data-aos="fade-up" data-aos-delay="600">
           <div className="section-header">
             <span className="section-badge">
               {lang === 'et' ? 'Reklaam' : 'Sponsored'}
