@@ -420,43 +420,17 @@ export default function Home() {
                   {cat.count} lehte
                 </span>
                 
-                <button 
-                  onClick={() => toggleCategory(cat.id)}
-                  className="category-expand-btn"
-                  style={{
-                    marginTop: '12px',
-                    padding: '8px 14px',
-                    background: expandedCategory === cat.id ? '#1d4ed8' : '#f1f5f9',
-                    color: expandedCategory === cat.id ? 'white' : '#1d4ed8',
-                    border: 'none',
-                    borderRadius: '8px',
-                    cursor: 'pointer',
-                    fontWeight: '600',
-                    fontSize: '0.85rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    width: '100%',
-                    transition: 'all 0.2s'
-                  }}
-                >
-                  {lang === 'et' ? 'Vaata alamkategooriaid' : 'View subcategories'}
-                  <i className={`fas ${expandedCategory === cat.id ? 'fa-chevron-up' : 'fa-chevron-down'}`} style={{ fontSize: '0.75rem' }}></i>
-                </button>
-
-                {/* Subcategories Panel */}
+                {/* Subcategories Panel - Always Visible */}
                 <div 
                   className="subcategories-panel"
                   style={{
-                    maxHeight: expandedCategory === cat.id ? '400px' : '0',
-                    overflow: 'hidden',
-                    transition: 'max-height 0.3s ease',
+                    marginTop: '12px',
                     background: '#f8fafc',
                     borderRadius: '10px',
-                    marginTop: '10px'
+                    padding: '12px'
                   }}
                 >
-                  <div style={{ padding: '12px', display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                     {cat.subcategories.map((sub, i) => (
                       <Link 
                         key={i} 
