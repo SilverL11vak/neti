@@ -761,7 +761,7 @@ export default function Home() {
             <h2 className="section-title">{lang === 'et' ? 'Viimased uudised' : 'Latest News'}</h2>
           </div>
 
-          <div className="news-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', marginBottom: '24px' }}>
+          <div className="news-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px', marginBottom: '24px', maxWidth: '1200px', margin: '0 auto 24px' }}>
             {newsItems.slice(0, newsToShow).map((news) => (
               <Link href={`/uudised/${news.id}`} key={news.id} className="news-carousel-slide" style={{ display: 'block' }}>
                 <div className="news-card-image">
