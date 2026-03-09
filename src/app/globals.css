@@ -144,11 +144,17 @@ a {
   color: #64748b;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
 }
 
 .nav-link:hover {
   color: #1d4ed8;
   transform: translateY(-2px);
+  background: #f1f5f9;
 }
 
 .nav-link::after {
@@ -233,7 +239,7 @@ a {
   border-radius: 12px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   padding: 8px;
-  z-index: 1000;
+  z-index: 1001;
   margin-top: 4px;
   border: 1px solid #e2e8f0;
 }
@@ -3079,6 +3085,8 @@ html {
   margin: 0 auto;
   overflow: hidden;
   padding: 8px 0;
+  position: relative;
+  z-index: 100;
 }
 
 .hero-ticker-container .logos-ticker {
@@ -3482,49 +3490,52 @@ html {
 .weather-detail-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px;
-  background: #f8fafc;
-  border-radius: 10px;
+  gap: 14px;
+  padding: 14px;
+  background: white;
+  border-radius: 12px;
   transition: all 0.2s ease;
+  border: 1px solid #e2e8f0;
 }
 
 .weather-detail-item:hover {
   background: #f1f5f9;
   transform: translateY(-2px);
+  border-color: #3b82f6;
 }
 
 .weather-detail-item .detail-icon {
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .weather-detail-item .detail-icon i {
   color: white;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .weather-detail-item .detail-info {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .weather-detail-item .detail-label {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: #64748b;
   font-weight: 500;
 }
 
 .weather-detail-item .detail-value {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #1e293b;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .weather-full-forecast-link {
@@ -3534,7 +3545,7 @@ html {
   gap: 8px;
   margin-top: 16px;
   padding: 12px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
   border-radius: 10px;
   color: white;
   text-decoration: none;
@@ -3544,7 +3555,7 @@ html {
 
 .weather-full-forecast-link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
 }
 
 .weather-full-forecast-link i {
