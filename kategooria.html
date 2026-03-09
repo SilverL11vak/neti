@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="et" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NETI - Riik ja Ühiskond - Eesti veebikataloog">
+    <title>Riik ja Ühiskond - NETI.ee</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">
+                    <i class="fas fa-compass"></i>
+                </span>
+                <span class="logo-text">NETI</span>
+            </a>
+            
+            <div class="search-wrapper">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" id="mainSearch" 
+                           placeholder="Otsi Eesti veebilehti..." 
+                           autocomplete="off"
+                           aria-label="Search">
+                    <button class="voice-search" aria-label="Voice search">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <div class="search-dropdown" id="searchDropdown"></div>
+                </div>
+            </div>
+            
+            <div class="nav-controls">
+                <div class="lang-toggle">
+                    <button class="lang-btn active" data-lang="et"><span>ET</span></button>
+                    <button class="lang-btn" data-lang="en"><span>EN</span></button>
+                    <button class="lang-btn" data-lang="ru"><span>RU</span></button>
+                </div>
+                
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-content">
+                <a href="index.html#categories" class="mobile-link">Kategooriad</a>
+                <a href="index.html#weather" class="mobile-link">Ilm</a>
+                <a href="index.html#horoscope" class="mobile-link">Horoskoop</a>
+                <a href="index.html#games" class="mobile-link">Mängud</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <nav class="breadcrumb">
+                <a href="index.html">Avaleht</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Riik ja Ühiskond</span>
+            </nav>
+            
+            <div class="category-header">
+                <div class="category-icon-large">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                <div class="category-info">
+                    <h1>Riik ja Ühiskond</h1>
+                    <p>Riigiorganid, kohalik omavalitsus, seadused ja poliitika</p>
+                    <div class="category-stats">
+                        <span><i class="fas fa-link"></i> 245 veebilehte</span>
+                        <span><i class="fas fa-users"></i> 12,450 kasutajat päevas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subcategories -->
+    <section class="subcategories">
+        <div class="container">
+            <div class="subcategory-grid">
+                <a href="#" class="subcategory-card">
+                    <i class="fas fa-university"></i>
+                    <div class="subcategory-info">
+                        <h3>Riigikogu</h3>
+                        <p>Eesti Parlament</p>
+                    </div>
+                    <span class="count">45</span>
+                </a>
+                
+                <a href="#" class="subcategory-card">
+                    <i class="fas fa-building-columns"></i>
+                    <div class="subcategory-info">
+                        <h3>Valitsus</h3>
+                        <p>Võimuasutused</p>
+                    </div>
+                    <span class="count">32</span>
+                </a>
+                
+                <a href="#" class="subcategory-card">
+                    <i class="fas fa-city"></i>
+                    <div class="subcategory-info">
+                        <h3>Kohalikud omavalitsused</h3>
+                        <p>Linnad ja vallad</p>
+                    </div>
+                    <span class="count">78</span>
+                </a>
+                
+                <a href="#" class="subcategory-card">
+                    <i class="fas fa-gavel"></i>
+                    <div class="subcategory-info">
+                        <h3>Seadused</h3>
+                        <p>Õigusaktid</p>
+                    </div>
+                    <span class="count">156</span>
+                </a>
+                
+                <a href="#" class="subcategory-card">
+                    <i class="fas fa-vote-yea"></i>
+                    <div class="subcategory-info">
+                        <h3>Valimised</h3>
+                        <p>Demokraatia</p>
+                    </div>
+                    <span class="count">24</span>
+                </a>
+                
+                <a href="#" class="subcategory-card">
+                    <i class="fas fa-passport"></i>
+                    <div class="subcategory-info">
+                        <h3>Dokumendid</h3>
+                        <p>Isikut tõendavad dokumendid</p>
+                    </div>
+                    <span class="count">18</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Sites -->
+    <section class="featured-sites">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Tähtsamad</span>
+                <h2 class="section-title">Populaarsemad lehed</h2>
+            </div>
+            
+            <div class="sites-grid">
+                <a href="#" class="site-card">
+                    <div class="site-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="site-info">
+                        <h3>Riigikogu</h3>
+                        <p>www.riigikogu.ee</p>
+                        <span class="site-desc">Eesti Vabariigi Parlament</span>
+                    </div>
+                    <div class="site-stats">
+                        <span><i class="fas fa-star"></i> 4.8</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="site-card">
+                    <div class="site-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="site-info">
+                        <h3>Valitsus</h3>
+                        <p>www.valitsus.ee</p>
+                        <span class="site-desc">Eesti Vabariigi Valitsus</span>
+                    </div>
+                    <div class="site-stats">
+                        <span><i class="fas fa-star"></i> 4.7</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="site-card">
+                    <div class="site-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="site-info">
+                        <h3>Riigikohus</h3>
+                        <p>www.riigikohus.ee</p>
+                        <span class="site-desc">Eesti kõrgeim kohus</span>
+                    </div>
+                    <div class="site-stats">
+                        <span><i class="fas fa-star"></i> 4.6</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="site-card">
+                    <div class="site-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="site-info">
+                        <h3>Kaitsepolitsei</h3>
+                        <p>www.kapo.ee</p>
+                        <span class="site-desc">Kaitsepolitsei amet</span>
+                    </div>
+                    <div class="site-stats">
+                        <span><i class="fas fa-star"></i> 4.9</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Sites -->
+    <section class="all-sites">
+        <div class="container">
+            <div class="sites-list-header">
+                <h2>Kõik lehed</h2>
+                <div class="sort-options">
+                    <select class="sort-select">
+                        <option>Sorteeri: Populaarsus</option>
+                        <option>Sorteeri: Nimi A-Ö</option>
+                        <option>Sorteeri: Uusimad</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="sites-list">
+                <a href="#" class="site-list-item">
+                    <div class="site-list-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <div class="site-list-info">
+                        <h4>Presidendi Kantselei</h4>
+                        <span>www.president.ee</span>
+                    </div>
+                    <span class="site-list-category">Riigipea</span>
+                </a>
+                
+                <a href="#" class="site-list-item">
+                    <div class="site-list-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <div class="site-list-info">
+                        <h4>Riigi Teataja</h4>
+                        <span>www.riigiteataja.ee</span>
+                    </div>
+                    <span class="site-list-category">Seadused</span>
+                </a>
+                
+                <a href="#" class="site-list-item">
+                    <div class="site-list-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <div class="site-list-info">
+                        <h4>Politsei- ja Piirivalveamet</h4>
+                        <span>www.politsei.ee</span>
+                    </div>
+                    <span class="site-list-category">Korrakaitse</span>
+                </a>
+                
+                <a href="#" class="site-list-item">
+                    <div class="site-list-icon">
+                        <i class="fas fa-bus"></i>
+                    </div>
+                    <div class="site-list-info">
+                        <h4>Maanteeamet</h4>
+                        <span>www.mnt.ee</span>
+                    </div>
+                    <span class="site-list-category">Transport</span>
+                </a>
+                
+                <a href="#" class="site-list-item">
+                    <div class="site-list-icon">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <div class="site-list-info">
+                        <h4>Maksu- ja Tolliamet</h4>
+                        <span>www.emta.ee</span>
+                    </div>
+                    <span class="site-list-category">Maksud</span>
+                </a>
+                
+                <a href="#" class="site-list-item">
+                    <div class="site-list-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="site-list-info">
+                        <h4>Välisministeerium</h4>
+                        <span>www.vm.ee</span>
+                    </div>
+                    <span class="site-list-category">Välissuhted</span>
+                </a>
+                
+                <a href="#" class="site-list-item">
+                    <div class="site-list-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="site-list-info">
+                        <h4>Haridus- ja Teadusministeerium</h4>
+                        <span>www.hm.ee</span>
+                    </div>
+                    <span class="site-list-category">Haridus</span>
+                </a>
+                
+                <a href="#" class="site-list-item">
+                    <div class="site-list-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="site-list-info">
+                        <h4>Tervise- ja Tööministeerium</h4>
+                        <span>www.sm.ee</span>
+                    </div>
+                    <span class="site-list-category">Tervis</span>
+                </a>
+            </div>
+            
+            <div class="pagination">
+                <a href="#" class="page-btn active">1</a>
+                <a href="#" class="page-btn">2</a>
+                <a href="#" class="page-btn">3</a>
+                <a href="#" class="page-btn">4</a>
+                <a href="#" class="page-btn"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <span class="logo-icon"><i class="fas fa-compass"></i></span>
+                        <span class="logo-text">NETI</span>
+                    </a>
+                    <p class="footer-desc">Sinu usaldusväärne sisenemispunkt Eesti veebilehtedele alates 1996</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Kategooriad</h4>
+                        <ul>
+                            <li><a href="#">Riik ja Ühiskond</a></li>
+                            <li><a href="#">Info ja Meedia</a></li>
+                            <li><a href="#">Äri</a></li>
+                            <li><a href="#">Haridus</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Teenused</h4>
+                        <ul>
+                            <li><a href="#">Otsing</a></li>
+                            <li><a href="#">Ilm</a></li>
+                            <li><a href="#">Horoskoop</a></li>
+                            <li><a href="#">Mängud</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Abi</h4>
+                        <ul>
+                            <li><a href="#">Abi</a></li>
+                            <li><a href="#">Reeglid</a></li>
+                            <li><a href="#">Privaatsus</a></li>
+                            <li><a href="#">Kontakt</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 NETI.ee. Kõik õigused kaitstud.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privaatsus</a>
+                    <a href="#">Tingimused</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

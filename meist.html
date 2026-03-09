@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="et" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NETI - Meist">
+    <title>Meist - NETI.ee</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon"><i class="fas fa-compass"></i></span>
+                <span class="logo-text">NETI</span>
+            </a>
+            
+            <div class="search-wrapper">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" id="mainSearch" placeholder="Otsi Eesti veebilehti..." autocomplete="off" aria-label="Search">
+                    <button class="voice-search" aria-label="Voice search"><i class="fas fa-microphone"></i></button>
+                    <div class="search-dropdown" id="searchDropdown"></div>
+                </div>
+            </div>
+            
+            <div class="nav-controls">
+                <div class="lang-toggle">
+                    <button class="lang-btn active" data-lang="et"><span>ET</span></button>
+                    <button class="lang-btn" data-lang="en"><span>EN</span></button>
+                    <button class="lang-btn" data-lang="ru"><span>RU</span></button>
+                </div>
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-content">
+                <a href="index.html#categories" class="mobile-link">Kategooriad</a>
+                <a href="index.html#weather" class="mobile-link">Ilm</a>
+                <a href="index.html#horoscope" class="mobile-link">Horoskoop</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <h1>NETI.ee - Meist</h1>
+        <p>Sinu usaldusväärne sisenemispunkt Eesti internetimaailma alates 1996. aastast</p>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-content">
+        <div class="container">
+            <!-- Stats -->
+            <div class="about-stats">
+                <div class="stat-item">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Aastat teenust</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Registreeritud lehte</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1M+</div>
+                    <div class="stat-label">Kasutajat kuus</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Peamist kategooriat</div>
+                </div>
+            </div>
+
+            <!-- About Cards -->
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-card-icon">
+                        <i class="fas fa-compass"></i>
+                    </div>
+                    <h3>Meie Missioon</h3>
+                    <p>pakkuda Eesti kasutajatele lihtsat ja kiiret viisi leida huvitavaid ja kasulikke veebilehti ühest kohast.</p>
+                </div>
+                
+                <div class="about-card">
+                    <div class="about-card-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>Ajalugu</h3>
+                    <p>NETI.ee asutati 1996. aastal ja on sellest ajast peale olnud Eesti interneti oluline osa.</p>
+                </div>
+                
+                <div class="about-card">
+                    <div class="about-card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Meie Kasutajad</h3>
+                    <p>Iga päev kasutab NETI-d tuhandeid inimesi, kes otsivad Eesti veebilehti ja teenuseid.</p>
+                </div>
+            </div>
+
+            <!-- Team -->
+            <div class="section-header">
+                <span class="section-badge">Meie</span>
+                <h2 class="section-title">Meeskond</h2>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>Andres Tamm</h4>
+                    <p>Asutaja & Tegevjuht</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>Kaia Kruus</h4>
+                    <p>Toimetaja</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>Mart Avandi</h4>
+                    <p>Arendaja</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>Liisa Oja</h4>
+                    <p>Disainer</p>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="section-header" style="margin-top: 60px;">
+                <span class="section-badge">Kontakt</span>
+                <h2 class="section-title">Võta Ühendust</h2>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <h2>Saada sõnum</h2>
+                    <form>
+                        <div class="form-group">
+                            <label>Nimi</label>
+                            <input type="text" placeholder="Sinu nimi">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="sinu@email.ee">
+                        </div>
+                        <div class="form-group">
+                            <label>Sõnum</label>
+                            <textarea placeholder="Sinu sõnum..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Saada</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <h2>Kontaktinfo</h2>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Aadress</h4>
+                            <p>Tartu mnt 55, 10115 Tallinn</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@neti.ee</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telefon</h4>
+                            <p>+372 1234 5678</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <span class="logo-icon"><i class="fas fa-compass"></i></span>
+                        <span class="logo-text">NETI</span>
+                    </a>
+                    <p class="footer-desc">Sinu usaldusväärne sisenemispunkt Eesti veebilehtedele alates 1996</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Kategooriad</h4>
+                        <ul>
+                            <li><a href="#">Riik ja Ühiskond</a></li>
+                            <li><a href="#">Info ja Meedia</a></li>
+                            <li><a href="#">Äri</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Teenused</h4>
+                        <ul>
+                            <li><a href="#">Otsing</a></li>
+                            <li><a href="#">Ilm</a></li>
+                            <li><a href="#">Horoskoop</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 NETI.ee. Kõik õigused kaitstud.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

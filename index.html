@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="et" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NETI - Eesti Interneti Kataloog ja Otsingusüsteem. Avasta parimad Eesti veebilehed ühes kohas.">
+    <title>NETI - Eesti Interneti Kataloog ja Otsingusüsteem</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">
+                    <i class="fas fa-compass"></i>
+                </span>
+                <span class="logo-text">NETI</span>
+            </a>
+            
+            <div class="search-wrapper">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" id="mainSearch" 
+                           placeholder="Otsi Eesti veebilehti..." 
+                           autocomplete="off"
+                           aria-label="Search Estonian websites">
+                    <button class="voice-search" aria-label="Voice search">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <div class="search-dropdown" id="searchDropdown">
+                        <!-- Suggestions populated by JS -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="desktop-nav">
+                <a href="#categories" class="desktop-nav-link">Kategooriad</a>
+                <a href="#weather" class="desktop-nav-link">Ilm</a>
+                <a href="otsing.html" class="desktop-nav-link">Otsing</a>
+                <a href="meist.html" class="desktop-nav-link">Meist</a>
+            </div>
+            
+            <div class="nav-controls">
+                <div class="lang-toggle">
+                    <button class="lang-btn active" data-lang="et" aria-label="Estonian">
+                        <span>ET</span>
+                    </button>
+                    <button class="lang-btn" data-lang="en" aria-label="English">
+                        <span>EN</span>
+                    </button>
+                    <button class="lang-btn" data-lang="ru" aria-label="Russian">
+                        <span>RU</span>
+                    </button>
+                </div>
+                
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-content">
+                <a href="#categories" class="mobile-link" data-lang-key="nav_categories">Kategooriad</a>
+                <a href="#weather" class="mobile-link" data-lang-key="nav_weather">Ilm</a>
+                <a href="#horoscope" class="mobile-link" data-lang-key="nav_horoscope">Horoskoop</a>
+                <a href="#games" class="mobile-link" data-lang-key="nav_games">Mängud</a>
+                <div class="mobile-menu-divider"></div>
+                <a href="meist.html" class="mobile-link">Meist</a>
+                <a href="kategooria.html" class="mobile-link">Kategooria</a>
+                <a href="otsing.html" class="mobile-link">Otsing</a>
+                <div class="mobile-controls">
+                    <button class="theme-toggle-mobile" id="themeToggleMobile">
+                        <i class="fas fa-moon"></i>
+                        <span>Dark Mode</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge" data-aos="fade-down">
+                <i class="fas fa-star"></i>
+                <span data-lang-en="Estonia's #1 Web Directory" data-lang-ru="Эстонский веб-каталог №1">Eesti #1 Veebikataloog</span>
+            </div>
+            
+            <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100">
+                <span data-lang-en="Discover" data-lang-ru="Открой">Avasta</span>
+                <span class="gradient-text" data-lang-en="Estonian Web" data-lang-ru="Эстонский интернет">Eesti Veebi</span>
+            </h1>
+            
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200" 
+               data-lang-en="Your smartest gateway to Estonia's internet world" 
+               data-lang-ru="Ваш умный вход в эстонский интернет">
+                Sinu nutikaim sisenemispunkt Eesti internetimaailma
+            </p>
+            
+            <div class="hero-search" data-aos="fade-up" data-aos-delay="300">
+                <div class="hero-search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Enter keywords, categories, or websites..." 
+                           data-placeholder-en="Enter keywords, categories, or websites..." 
+                           data-placeholder-ru="Введите ключевые слова, категории или сайты..."
+                           id="heroSearch">
+                    <button class="hero-search-btn">
+                        <span data-lang-en="Search" data-lang-ru="Поиск">Otsi</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="quick-pills" data-aos="fade-up" data-aos-delay="400">
+                <span class="pill-label" data-lang-en="Quick access:" data-lang-ru="Быстрый доступ:">Kiirpääs:</span>
+                <a href="#" class="quick-pill">
+                    <i class="fas fa-newspaper"></i>
+                    <span data-lang-en="News" data-lang-ru="Новости">Uudised</span>
+                </a>
+                <a href="#" class="quick-pill">
+                    <i class="fas fa-university"></i>
+                    <span data-lang-en="Government" data-lang-ru="Правительство">Valitsus</span>
+                </a>
+                <a href="#" class="quick-pill">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span data-lang-en="Shopping" data-lang-ru="Покупки">Pood</span>
+                </a>
+                <a href="#" class="quick-pill">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span data-lang-en="Education" data-lang-ru="Образование">Haridus</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="hero-scroll">
+            <span data-lang-en="Scroll to explore" data-lang-ru="Прокрутите для изучения">Kerimiseks</span>
+            <div class="scroll-indicator">
+                <div class="scroll-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="section-header">
+            <span class="section-badge" data-lang-en="Browse" data-lang-ru="Обзор">Sirvi</span>
+            <h2 class="section-title" data-lang-en="Categories" data-lang-ru="Категории">Kategooriad</h2>
+            <p class="section-subtitle" data-lang-en="Explore thousands of Estonian websites organized for you" 
+               data-lang-ru="Изучите тысячи эстонских веб-сайтов, организованных для вас">
+                Uuri tuhandeid Eesti veebilehte, sinu jaoks korraldatult
+            </p>
+        </div>
+        
+        <div class="categories-grid" id="categoriesGrid">
+            <!-- Category cards populated by JS -->
+        </div>
+    </section>
+
+    <!-- Widgets Section -->
+    <section class="widgets" id="widgets">
+        <!-- Weather Widget -->
+        <div class="widget weather-widget" id="weather">
+            <div class="widget-header">
+                <div class="widget-icon">
+                    <i class="fas fa-cloud-sun"></i>
+                </div>
+                <div class="widget-info">
+                    <h3 data-lang-en="Weather" data-lang-ru="Погода">Ilm</h3>
+                    <span class="widget-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Tallinn</span>
+                    </span>
+                </div>
+            </div>
+            <div class="weather-main">
+                <div class="weather-temp">
+                    <span class="temp-value">3</span>
+                    <span class="temp-unit">°C</span>
+                </div>
+                <div class="weather-details">
+                    <div class="weather-detail">
+                        <i class="fas fa-wind"></i>
+                        <span>8 km/h</span>
+                    </div>
+                    <div class="weather-detail">
+                        <i class="fas fa-tint"></i>
+                        <span>72%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="weather-forecast">
+                <div class="forecast-day">
+                    <span class="day-name" data-lang-en="Today" data-lang-ru="Сегодня">Täna</span>
+                    <i class="fas fa-cloud"></i>
+                    <span class="forecast-temp">-4°/4°</span>
+                </div>
+                <div class="forecast-day">
+                    <span class="day-name" data-lang-en="Tomorrow" data-lang-ru="Завтра">Homme</span>
+                    <i class="fas fa-sun"></i>
+                    <span class="forecast-temp">-2°/6°</span>
+                </div>
+                <div class="forecast-day">
+                    <span class="day-name" data-lang-en="After" data-lang-ru="После">Ülehomme</span>
+                    <i class="fas fa-cloud-rain"></i>
+                    <span class="forecast-temp">0°/3°</span>
+                </div>
+            </div>
+            <a href="#" class="weather-link" data-lang-en="Full forecast →" data-lang-ru="Полный прогноз →" style="color: var(--accent);">
+                Täielik prognoos →
+            </a>
+        </div>
+
+        <!-- Horoscope Widget -->
+        <div class="widget horoscope-widget" id="horoscope">
+            <div class="widget-header">
+                <div class="widget-icon">
+                    <i class="fas fa-sparkles"></i>
+                </div>
+                <div class="widget-info">
+                    <h3 data-lang-en="Horoscope" data-lang-ru="Гороскоп">Horoskoop</h3>
+                    <span class="widget-location" data-lang-en="Daily readings" data-lang-ru="Ежедневные прогнозы">Päeva ennustus</span>
+                </div>
+            </div>
+            <div class="horoscope-carousel" id="horoscopeCarousel">
+                <div class="horoscope-track">
+                    <div class="zodiac-card active" data-zodiac="aries">
+                        <span class="zodiac-icon">♈</span>
+                        <span class="zodiac-name">Jäärapäev</span>
+                        <span class="zodiac-mood">
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                    <div class="zodiac-card" data-zodiac="taurus">
+                        <span class="zodiac-icon">♉</span>
+                        <span class="zodiac-name">Sõnn</span>
+                        <span class="zodiac-mood">
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                    <div class="zodiac-card" data-zodiac="gemini">
+                        <span class="zodiac-icon">♊</span>
+                        <span class="zodiac-name">Kaksikud</span>
+                        <span class="zodiac-mood">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                    <div class="zodiac-card" data-zodiac="cancer">
+                        <span class="zodiac-icon">♋</span>
+                        <span class="zodiac-name">Vähk</span>
+                        <span class="zodiac-mood">
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </span>
+                    </div>
+                    <div class="zodiac-card" data-zodiac="leo">
+                        <span class="zodiac-icon">♌</span>
+                        <span class="zodiac-name">Lõvi</span>
+                        <span class="zodiac-mood">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                    <div class="zodiac-card" data-zodiac="virgo">
+                        <span class="zodiac-icon">♍</span>
+                        <span class="zodiac-name">Neitsi</span>
+                        <span class="zodiac-mood">
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="horoscope-preview">
+                <p class="horoscope-text" id="horoscopeText">
+                    Täna on hea päev uute alguste jaoks. Sinu ambitsioon viib sind edasi!
+                </p>
+            </div>
+            <a href="#" class="horoscope-link" data-lang-en="Full horoscope →" data-lang-ru="Полный гороскоп →" style="color: var(--accent);">
+                Loe rohkem →
+            </a>
+        </div>
+
+        <!-- Games Widget -->
+        <div class="widget games-widget" id="games">
+            <div class="widget-header">
+                <div class="widget-icon">
+                    <i class="fas fa-puzzle-piece"></i>
+                </div>
+                <div class="widget-info">
+                    <h3 data-lang-en="Games" data-lang-ru="Игры">Mängud</h3>
+                    <span class="widget-location" data-lang-en="Daily puzzles" data-lang-ru="Ежедневные головоломки">Päeva mõistatused</span>
+                </div>
+            </div>
+            <div class="games-list">
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-th"></i>
+                    </div>
+                    <div class="game-info">
+                        <h4>Päeva ristsõna</h4>
+                        <span class="game-difficulty">
+                            <i class="fas fa-circle"></i>
+                            <i class="fas fa-circle"></i>
+                            <i class="far fa-circle"></i>
+                            Keskmine
+                        </span>
+                    </div>
+                    <button class="game-play-btn" data-lang-en="Play" data-lang-ru="Играть">Mängi</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-th-large"></i>
+                    </div>
+                    <div class="game-info">
+                        <h4>Sudoku</h4>
+                        <span class="game-difficulty">
+                            <i class="fas fa-circle"></i>
+                            <i class="fas fa-circle"></i>
+                            <i class="fas fa-circle"></i>
+                            Raske
+                        </span>
+                    </div>
+                    <button class="game-play-btn" data-lang-en="Play" data-lang-ru="Играть">Mängi</button>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-question"></i>
+                    </div>
+                    <div class="game-info">
+                        <h4>Quiz</h4>
+                        <span class="game-difficulty">
+                            <i class="fas fa-circle"></i>
+                            <i class="far fa-circle"></i>
+                            <i class="far fa-circle"></i>
+                            Kerge
+                        </span>
+                    </div>
+                    <button class="game-play-btn" data-lang-en="Play" data-lang-ru="Играть">Mängi</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ads Section -->
+    <section class="ads-section" id="ads">
+        <div class="section-header">
+            <span class="section-badge" data-lang-en="Sponsored" data-lang-ru="Реклама">Reklaam</span>
+            <h2 class="section-title" data-lang-en="Classifieds" data-lang-ru="Объявления">Kuulutused</h2>
+        </div>
+        
+        <div class="ads-grid">
+            <a href="#" class="ad-card">
+                <div class="ad-badge">Reklaam</div>
+                <div class="ad-icon">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="ad-content">
+                    <h4 data-lang-en="Cars" data-lang-ru="Автомобили">Autod</h4>
+                    <p data-lang-en="Find your next vehicle" data-lang-ru="Найдите свой следующий автомобиль">Leia oma järgmine sõiduk</p>
+                    <span class="ad-cta" data-lang-en="Browse →" data-lang-ru="Смотреть →" style="color: var(--accent);">Vaata →</span>
+                </div>
+            </a>
+            
+            <a href="#" class="ad-card">
+                <div class="ad-badge">Reklaam</div>
+                <div class="ad-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="ad-content">
+                    <h4 data-lang-en="Real Estate" data-lang-ru="Недвижимость">Kinnisvara</h4>
+                    <p data-lang-en="Homes and apartments" data-lang-ru="Дома и квартиры">Majad ja korterid</p>
+                    <span class="ad-cta" data-lang-en="Browse →" data-lang-ru="Смотреть →" style="color: var(--accent);">Vaata →</span>
+                </div>
+            </a>
+            
+            <a href="#" class="ad-card">
+                <div class="ad-badge">Reklaam</div>
+                <div class="ad-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="ad-content">
+                    <h4 data-lang-en="Jobs" data-lang-ru="Работа">Töö</h4>
+                    <p data-lang-en="Career opportunities" data-lang-ru="Карьерные возможности">Karjäärivõimalused</p>
+                    <span class="ad-cta" data-lang-en="Browse →" data-lang-ru="Смотреть →" style="color: var(--accent);">Vaata →</span>
+                </div>
+            </a>
+        </div>
+        
+        <div class="ads-cta-section">
+            <p data-lang-en="Want to advertise here?" data-lang-ru="Хотите разместить рекламу здесь?" style="color: var(--text-secondary);">
+                Soovid siin reklaamida?
+            </p>
+            <a href="#" class="ads-cta-btn">
+                <span data-lang-en="Add free ad" data-lang-ru="Добавить бесплатное объявление">Lisa kuulutus tasuta</span>
+                <i class="fas fa-plus"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">
+                        <span class="logo-icon">
+                            <i class="fas fa-compass"></i>
+                        </span>
+                        <span class="logo-text">NETI</span>
+                    </a>
+                    <p class="footer-desc" data-lang-en="Your trusted gateway to Estonian websites since 1996" 
+                       data-lang-ru="Ваш надежный вход на эстонские веб-сайты с 1996 года">
+                        Sinu usaldusväärne sisenemispunkt Eesti veebilehtedele alates 1996
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Twitter/X">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 data-lang-en="Categories" data-lang-ru="Категории">Kategooriad</h4>
+                        <ul>
+                            <li><a href="#">Riik ja Ühiskond</a></li>
+                            <li><a href="#">Info ja Meedia</a></li>
+                            <li><a href="#">Äri</a></li>
+                            <li><a href="#">Teadus ja Tehnika</a></li>
+                            <li><a href="#">Haridus</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 data-lang-en="Services" data-lang-ru="Услуги">Teenused</h4>
+                        <ul>
+                            <li><a href="#">Otsing</a></li>
+                            <li><a href="#">Ilm</a></li>
+                            <li><a href="#">Horoskoop</a></li>
+                            <li><a href="#">Mängud</a></li>
+                            <li><a href="#">Kuulutused</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 data-lang-en="Support" data-lang-ru="Поддержка">Abi</h4>
+                        <ul>
+                            <li><a href="#">Abi</a></li>
+                            <li><a href="#">Reeglid</a></li>
+                            <li><a href="#">Privaatsus</a></li>
+                            <li><a href="#">Kontakt</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4 data-lang-en="Newsletter" data-lang-ru="Рассылка">Uudiskiri</h4>
+                    <p data-lang-en="Get updates on Estonian websites" data-lang-ru="Получайте обновления об эстонских сайтах">
+                        Saa uudiseid Eesti veebilehtedest
+                    </p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Sinu email" required>
+                        <button type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 NETI.ee. <span data-lang-en="All rights reserved" data-lang-ru="Все права защищены">Kõik õigused kaitstud</span>.</p>
+                <div class="footer-bottom-links">
+                    <a href="#" data-lang-en="Privacy Policy" data-lang-ru="Политика конфиденциальности">Privaatsus</a>
+                    <a href="#" data-lang-en="Terms" data-lang-ru="Условия">Tingimused</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

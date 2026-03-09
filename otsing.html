@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="et" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NETI - Otsingu tulemused">
+    <title>Otsingu tulemused - NETI.ee</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon"><i class="fas fa-compass"></i></span>
+                <span class="logo-text">NETI</span>
+            </a>
+            
+            <div class="search-wrapper">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" id="mainSearch" placeholder="Otsi Eesti veebilehti..." autocomplete="off" aria-label="Search">
+                    <button class="voice-search" aria-label="Voice search"><i class="fas fa-microphone"></i></button>
+                    <div class="search-dropdown" id="searchDropdown"></div>
+                </div>
+            </div>
+            
+            <div class="nav-controls">
+                <div class="lang-toggle">
+                    <button class="lang-btn active" data-lang="et"><span>ET</span></button>
+                    <button class="lang-btn" data-lang="en"><span>EN</span></button>
+                    <button class="lang-btn" data-lang="ru"><span>RU</span></button>
+                </div>
+                <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-content">
+                <a href="index.html#categories" class="mobile-link">Kategooriad</a>
+                <a href="index.html#weather" class="mobile-link">Ilm</a>
+                <a href="index.html#horoscope" class="mobile-link">Horoskoop</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Results -->
+    <section class="search-results-header">
+        <div class="search-results-info">
+            <h1 class="search-query">Tulemused: <span>"Tallinn"</span></h1>
+            <p class="search-results-count">Leiti 234 lehte</p>
+        </div>
+    </section>
+
+    <section class="search-results-content">
+        <div class="container">
+            <!-- Filters -->
+            <div class="search-filters">
+                <div class="filter-group">
+                    <label>Kategooria</label>
+                    <select>
+                        <option>Kõik kategooriad</option>
+                        <option>Riik ja Ühiskond</option>
+                        <option>Info ja Meedia</option>
+                        <option>Äri</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Sorteeri</label>
+                    <select>
+                        <option>Relevantsus</option>
+                        <option>Populaarsus</option>
+                        <option>Nimi A-Ö</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Results -->
+            <div class="sites-list">
+                <a href="#" class="site-list-item">
+                    <div class="site-list-icon"><i class="fas fa-city"></i></div>
+                    <div class="site-list-info">
+                        <h4>Tallinna Linnavalitsus</h4>
+                        <span>www.tallinn.ee</span>
+                    </div>
+                    <span class="site-list-category">Riik ja Ühiskond</span>
+                </a>
+                
+                <a href="#" class="site-list-item">
+                    <div class="site-list-icon"><i class="fas fa-newspaper"></i></div>
+                    <div class="site-list-info">
+                        <h4>Tallinna Postimees</h4>
+                        <span>www.postimees.ee/tallinn</span>
+                    </div>
+                    <span class="site-list-category">Info ja Meedia</span>
+                </a>
+                
+                <a href="#" class="site-list-item">
+                    <div class="site-list-icon"><i class="fas fa-train"></i></div>
+                    <div class="site-list-info">
+                        <h4>Tallinna Transport</h4>
+                        <span>www.transport.tallinn.ee</span>
+                    </div>
+                    <span class="site-list-category">Transport</span>
+                </a>
+                
+                <a href="#" class="site-list-item">
+                    <div class="site-list-icon"><i class="fas fa-university"></i></div>
+                    <div class="site-list-info">
+                        <h4>Tallinna Tehnikaülikool</h4>
+                        <span>www.ttu.ee</span>
+                    </div>
+                    <span class="site-list-category">Haridus</span>
+                </a>
+                
+                <a href="#" class="site-list-item">
+                    <div class="site-list-icon"><i class="fas fa-bus"></i></div>
+                    <div class="site-list-info">
+                        <h4>Tallinna Bussid</h4>
+                        <span>www.buss.ee</span>
+                    </div>
+                    <span class="site-list-category">Transport</span>
+                </a>
+                
+                <a href="#" class="site-list-item">
+                    <div class="site-list-icon"><i class="fas fa-hospital"></i></div>
+                    <div class="site-list-info">
+                        <h4>Tallinna Tervishoid</h4>
+                        <span>www.tallinn.ee/tervishoid</span>
+                    </div>
+                    <span class="site-list-category">Tervis</span>
+                </a>
+                
+                <a href="#" class="site-list-item">
+                    <div class="site-list-icon"><i class="fas fa-futbol"></i></div>
+                    <div class="site-list-info">
+                        <h4>Tallinna FC Flora</h4>
+                        <span>www.floratallinn.ee</span>
+                    </div>
+                    <span class="site-list-category">Sport</span>
+                </a>
+                
+                <a href="#" class="site-list-item">
+                    <div class="site-list-icon"><i class="fas fa-music"></i></div>
+                    <div class="site-list-info">
+                        <h4>Tallinna Muusikafestival</h4>
+                        <span>www.tallinnmusicweek.ee</span>
+                    </div>
+                    <span class="site-list-category">Kultuur</span>
+                </a>
+            </div>
+            
+            <div class="pagination">
+                <a href="#" class="page-btn active">1</a>
+                <a href="#" class="page-btn">2</a>
+                <a href="#" class="page-btn">3</a>
+                <a href="#" class="page-btn">4</a>
+                <a href="#" class="page-btn">5</a>
+                <a href="#" class="page-btn"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <span class="logo-icon"><i class="fas fa-compass"></i></span>
+                        <span class="logo-text">NETI</span>
+                    </a>
+                    <p class="footer-desc">Sinu usaldusväärne sisenemispunkt Eesti veebilehtedele alates 1996</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Kategooriad</h4>
+                        <ul>
+                            <li><a href="#">Riik ja Ühiskond</a></li>
+                            <li><a href="#">Info ja Meedia</a></li>
+                            <li><a href="#">Äri</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Teenused</h4>
+                        <ul>
+                            <li><a href="#">Otsing</a></li>
+                            <li><a href="#">Ilm</a></li>
+                            <li><a href="#">Horoskoop</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 NETI.ee. Kõik õigused kaitstud.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
