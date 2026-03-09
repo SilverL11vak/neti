@@ -333,6 +333,56 @@ export default function Home() {
 
       {/* Main Content */}
       <main id="main-content">
+        {/* Weather Section - moved above hero */}
+        <section className="section" style={{ padding: '20px 0', background: '#f8fafc' }} data-aos="fade-up" data-aos-delay="100">
+          <div className="container">
+            <div className="section-header" style={{ marginBottom: '16px' }}>
+              <span className="section-badge">{lang === 'et' ? 'Ilm' : 'Weather'}</span>
+              <h2 className="section-title" style={{ fontSize: '1.25rem' }}>{lang === 'et' ? 'Eesti ilm täna' : 'Weather today'}</h2>
+            </div>
+            
+            <Link href="/ilm" className="weather-card-enhanced" style={{ padding: '16px' }}>
+              <div className="weather-main" style={{ gap: '16px' }}>
+                <div className="weather-main-left" style={{ minWidth: '80px' }}>
+                  <div className="weather-icon-large" style={{ fontSize: '2.5rem' }}>
+                    <i className="fas fa-cloud-sun"></i>
+                  </div>
+                  <div className="weather-temp-display">
+                    <span className="temp-number" style={{ fontSize: '2rem' }}>+8</span>
+                    <span className="temp-symbol">°C</span>
+                  </div>
+                </div>
+                <div className="weather-main-right">
+                  <div className="weather-location-row">
+                    <i className="fas fa-map-marker-alt"></i>
+                    <span>Tallinn, Eesti</span>
+                  </div>
+                  <p className="weather-condition-text">{lang === 'et' ? 'Poolpilves' : 'Partly Cloudy'}</p>
+                  <p className="weather-feels-like">{lang === 'et' ? 'Tunnetav: +6°' : 'Feels like: +6°'}</p>
+                </div>
+              </div>
+              
+              <div className="weather-details-grid" style={{ marginTop: '12px' }}>
+                <div className="weather-detail-box">
+                  <i className="fas fa-wind"></i>
+                  <span className="detail-label">{lang === 'et' ? 'Tuul' : 'Wind'}</span>
+                  <span className="detail-value">12 km/h</span>
+                </div>
+                <div className="weather-detail-box">
+                  <i className="fas fa-tint"></i>
+                  <span className="detail-label">{lang === 'et' ? 'Niiskus' : 'Humidity'}</span>
+                  <span className="detail-value">78%</span>
+                </div>
+                <div className="weather-detail-box">
+                  <i className="fas fa-sun"></i>
+                  <span className="detail-label">{lang === 'et' ? 'UV' : 'UV'}</span>
+                  <span className="detail-value">2</span>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </section>
+
         {/* Hero Section */}
         <section className="hero" data-aos="fade-in">
           <div className="hero-floating-icons">
@@ -549,166 +599,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Weather Section */}
-        <section className="section" data-aos="fade-up" data-aos-delay="200">
-          <div className="section-header">
-            <span className="section-badge">{lang === 'et' ? 'Ilm' : 'Weather'}</span>
-            <h2 className="section-title">{lang === 'et' ? 'Eesti ilm' : 'Weather in Estonia'}</h2>
-          </div>
-          
-          <Link href="/ilm" className="weather-card-enhanced">
-            <div className="weather-main">
-              <div className="weather-main-left">
-                <div className="weather-icon-large">
-                  <i className="fas fa-cloud-sun"></i>
-                </div>
-                <div className="weather-temp-display">
-                  <span className="temp-number">+8</span>
-                  <span className="temp-symbol">°C</span>
-                </div>
-              </div>
-              <div className="weather-main-right">
-                <div className="weather-location-row">
-                  <i className="fas fa-map-marker-alt"></i>
-                  <span>Tallinn, Eesti</span>
-                </div>
-                <p className="weather-condition-text">{lang === 'et' ? 'Poolpilves' : 'Partly Cloudy'}</p>
-                <p className="weather-feels-like">{lang === 'et' ? 'Tunnetav: +6°' : 'Feels like: +6°'}</p>
-              </div>
-            </div>
-            
-            <div className="weather-details-grid">
-              <div className="weather-detail-box">
-                <i className="fas fa-wind"></i>
-                <span className="detail-label">{lang === 'et' ? 'Tuul' : 'Wind'}</span>
-                <span className="detail-value">12 km/h</span>
-              </div>
-              <div className="weather-detail-box">
-                <i className="fas fa-tint"></i>
-                <span className="detail-label">{lang === 'et' ? 'Niiskus' : 'Humidity'}</span>
-                <span className="detail-value">78%</span>
-              </div>
-              <div className="weather-detail-box">
-                <i className="fas fa-sun"></i>
-                <span className="detail-label">{lang === 'et' ? 'UV-index' : 'UV Index'}</span>
-                <span className="detail-value">2</span>
-              </div>
-              <div className="weather-detail-box">
-                <i className="fas fa-eye"></i>
-                <span className="detail-label">{lang === 'et' ? 'Nähtavus' : 'Visibility'}</span>
-                <span className="detail-value">10 km</span>
-              </div>
-            </div>
-            
-            <div className="weather-sun-times">
-              <div className="sun-time-item">
-                <i className="fas fa-sun"></i>
-                <span className="sun-label">{lang === 'et' ? 'Päikesetõus' : 'Sunrise'}</span>
-                <span className="sun-value">07:15</span>
-              </div>
-              <div className="sun-time-item">
-                <i className="fas fa-moon"></i>
-                <span className="sun-label">{lang === 'et' ? 'Päikseloojang' : 'Sunset'}</span>
-                <span className="sun-value">18:42</span>
-              </div>
-            </div>
-            
-            <div className="weather-hourly-section">
-              <h4 className="section-subtitle">{lang === 'et' ? 'Tunni kaupa' : 'Hourly Forecast'}</h4>
-              <div className="hourly-scroll">
-                <div className="hourly-item">
-                  <span className="hourly-time">9:00</span>
-                  <i className="fas fa-sun"></i>
-                  <span className="hourly-temp">9°</span>
-                </div>
-                <div className="hourly-item">
-                  <span className="hourly-time">10:00</span>
-                  <i className="fas fa-sun"></i>
-                  <span className="hourly-temp">10°</span>
-                </div>
-                <div className="hourly-item">
-                  <span className="hourly-time">11:00</span>
-                  <i className="fas fa-cloud-sun"></i>
-                  <span className="hourly-temp">11°</span>
-                </div>
-                <div className="hourly-item active">
-                  <span className="hourly-time">12:00</span>
-                  <i className="fas fa-cloud"></i>
-                  <span className="hourly-temp">8°</span>
-                </div>
-                <div className="hourly-item">
-                  <span className="hourly-time">13:00</span>
-                  <i className="fas fa-cloud"></i>
-                  <span className="hourly-temp">7°</span>
-                </div>
-                <div className="hourly-item">
-                  <span className="hourly-time">14:00</span>
-                  <i className="fas fa-cloud-rain"></i>
-                  <span className="hourly-temp">6°</span>
-                </div>
-                <div className="hourly-item">
-                  <span className="hourly-time">15:00</span>
-                  <i className="fas fa-cloud-rain"></i>
-                  <span className="hourly-temp">5°</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="weather-weekly-section">
-              <h4 className="section-subtitle">{lang === 'et' ? '7 päeva ennustus' : '7-Day Forecast'}</h4>
-              <div className="weekly-list">
-                <div className="weekly-item">
-                  <span className="weekly-day">{lang === 'et' ? 'E' : 'Mon'}</span>
-                  <i className="fas fa-sun"></i>
-                  <span className="weekly-temp-high">+9°</span>
-                  <span className="weekly-temp-low">+2°</span>
-                </div>
-                <div className="weekly-item">
-                  <span className="weekly-day">{lang === 'et' ? 'T' : 'Tue'}</span>
-                  <i className="fas fa-cloud-sun"></i>
-                  <span className="weekly-temp-high">+7°</span>
-                  <span className="weekly-temp-low">+1°</span>
-                </div>
-                <div className="weekly-item">
-                  <span className="weekly-day">{lang === 'et' ? 'K' : 'Wed'}</span>
-                  <i className="fas fa-cloud-rain"></i>
-                  <span className="weekly-temp-high">+5°</span>
-                  <span className="weekly-temp-low">0°</span>
-                </div>
-                <div className="weekly-item">
-                  <span className="weekly-day">{lang === 'et' ? 'N' : 'Thu'}</span>
-                  <i className="fas fa-cloud"></i>
-                  <span className="weekly-temp-high">+6°</span>
-                  <span className="weekly-temp-low">+1°</span>
-                </div>
-                <div className="weekly-item">
-                  <span className="weekly-day">{lang === 'et' ? 'R' : 'Fri'}</span>
-                  <i className="fas fa-sun"></i>
-                  <span className="weekly-temp-high">+8°</span>
-                  <span className="weekly-temp-low">+2°</span>
-                </div>
-                <div className="weekly-item">
-                  <span className="weekly-day">{lang === 'et' ? 'L' : 'Sat'}</span>
-                  <i className="fas fa-cloud-sun"></i>
-                  <span className="weekly-temp-high">+7°</span>
-                  <span className="weekly-temp-low">+1°</span>
-                </div>
-                <div className="weekly-item">
-                  <span className="weekly-day">{lang === 'et' ? 'P' : 'Sun'}</span>
-                  <i className="fas fa-sun"></i>
-                  <span className="weekly-temp-high">+10°</span>
-                  <span className="weekly-temp-low">+3°</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="weather-cta">
-              <span>{lang === 'et' ? 'Vaata täielikku ilmaennustust' : 'View full forecast'}</span>
-              <i className="fas fa-arrow-right"></i>
-            </div>
-          </Link>
-        </section>
-
         {/* Horoscope Section */}
         <section className="section" data-aos="fade-up" data-aos-delay="300">
           <div className="section-header">
@@ -867,90 +757,6 @@ export default function Home() {
               </button>
             </div>
           )}
-        </section>
-
-        {/* Classifieds Section */}
-        <section className="classifieds-section-clean" data-aos="fade-up" data-aos-delay="600">
-          <div className="section-header">
-            <span className="section-badge">
-              {lang === 'et' ? 'Reklaam' : 'Sponsored'}
-            </span>
-            <h2 className="section-title">
-              {lang === 'et' ? 'Kuulutused' : 'Classifieds'}
-            </h2>
-          </div>
-          
-          <div className="classifieds-clean-grid">
-            <Link href="/autod" className="classified-clean-card">
-              <div className="classified-clean-icon">
-                <i className="fas fa-car"></i>
-              </div>
-              <div className="classified-clean-content">
-                <h4>{lang === 'et' ? 'Autod' : 'Cars'}</h4>
-                <p>{lang === 'et' ? 'Leia oma järgmine sõiduk' : 'Find your next vehicle'}</p>
-                <span className="classified-clean-count">2,450 {lang === 'et' ? 'kuulutust' : 'listings'}</span>
-              </div>
-              <div className="classified-clean-arrow">
-                <i className="fas fa-chevron-right"></i>
-              </div>
-            </Link>
-            
-            <Link href="/otsing?q=kinnisvara" className="classified-clean-card">
-              <div className="classified-clean-icon">
-                <i className="fas fa-home"></i>
-              </div>
-              <div className="classified-clean-content">
-                <h4>{lang === 'et' ? 'Kinnisvara' : 'Real Estate'}</h4>
-                <p>{lang === 'et' ? 'Majad ja korterid' : 'Homes and apartments'}</p>
-                <span className="classified-clean-count">1,820 {lang === 'et' ? 'kuulutust' : 'listings'}</span>
-              </div>
-              <div className="classified-clean-arrow">
-                <i className="fas fa-chevron-right"></i>
-              </div>
-            </Link>
-            
-            <Link href="/otsing?q=töö" className="classified-clean-card">
-              <div className="classified-clean-icon">
-                <i className="fas fa-briefcase"></i>
-              </div>
-              <div className="classified-clean-content">
-                <h4>{lang === 'et' ? 'Töö' : 'Jobs'}</h4>
-                <p>{lang === 'et' ? 'Karjäärivõimalused' : 'Career opportunities'}</p>
-                <span className="classified-clean-count">890 {lang === 'et' ? 'kuulutust' : 'listings'}</span>
-              </div>
-              <div className="classified-clean-arrow">
-                <i className="fas fa-chevron-right"></i>
-              </div>
-            </Link>
-            
-            <Link href="/otsing?q=ost-müük" className="classified-clean-card">
-              <div className="classified-clean-icon">
-                <i className="fas fa-shopping-bag"></i>
-              </div>
-              <div className="classified-clean-content">
-                <h4>{lang === 'et' ? 'Ost & Müük' : 'Buy & Sell'}</h4>
-                <p>{lang === 'et' ? 'Ostu ja müügi kuulutused' : 'Buy and sell items'}</p>
-                <span className="classified-clean-count">5,200 {lang === 'et' ? 'kuulutust' : 'listings'}</span>
-              </div>
-              <div className="classified-clean-arrow">
-                <i className="fas fa-chevron-right"></i>
-              </div>
-            </Link>
-          </div>
-          
-          <div className="classifieds-clean-cta">
-            <div className="cta-clean-info">
-              <i className="fas fa-bullhorn"></i>
-              <div>
-                <h4>{lang === 'et' ? 'Soovid siin reklaamida?' : 'Want to advertise here?'}</h4>
-                <p>{lang === 'et' ? 'Lisa oma kuulutus tasuta ja jõua tuhatesse kasutajatesse' : 'Post your ad for free and reach thousands of users'}</p>
-              </div>
-            </div>
-            <Link href="/kuulutus" className="cta-clean-button">
-              <span>{lang === 'et' ? 'Lisa kuulutus tasuta' : 'Add free ad'}</span>
-              <i className="fas fa-plus"></i>
-            </Link>
-          </div>
         </section>
       </main>
 
