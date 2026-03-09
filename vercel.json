@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cd neti-next && npm run vercel-build",
-  "outputDirectory": "neti-next/.next",
-  "installCommand": "cd neti-next && npm install"
+  "outputDirectory": ".",
+  "installCommand": null,
+  "buildCommand": null
 }
