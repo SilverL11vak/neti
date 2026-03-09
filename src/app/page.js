@@ -224,7 +224,8 @@ export default function Home() {
         duration: 800,
         easing: 'ease-out-cubic',
         once: true,
-        offset: 100,
+        offset: 0,
+        startEvent: 'DOMContentLoaded',
       })
     }
     initAOS()
