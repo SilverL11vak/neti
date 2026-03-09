@@ -211,7 +211,7 @@ a {
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 8px;
-  min-width: 140px;
+  min-width: 130px;
 }
 
 .nav-dropdown-trigger:hover,
@@ -224,6 +224,11 @@ a {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.nav-dropdown-trigger span i {
+  width: 18px;
+  text-align: center;
 }
 
 .nav-dropdown-trigger .dropdown-arrow {
