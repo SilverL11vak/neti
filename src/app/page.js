@@ -334,76 +334,73 @@ export default function Home() {
 
       {/* Main Content */}
       <main id="main-content">
-        {/* Hero Section - Modern & Engaging */}
-        <section className="hero-modern" data-aos="fade-in">
-          <div className="hero-modern-bg">
-            <div className="hero-orb hero-orb-1"></div>
-            <div className="hero-orb hero-orb-2"></div>
-            <div className="hero-orb hero-orb-3"></div>
-          </div>
-          <div className="hero-modern-content">
-            <div className="hero-badge-modern">
-              <span className="badge-pulse"></span>
-              <span>{lang === 'et' ? 'Eesti juhtvebikataloog alates 1996' : 'Estonia\'s leading web catalog since 1996'}</span>
-            </div>
+        {/* Hero Section - Light Theme (News/Games Style) */}
+        <section className="hero-light" data-aos="fade-in">
+          <div className="container">
+            <div className="hero-light-content">
+              <div className="hero-light-header">
+                <span className="hero-light-badge">
+                  <i className="fas fa-globe-americas"></i>
+                  {lang === 'et' ? 'Eesti juhtvebikataloog alates 1996' : 'Estonia\'s leading web catalog since 1996'}
+                </span>
+              </div>
 
-            <h1 className="hero-title-modern">
-              <span className="hero-title-main">{lang === 'et' ? 'Avasta Eesti internet' : 'Discover the Estonian Web'}</span>
-              <span className="gradient-text">{lang === 'et' ? 'Ühes kohas' : 'All in One Place'}</span>
-            </h1>
+              <h1 className="hero-light-title">
+                <span className="hero-light-main">{lang === 'et' ? 'Avasta Eesti internet' : 'Discover the Estonian Web'}</span>
+                <span className="hero-light-gradient">{lang === 'et' ? 'Ühes kohas' : 'All in One Place'}</span>
+              </h1>
 
-            <p className="hero-subtitle-modern">
-              {lang === 'et' 
-                ? 'Sinu nutikaim sisenemispunkt Eesti internetimaailma. Leia parimad veebilehed, teenused ja ettevõtted kiiresti ja lihtsalt.'
-                : 'Your smartest gateway to Estonian internet. Find the best websites, services, and businesses quickly and easily.'}
-            </p>
+              <p className="hero-light-subtitle">
+                {lang === 'et' 
+                  ? 'Sinu nutikaim sisenemispunkt Eesti internetimaailma. Leia parimad veebilehed, teenused ja ettevõtted kiiresti ja lihtsalt.'
+                  : 'Your smartest gateway to Estonian internet. Find the best websites, services, and businesses quickly and easily.'}
+              </p>
 
-            <div className="hero-search-modern" data-aos="fade-down" data-aos-delay="300" data-aos-duration="800">
-              <form className="search-form-modern" onSubmit={handleSearch}>
-                <div className="search-icon-modern">
-                  <i className="fas fa-search"></i>
+              <div className="hero-light-search" data-aos="fade-down" data-aos-delay="300" data-aos-duration="800">
+                <form className="search-light-form" onSubmit={handleSearch}>
+                  <i className="fas fa-search search-light-icon"></i>
+                  <input
+                    type="text"
+                    placeholder={lang === 'et' ? 'Otsi veebilehti, teenuseid, ettevõtteid...' : 'Search websites, services, businesses...'}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="search-light-input"
+                  />
+                  <button type="submit" className="search-light-btn">
+                    {lang === 'et' ? 'Otsi' : 'Search'}
+                  </button>
+                </form>
+              </div>
+
+              <div className="hero-light-quicklinks">
+                <span className="quick-links-label">
+                  {lang === 'et' ? 'Populaarsed:' : 'Popular:'}
+                </span>
+                <div className="quick-links-tags">
+                  {quickLinks.map((link, i) => (
+                    <Link key={i} href={`/otsing?q=${link.text}`} className="quick-link-tag">
+                      <i className={`fas ${link.icon}`}></i>
+                      <span>{link.text}</span>
+                    </Link>
+                  ))}
                 </div>
-                <input
-                  type="text"
-                  placeholder={lang === 'et' ? 'Otsi veebilehti, teenuseid, ettevõtteid...' : 'Search websites, services, businesses...'}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="search-input-modern"
-                />
-                <button type="submit" className="search-btn-modern">
-                  {lang === 'et' ? 'Otsi' : 'Search'}
-                </button>
-              </form>
-            </div>
+              </div>
 
-            <div className="quick-links-modern">
-              <span className="quick-links-label-modern">
-                {lang === 'et' ? 'Populaarsed:' : 'Popular:'}
-              </span>
-              <div className="quick-tags-modern">
-                {quickLinks.map((link, i) => (
-                  <Link key={i} href={`/otsing?q=${link.text}`} className="quick-tag-modern">
-                    <i className={`fas ${link.icon}`}></i>
-                    <span>{link.text}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div className="hero-stats-modern">
-              <div className="stat-modern">
-                <span className="stat-number-modern">10,000+</span>
-                <span className="stat-label-modern">{lang === 'et' ? 'veebilehte' : 'websites'}</span>
-              </div>
-              <div className="stat-divider-modern"></div>
-              <div className="stat-modern">
-                <span className="stat-number-modern">8</span>
-                <span className="stat-label-modern">{lang === 'et' ? 'kategooriat' : 'categories'}</span>
-              </div>
-              <div className="stat-divider-modern"></div>
-              <div className="stat-modern">
-                <span className="stat-number-modern">1996</span>
-                <span className="stat-label-modern">{lang === 'et' ? 'aastast' : 'since'}</span>
+              <div className="hero-light-stats">
+                <div className="stat-light">
+                  <span className="stat-number-light">10,000+</span>
+                  <span className="stat-label-light">{lang === 'et' ? 'veebilehte' : 'websites'}</span>
+                </div>
+                <div className="stat-divider-light"></div>
+                <div className="stat-light">
+                  <span className="stat-number-light">8</span>
+                  <span className="stat-label-light">{lang === 'et' ? 'kategooriat' : 'categories'}</span>
+                </div>
+                <div className="stat-divider-light"></div>
+                <div className="stat-light">
+                  <span className="stat-number-light">1996</span>
+                  <span className="stat-label-light">{lang === 'et' ? 'aastast' : 'since'}</span>
+                </div>
               </div>
             </div>
           </div>
