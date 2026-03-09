@@ -333,56 +333,6 @@ export default function Home() {
 
       {/* Main Content */}
       <main id="main-content">
-        {/* Weather Section - moved above hero */}
-        <section className="section" style={{ padding: '20px 0', background: '#f8fafc' }} data-aos="fade-up" data-aos-delay="100">
-          <div className="container">
-            <div className="section-header" style={{ marginBottom: '16px' }}>
-              <span className="section-badge">{lang === 'et' ? 'Ilm' : 'Weather'}</span>
-              <h2 className="section-title" style={{ fontSize: '1.25rem' }}>{lang === 'et' ? 'Eesti ilm täna' : 'Weather today'}</h2>
-            </div>
-            
-            <Link href="/ilm" className="weather-card-enhanced" style={{ padding: '16px' }}>
-              <div className="weather-main" style={{ gap: '16px' }}>
-                <div className="weather-main-left" style={{ minWidth: '80px' }}>
-                  <div className="weather-icon-large" style={{ fontSize: '2.5rem' }}>
-                    <i className="fas fa-cloud-sun"></i>
-                  </div>
-                  <div className="weather-temp-display">
-                    <span className="temp-number" style={{ fontSize: '2rem' }}>+8</span>
-                    <span className="temp-symbol">°C</span>
-                  </div>
-                </div>
-                <div className="weather-main-right">
-                  <div className="weather-location-row">
-                    <i className="fas fa-map-marker-alt"></i>
-                    <span>Tallinn, Eesti</span>
-                  </div>
-                  <p className="weather-condition-text">{lang === 'et' ? 'Poolpilves' : 'Partly Cloudy'}</p>
-                  <p className="weather-feels-like">{lang === 'et' ? 'Tunnetav: +6°' : 'Feels like: +6°'}</p>
-                </div>
-              </div>
-              
-              <div className="weather-details-grid" style={{ marginTop: '12px' }}>
-                <div className="weather-detail-box">
-                  <i className="fas fa-wind"></i>
-                  <span className="detail-label">{lang === 'et' ? 'Tuul' : 'Wind'}</span>
-                  <span className="detail-value">12 km/h</span>
-                </div>
-                <div className="weather-detail-box">
-                  <i className="fas fa-tint"></i>
-                  <span className="detail-label">{lang === 'et' ? 'Niiskus' : 'Humidity'}</span>
-                  <span className="detail-value">78%</span>
-                </div>
-                <div className="weather-detail-box">
-                  <i className="fas fa-sun"></i>
-                  <span className="detail-label">{lang === 'et' ? 'UV' : 'UV'}</span>
-                  <span className="detail-value">2</span>
-                </div>
-              </div>
-            </Link>
-          </div>
-        </section>
-
         {/* Hero Section */}
         <section className="hero" data-aos="fade-in">
           <div className="hero-floating-icons">
@@ -451,6 +401,102 @@ export default function Home() {
                 <span className="stat-label">{lang === 'et' ? 'aastast' : 'since'}</span>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Animated Logos Section */}
+        <section className="logos-ticker-section" style={{ background: 'white', padding: '20px 0', borderBottom: '1px solid #e2e8f0' }} data-aos="fade-up">
+          <div className="container">
+            <div className="logos-ticker">
+              <div className="logos-track">
+                {[...Array(2)].map((_, loopIndex) => (
+                  <div key={loopIndex} className="logos-inner">
+                    <Link href="/otsing?q=Swedbank" className="logo-item">
+                      <i className="fas fa-university"></i>
+                      <span>Swedbank</span>
+                    </Link>
+                    <Link href="/otsing?q=SEB" className="logo-item">
+                      <i className="fas fa-building-columns"></i>
+                      <span>SEB</span>
+                    </Link>
+                    <Link href="/otsing?q=Telia" className="logo-item">
+                      <i className="fas fa-mobile-alt"></i>
+                      <span>Telia</span>
+                    </Link>
+                    <Link href="/otsing?q=Postimees" className="logo-item">
+                      <i className="fas fa-newspaper"></i>
+                      <span>Postimees</span>
+                    </Link>
+                    <Link href="/otsing?q=Bolt" className="logo-item">
+                      <i className="fas fa-taxi"></i>
+                      <span>Bolt</span>
+                    </Link>
+                    <Link href="/otsing?q=Apollo" className="logo-item">
+                      <i className="fas fa-book"></i>
+                      <span>Apollo</span>
+                    </Link>
+                    <Link href="/otsing?q=K+K" className="logo-item">
+                      <i className="fas fa-shopping-cart"></i>
+                      <span>K+Kaubad</span>
+                    </Link>
+                    <Link href="/otsing?q=COOP" className="logo-item">
+                      <i className="fas fa-store"></i>
+                      <span>COOP</span>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Weather Section */}
+        <section className="section" style={{ padding: '20px 0', background: '#f8fafc' }} data-aos="fade-up" data-aos-delay="100">
+          <div className="container">
+            <div className="section-header" style={{ marginBottom: '16px' }}>
+              <span className="section-badge">{lang === 'et' ? 'Ilm' : 'Weather'}</span>
+              <h2 className="section-title" style={{ fontSize: '1.25rem' }}>{lang === 'et' ? 'Eesti ilm täna' : 'Weather today'}</h2>
+            </div>
+            
+            <Link href="/ilm" className="weather-card-enhanced" style={{ padding: '16px' }}>
+              <div className="weather-main" style={{ gap: '16px' }}>
+                <div className="weather-main-left" style={{ minWidth: '80px' }}>
+                  <div className="weather-icon-large" style={{ fontSize: '2.5rem' }}>
+                    <i className="fas fa-cloud-sun"></i>
+                  </div>
+                  <div className="weather-temp-display">
+                    <span className="temp-number" style={{ fontSize: '2rem' }}>+8</span>
+                    <span className="temp-symbol">°C</span>
+                  </div>
+                </div>
+                <div className="weather-main-right">
+                  <div className="weather-location-row">
+                    <i className="fas fa-map-marker-alt"></i>
+                    <span>Tallinn, Eesti</span>
+                  </div>
+                  <p className="weather-condition-text">{lang === 'et' ? 'Poolpilves' : 'Partly Cloudy'}</p>
+                  <p className="weather-feels-like">{lang === 'et' ? 'Tunnetav: +6°' : 'Feels like: +6°'}</p>
+                </div>
+              </div>
+              
+              <div className="weather-details-grid" style={{ marginTop: '12px' }}>
+                <div className="weather-detail-box">
+                  <i className="fas fa-wind"></i>
+                  <span className="detail-label">{lang === 'et' ? 'Tuul' : 'Wind'}</span>
+                  <span className="detail-value">12 km/h</span>
+                </div>
+                <div className="weather-detail-box">
+                  <i className="fas fa-tint"></i>
+                  <span className="detail-label">{lang === 'et' ? 'Niiskus' : 'Humidity'}</span>
+                  <span className="detail-value">78%</span>
+                </div>
+                <div className="weather-detail-box">
+                  <i className="fas fa-sun"></i>
+                  <span className="detail-label">{lang === 'et' ? 'UV' : 'UV'}</span>
+                  <span className="detail-value">2</span>
+                </div>
+              </div>
+            </Link>
           </div>
         </section>
 
@@ -761,6 +807,64 @@ export default function Home() {
       </main>
 
       {/* Footer */}
+      <style jsx global>{`
+        .logos-ticker {
+          overflow: hidden;
+          position: relative;
+        }
+        
+        .logos-track {
+          display: flex;
+          width: fit-content;
+        }
+        
+        .logos-inner {
+          display: flex;
+          gap: 40px;
+          padding-right: 40px;
+          animation: logoScroll 30s linear infinite;
+        }
+        
+        .logos-track:hover .logos-inner {
+          animation-play-state: paused;
+        }
+        
+        @keyframes logoScroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        
+        .logo-item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 10px 20px;
+          background: #f8fafc;
+          border-radius: 30px;
+          text-decoration: none;
+          color: #1e293b;
+          font-weight: 500;
+          white-space: nowrap;
+          transition: all 0.3s ease;
+        }
+        
+        .logo-item:hover {
+          background: #1d4ed8;
+          color: white;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
+        }
+        
+        .logo-item i {
+          font-size: 1.1rem;
+          color: #1d4ed8;
+        }
+        
+        .logo-item:hover i {
+          color: white;
+        }
+      `}</style>
+
       <footer className="footer">
         <div className="footer-container">
           <div className="footer-main">
