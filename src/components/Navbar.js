@@ -7,22 +7,54 @@ export default function Navbar() {
   const [lang, setLang] = useState('et')
   const [darkMode, setDarkMode] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [activeDropdown, setActiveDropdown] = useState(null)
 
-  const navLinks = [
-    { href: '/autod', label: 'Autod' },
-    { href: '/kinnisvara', label: 'Kinnisvara' },
-    { href: '/too', label: 'Töö' },
-    { href: '/turg', label: 'Osta & Müü' },
-    { href: '/horoskoop', label: 'Horoskoop' },
-    { href: '/kategooria', label: 'Kategooriad' },
-    { href: '/otsing', label: 'Otsing' },
-  ]
+  const toggleDropdown = (dropdown) => {
+    setActiveDropdown(activeDropdown === dropdown ? null : dropdown)
+  }
+
+  const closeDropdowns = () => {
+    setActiveDropdown(null)
+  }
+
+  // Organized navigation structure
+  const navSections = {
+    marketplace: {
+      label: 'Kaubaturg',
+      icon: 'fa-store',
+      items: [
+        { href: '/autod', label: 'Autod', icon: 'fa-car' },
+        { href: '/kinnisvara', label: 'Kinnisvara', icon: 'fa-home' },
+        { href: '/turg', label: 'Osta & Müü', icon: 'fa-shopping-bag' },
+      ]
+    },
+    services: {
+      label: 'Teenused',
+      icon: 'fa-handshake',
+      items: [
+        { href: '/too', label: 'Töö', icon: 'fa-briefcase' },
+        { href: '/kuulutus', label: 'Kuulutused', icon: 'fa-bullhorn' },
+        { href: '/kategooria', label: 'Kategooriad', icon: 'fa-th-large' },
+        { href: '/otsing', label: 'Otsing', icon: 'fa-search' },
+      ]
+    },
+    lifestyle: {
+      label: 'Elu',
+      icon: 'fa-heart',
+      items: [
+        { href: '/horoskoop', label: 'Horoskoop', icon: 'fa-star' },
+        { href: '/ilm', label: 'Ilm', icon: 'fa-cloud-sun' },
+        { href: '/games', label: 'Mängud', icon: 'fa-gamepad' },
+        { href: '/uudised', label: 'Uudised', icon: 'fa-newspaper' },
+      ]
+    }
+  }
 
   return (
     <>
       <nav className="navbar">
         <div className="nav-container">
-          <Link href="/" className="logo">
+          <Link href="/" className="logo" onClick={closeDropdowns}>
             <div className="logo-icon">
               <i className="fas fa-globe"></i>
             </div>
@@ -30,14 +62,74 @@ export default function Navbar() {
           </Link>
 
           <div className="nav-links">
-            <Link href="/autod" className="nav-link">Autod</Link>
-            <Link href="/kinnisvara" className="nav-link">Kinnisvara</Link>
-            <Link href="/too" className="nav-link">Töö</Link>
-            <Link href="/turg" className="nav-link">Osta & Müü</Link>
-            <Link href="/horoskoop" className="nav-link">Horoskoop</Link>
-            <Link href="/uudised" className="nav-link">Uudised</Link>
-            <Link href="/kategooria" className="nav-link">Kategooriad</Link>
-            <Link href="/otsing" className="nav-link">Otsing</Link>
+            {/* Marketplace Dropdown */}
+            <div 
+              className={`nav-dropdown ${activeDropdown === 'marketplace' ? 'active' : ''}`}
+              onMouseEnter={() => setActiveDropdown('marketplace')}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button className="nav-dropdown-trigger">
+                <i className="fas fa-store"></i>
+                <span>{navSections.marketplace.label}</span>
+                <i className={`fas fa-chevron-${activeDropdown === 'marketplace' ? 'up' : 'down'} dropdown-arrow`}></i>
+              </button>
+              <div className="nav-dropdown-menu">
+                {navSections.marketplace.items.map((item) => (
+                  <Link key={item.href} href={item.href} className="nav-dropdown-item">
+                    <i className={`fas ${item.icon}`}></i>
+                    <span>{item.label}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Services Dropdown */}
+            <div 
+              className={`nav-dropdown ${activeDropdown === 'services' ? 'active' : ''}`}
+              onMouseEnter={() => setActiveDropdown('services')}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button className="nav-dropdown-trigger">
+                <i className="fas fa-handshake"></i>
+                <span>{navSections.services.label}</span>
+                <i className={`fas fa-chevron-${activeDropdown === 'services' ? 'up' : 'down'} dropdown-arrow`}></i>
+              </button>
+              <div className="nav-dropdown-menu">
+                {navSections.services.items.map((item) => (
+                  <Link key={item.href} href={item.href} className="nav-dropdown-item">
+                    <i className={`fas ${item.icon}`}></i>
+                    <span>{item.label}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Lifestyle Dropdown */}
+            <div 
+              className={`nav-dropdown ${activeDropdown === 'lifestyle' ? 'active' : ''}`}
+              onMouseEnter={() => setActiveDropdown('lifestyle')}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button className="nav-dropdown-trigger">
+                <i className="fas fa-heart"></i>
+                <span>{navSections.lifestyle.label}</span>
+                <i className={`fas fa-chevron-${activeDropdown === 'lifestyle' ? 'up' : 'down'} dropdown-arrow`}></i>
+              </button>
+              <div className="nav-dropdown-menu">
+                {navSections.lifestyle.items.map((item) => (
+                  <Link key={item.href} href={item.href} className="nav-dropdown-item">
+                    <i className={`fas ${item.icon}`}></i>
+                    <span>{item.label}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Meist - Direct Link */}
+            <Link href="/meist" className="nav-link">
+              <i className="fas fa-info-circle"></i>
+              <span>Meist</span>
+            </Link>
           </div>
 
           <div className="nav-controls">
@@ -77,19 +169,27 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Reorganized */}
       <div className={`mobile-menu ${mobileMenuOpen ? 'active' : ''}`}>
-        <Link href="/autod" onClick={() => setMobileMenuOpen(false)}>Autod</Link>
-        <Link href="/kinnisvara" onClick={() => setMobileMenuOpen(false)}>Kinnisvara</Link>
-        <Link href="/too" onClick={() => setMobileMenuOpen(false)}>Töö</Link>
-        <Link href="/turg" onClick={() => setMobileMenuOpen(false)}>Osta & Müü</Link>
-        <Link href="/uudised" onClick={() => setMobileMenuOpen(false)}>Uudised</Link>
-        <Link href="/kategooria" onClick={() => setMobileMenuOpen(false)}>Kategooriad</Link>
-        <Link href="/otsing" onClick={() => setMobileMenuOpen(false)}>Otsing</Link>
-        <Link href="/ilm" onClick={() => setMobileMenuOpen(false)}>Ilm</Link>
-        <Link href="/horoskoop" onClick={() => setMobileMenuOpen(false)}>Horoskoop</Link>
-        <Link href="/games" onClick={() => setMobileMenuOpen(false)}>Mängud</Link>
-        <Link href="/meist" onClick={() => setMobileMenuOpen(false)}>Meist</Link>
+        <div className="mobile-section-title">Kaubaturg</div>
+        <Link href="/autod" onClick={() => setMobileMenuOpen(false)}><i className="fas fa-car"></i> Autod</Link>
+        <Link href="/kinnisvara" onClick={() => setMobileMenuOpen(false)}><i className="fas fa-home"></i> Kinnisvara</Link>
+        <Link href="/turg" onClick={() => setMobileMenuOpen(false)}><i className="fas fa-shopping-bag"></i> Osta & Müü</Link>
+        
+        <div className="mobile-section-title">Teenused</div>
+        <Link href="/too" onClick={() => setMobileMenuOpen(false)}><i className="fas fa-briefcase"></i> Töö</Link>
+        <Link href="/kuulutus" onClick={() => setMobileMenuOpen(false)}><i className="fas fa-bullhorn"></i> Kuulutused</Link>
+        <Link href="/kategooria" onClick={() => setMobileMenuOpen(false)}><i className="fas fa-th-large"></i> Kategooriad</Link>
+        <Link href="/otsing" onClick={() => setMobileMenuOpen(false)}><i className="fas fa-search"></i> Otsing</Link>
+        
+        <div className="mobile-section-title">Elu</div>
+        <Link href="/horoskoop" onClick={() => setMobileMenuOpen(false)}><i className="fas fa-star"></i> Horoskoop</Link>
+        <Link href="/ilm" onClick={() => setMobileMenuOpen(false)}><i className="fas fa-cloud-sun"></i> Ilm</Link>
+        <Link href="/games" onClick={() => setMobileMenuOpen(false)}><i className="fas fa-gamepad"></i> Mängud</Link>
+        <Link href="/uudised" onClick={() => setMobileMenuOpen(false)}><i className="fas fa-newspaper"></i> Uudised</Link>
+        
+        <div className="mobile-section-title">Info</div>
+        <Link href="/meist" onClick={() => setMobileMenuOpen(false)}><i className="fas fa-info-circle"></i> Meist</Link>
       </div>
     </>
   )

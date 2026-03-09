@@ -185,6 +185,88 @@ a {
   width: 100%;
 }
 
+/* Navbar Dropdown Styles */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.nav-dropdown-trigger:hover {
+  color: #1d4ed8;
+  background: #f1f5f9;
+}
+
+.nav-dropdown-trigger .dropdown-arrow {
+  font-size: 0.7rem;
+  transition: transform 0.3s ease;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  min-width: 200px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  margin-top: 8px;
+}
+
+.nav-dropdown.active .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: #1e293b;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.nav-dropdown-item:hover {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  color: #1d4ed8;
+  transform: translateX(4px);
+}
+
+.nav-dropdown-item i {
+  color: #3b82f6;
+  font-size: 0.9rem;
+  width: 20px;
+  text-align: center;
+}
+
+.nav-dropdown-item:hover i {
+  color: #1d4ed8;
+}
+
 .nav-controls {
   display: flex;
   align-items: center;
@@ -880,6 +962,45 @@ a {
 .mobile-menu .nav-link:hover {
   background: #f1f5f9;
   color: #1d4ed8;
+}
+
+/* Mobile Section Title */
+.mobile-section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #94a3b8;
+  padding: 8px 0;
+  margin-top: 8px;
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.mobile-menu > a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1e293b;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  width: 100%;
+  max-width: 300px;
+}
+
+.mobile-menu > a:hover {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  color: #1d4ed8;
+}
+
+.mobile-menu > a i {
+  color: #3b82f6;
+  width: 24px;
 }
 
 .mobile-lang-toggle {
