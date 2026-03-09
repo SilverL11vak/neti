@@ -5,6 +5,9 @@
 
 'use client'
 
+import '@/app/globals.css'
+import '@fortawesome/fontawesome-free/css/all.css'
+
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'

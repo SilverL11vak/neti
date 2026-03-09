@@ -5,6 +5,10 @@
 
 'use client'
 
+import '@/app/globals.css'
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@/app/horoskoop/globals.css'
+
 import { useState } from 'react'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
